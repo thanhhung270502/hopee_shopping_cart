@@ -1,0 +1,105 @@
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+@import "font-awesome";
+@import "bootstrap";
+// Color
+:root {
+    --primary: #fe2c55;
+    --black: #000;
+    --text-color: #333;
+    --blue-black: #161d27;
+    --white: #fff;
+    --night: #242526;
+    --yellow: #ffc174;
+    --night-light: #3A3B3C;
+    --blue: #0C97FF;
+    --green: #3BFEB8;
+    --light-gray: #BFBFBF;
+    --dark-gray: #5E5E5E;
+
+    // Default layout
+    --default-layout-header-height: 160px;
+    --default-layout-width: 140rem;
+    --default-layout-horizontal-spacer: 24px;
+}
+
+.bg-night {
+    background-color: var(--night);
+}
+
+/* universal */
+body {
+    // padding-top: 60px;
+}
+
+/* mixins, variables, etc. */
+$gray-medium-light: #eaeaea;
+@mixin box_sizing {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* miscellaneous */
+.debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
+}
+
+.max-width {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 19px;
+    border-radius: 1000px;
+    background-color: var(--white);
+}
+  
+#myBtn:hover {
+    color: var(--primary);
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: var(--black);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: var(--white);
+}
+
+.flash__ {
+    position: fixed;
+    bottom: 20px;
+    right: 0px;
+    z-index: 99;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 300px;
+    // background-color: var(--white);
+}

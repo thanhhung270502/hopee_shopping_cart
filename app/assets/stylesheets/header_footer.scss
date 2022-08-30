@@ -1,0 +1,262 @@
+//// Header
+.navbar {
+    --bs-navbar-padding-y: 0.1rem;
+    border-bottom: 1px solid var(--night-light);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: var(--primary);
+    padding: 0 !important;
+
+    span {
+        color: var(--white) !important;
+    }
+
+    &:hover {
+        color: var(--white) !important;
+
+        span {
+            color: var(--primary) !important;
+        }
+    }
+}
+
+.nav-button {
+    li {
+        padding-left: 10px;
+    }
+}
+
+.nav-avatar {
+    padding: 4px !important;
+}
+
+.align-item-center {
+    align-items: center !important;
+}
+
+.container-fluid {
+    --bs-gutter-x: 3.5rem !important;
+}
+
+.drop-menu-right {
+    right: 0 !important;
+    left: unset !important;
+    top: 80% !important;
+    width: 250px !important;
+
+    li {
+        padding: 0 10px;
+    }
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+// Sub-menu
+.shop {
+    position: unset;
+}
+
+.dropdown-shop {
+    position: absolute;
+    top: 97% !important;
+    left: 0;
+    width: 100%;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    background-color: var(--blue-black);
+    color: var(--white);
+
+    a {
+        text-decoration: none;
+        color: var(--white);
+    }
+
+    li {
+        list-style: none;
+        padding-bottom: 10px;
+    }
+}
+
+.menu-title {
+    color: var(--primary);
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+.dropdown-icon {
+    padding-right: 4px;
+    width: 27px;
+    font-size: 1rem;
+    // text-align: center;
+}
+
+.dropdown-padding {
+    padding: 10px;
+    // margin: 0 5px ;
+    border-radius: 7px;
+}
+
+//// Footer
+.footer {
+    // background-color: var(--);
+    padding: 60px 0 0;
+    color: var(--white);
+}
+
+.footer-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+.footbar {
+
+}
+
+.footbar-foot {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.foot-item {
+    padding: 0 10px;
+}
+
+.foot-link {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--white);
+    }
+}
+
+.footer__information {
+    padding: 30px 0;
+}
+
+.footer__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.footer__off-ul {
+    padding-left: 0 !important;
+
+    li {
+        padding: 5px 0;
+        align-items: center;
+    }
+}
+
+.footer__icon{
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.fa-icon {
+    width: 60px;
+}
+
+.footer__text{
+    a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+}
+
+
+
+// Responsive
+@media (min-width: 1024px) {
+    // Header
+    .nav-li {
+        > a {
+            padding: 0.7rem 3rem !important;
+            margin: 0.1rem 0.2rem;
+            font-size: 1.2rem;
+            color: var(--white) !important;
+        }
+    
+        > a:hover {
+            background-color: rgba($color: #ccc, $alpha: 0.2);
+            border-radius: 10px;
+        }
+    
+        .active {
+            border-bottom: solid 2px var(--primary);
+            color: var(--primary) !important;
+        }
+    
+        .active:hover {
+            background-color: transparent;
+            border-radius: 0;
+        }
+    
+    }
+    .nav-user {
+        > a {
+            color: var(--white) !important;
+            font-size: 1.2rem;
+            padding: 0.7rem 0 !important;
+            margin: 0.1rem 0.2rem;
+        }
+        
+        li {
+            padding: 0 !important;
+        }
+    }
+
+    .nav-avatar {
+        // padding: 0.7rem 0 !important;
+        margin: 0.1rem 0.2rem;
+    }
+
+    .drop-down-1 {
+        padding: 0 !important;
+        
+        hr {
+            border-top: 1px solid var(--white);
+        }
+
+    }
+
+    .row-menu {
+        padding: 0 30px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 1023px) {
+    // Header
+    .nav-user {
+        padding: 0 !important;
+    }
+
+    .nav-button {
+        padding: 0 !important;
+    }
+
+
+    .nav-item {
+        text-align: left !important;
+    }
+}
