@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="profile-container">
+    <div class="profile__cover">
+      <img src="https://mondaycareer.com/wp-content/uploads/2020/11/cover-facebook-t%C3%A2m-tr%E1%BA%A1ng-bu%E1%BB%93n.jpg" class="">
+    </div>
+
+    <div class="profile__information">
+      <div class="col">
+        <div class="profile__avatar">
+          <div class="d-flex profile__infor">
+            <%= image_tag @user.avatar, class: "img-fluid" %>  
+          </div>
+        </div>
+
+        <div class="profile__name">
+          <%= @user.name %>
+        </div>
+      </div>
+
+      <div class="col profile__edit">
+        <div class="btn btn-outline-info">
+          Edit_user
+        </div>
+      </div>         
+    </div>
+  </div>
+</div>

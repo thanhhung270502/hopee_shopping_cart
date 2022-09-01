@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 # SASS
 gem 'sass-rails'
-gem 'bootstrap', '~> 5.2.0'
+# gem 'bootstrap', '~> 5.2.0'
 
 # Font awesome 
 gem "font-awesome-sass", "~> 6.1.2"
