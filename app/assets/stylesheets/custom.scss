@@ -21,6 +21,15 @@
     --default-layout-header-height: 160px;
     --default-layout-width: 140rem;
     --default-layout-horizontal-spacer: 24px;
+    
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    clear: both;
 }
 
 .bg-night {
@@ -102,4 +111,9 @@ li {
     cursor: pointer;
     width: 300px;
     // background-color: var(--white);
+}
+
+.center {
+    text-align: center !important;
+    align-items: center !important;
 }

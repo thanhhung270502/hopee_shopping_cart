@@ -1,63 +1,87 @@
 .profile-container {
-    padding: 0 50px;
-}
-
-.profile__cover {
-    position: relative;
-    img {
-        max-height: 40vh;
-        width: 100%;
-        background-size: contain;
-    }
+    background-color: var(--black);
+    padding: 30px;
 }
 
 .profile__information {
-    position: absolute;
-    top: 44%;
-    left: 17.5%;
 
-    .profile__infor {
-        justify-content: flex-start;
-    }
+}
 
-    .profile__name {
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding-left: 15px;
-        color: #fff;
-    }
-
-    .profile__edit {
-        justify-content: flex-end;
-    }
+.profile__avame {
+    background-color: #28313B;
+    // background-image: linear-gradient(180deg, #28313B 0%, #0a0f17 74%);
 }
 
 .profile__avatar {
-    max-width: 120px;
-    max-height: 120px;
+    padding: 20px 0;
+    
 
     img {
+        width: 175px;
+        height: 175px;
         border-radius: 50%;
     }
 }
 
 .profile__name {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--white);
+    padding-bottom: 20px;
 }
 
-.profile__edit {
-    padding-top: 30x !important;
+.profile__inforOther {
+    padding: 15px 0;
 }
 
+.profile__box-1,
+.profile__box-2 {
+    padding-left: 20px;
+}
 
-// Responsive
+.profile__box-2 {
+    padding-right: 20px;
+}
 
-@media (max-width: 1023px) {
-    .profile-container {
-        padding: 0 15px;
+.profile__infor,
+.profile__micropost {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: var(--night);
+    color: var(--white);
+}
+
+.profile__infor {
+    padding-bottom: 30px;
+}
+
+.profile__title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.profile__inner-infor {
+    padding: 0;     
+    margin-bottom: 10px;
+
+    li {
+        padding: 5px 0;
+        align-items: center;
     }
+}
 
-    .profile__information {
-        top: 42%;
-        left: 17.5%;
-    }
+.profile__label {
+    font-size: 1.2rem;
+}
+
+.profile__content {
+    font-size: 1rem;
+}
+
+.profile__setting {
+}
+
+.profile__btn {
+    width: 100%;
 }

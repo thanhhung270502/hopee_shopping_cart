@@ -93,9 +93,8 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <img src="https://scontent.fsgn8-3.fna.fbcdn.net/v/t39.30808-6/273727832_682016636157763_1569302612958504638_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=W-tKUD1sDdYAX91FP-S&_nc_ht=scontent.fsgn8-3.fna&oh=00_AT91xwfcEasuNArr6uWA87fsVX7KBnPHwMlZoGpF_MG7cg&oe=62FF6551" 
-            style="height: 40px; width: 40px; border-radius: 50%;" 
-            class="nav-link dropdown-toggle nav-avatar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag 'logo.jpg', style: "height: 40px; width: 40px; border-radius: 50%;", class: "nav-link dropdown-toggle nav-avatar", role: "button", 
+            'data-bs-toggle' => 'dropdown' , aria: {expanded: "false"} %>
             <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
               <li class="">
                 <%= link_to '<i class="fa-solid fa-address-card dropdown-icon"></i> Profile'.html_safe, user_path(current_user), class: "dropdown-item dropdown-padding" %>
