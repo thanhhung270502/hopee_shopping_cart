@@ -43,10 +43,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_034555) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string "name", null: false
     t.bigint "user_id"
+    t.string "name", null: false
     t.text "description"
-    t.string "avatar"
+    t.string "web_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shops_on_user_id"
@@ -55,10 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_034555) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.string "avatar", default: "https://i.pinimg.com/736x/16/b2/e2/16b2e2579118bf6fba3b56523583117f.jpg"
     t.string "phone"
     t.string "address"
     t.string "password_digest"
+    t.string "web_url"
+    t.string "cover_color"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

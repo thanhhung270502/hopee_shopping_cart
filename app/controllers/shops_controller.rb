@@ -18,7 +18,7 @@ class ShopsController < ApplicationController
         @shop.user_id = session[:user_id]
         
         if @shop.save
-            @user.update_attribute(:role, 2)
+            @user.update_attribute(:role, 1)
             
             flash[:success] = 'Create shop successfully!'
             redirect_to root_path 
