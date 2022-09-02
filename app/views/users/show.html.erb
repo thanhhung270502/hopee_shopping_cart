@@ -1,14 +1,15 @@
 <div class="profile-container">
   <div class="container">
     <div class="profile__information">
-      <div class="profile__avame">
+      <%= content_tag :div, style: "background-color: #{@user.cover_color}" do %>
         <div class="profile__avatar center">
-          <%= image_tag @user.avatar, class: "img-fluid" %>
+          <%= image_tag 'logo.jpg', class: "img-fluid" %>
         </div>
         <div class="profile__name center">
           <%= @user.name %>
         </div>
-      </div>
+      <% end %>
+      
       <div class="d-flex profile__inforOther">
         <div class="col-4 profile__box-1">
           <div class="profile__infor">
@@ -38,6 +39,14 @@
                 </div>
                 <div class="col-11 profile__content">
                   <%= @user.address %>
+                </div>
+              </li>       
+              <li class="d-flex">
+                <div class="col-1 profile__label">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="col-11 profile__content">
+                  <%= @user.cover_color %>
                 </div>
               </li>            
             </ul>

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    attr_accessor :remember_token
     before_save :downcase_email
 
     has_secure_password
@@ -39,9 +40,9 @@ class User < ApplicationRecord
     
 
     # Forgets a user.
-    # def forget
-    #     update_attribute(:remember_digest, nil)
-    # end
+    def forget
+        update_attribute(:remember_digest, nil)
+    end
 
     # Activates an account.
     def activate

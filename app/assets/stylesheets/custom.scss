@@ -12,6 +12,7 @@
     --night: #242526;
     --yellow: #ffc174;
     --night-light: #3A3B3C;
+    --night-dark: #303030;
     --blue: #0C97FF;
     --green: #3BFEB8;
     --light-gray: #BFBFBF;
@@ -34,6 +35,10 @@
 
 .bg-night {
     background-color: var(--night);
+}
+
+.bg-night-dark {
+    background-color: var(--night-dark);
 }
 
 /* universal */
