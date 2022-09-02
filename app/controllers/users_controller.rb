@@ -22,6 +22,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def setting
+        @user = User.find_by(id: params[:id])
+    end
+
     def edit
         @user = User.find_by(id: params[:id])
     end        

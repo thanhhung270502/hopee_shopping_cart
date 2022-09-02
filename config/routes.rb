@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   delete 'log_out', to: 'sessions#destroy'
 
+  get 'setting',    to: 'users#setting'
+
   resources :users
   resources :shops
 

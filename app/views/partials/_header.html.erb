@@ -104,11 +104,11 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
+                <%# <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
                   <i class="fa-solid fa-gear dropdown-icon"></i>
                   Cài đặt
-                </a>
-                <%#= link_to '<i class="fa-solid fa-gear"></i> Setting'.html_safe, edit_user_path(current_user), class: "dropdown-item dropdown-padding" %>
+                </a> %>
+                <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
               </li>
               <li>
                 <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
