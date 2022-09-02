@@ -1,27 +1,59 @@
-<div class="container">
-  <div class="profile-container">
-    <div class="profile__cover">
-      <img src="https://mondaycareer.com/wp-content/uploads/2020/11/cover-facebook-t%C3%A2m-tr%E1%BA%A1ng-bu%E1%BB%93n.jpg" class="">
-    </div>
-
+<div class="profile-container">
+  <div class="container">
     <div class="profile__information">
-      <div class="col">
-        <div class="profile__avatar">
-          <div class="d-flex profile__infor">
-            <%= image_tag @user.avatar, class: "img-fluid" %>  
-          </div>
+      <div class="profile__avame">
+        <div class="profile__avatar center">
+          <%= image_tag @user.avatar, class: "img-fluid" %>
         </div>
-
-        <div class="profile__name">
+        <div class="profile__name center">
           <%= @user.name %>
         </div>
       </div>
-
-      <div class="col profile__edit">
-        <div class="btn btn-outline-info">
-          Edit_user
+      <div class="d-flex profile__inforOther">
+        <div class="col-4 profile__box-1">
+          <div class="profile__infor">
+            <div class="profile__title">
+              Thông tin
+            </div>
+            <ul class="profile__inner-infor">
+              <li class="d-flex">
+                <div class="col-1 profile__label">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="col-11 profile__content">
+                  <%= @user.email %>
+                </div>
+              </li>
+              <li class="d-flex">
+                <div class="col-1 profile__label">
+                  <i class="fa-solid fa-square-phone"></i>
+                </div>
+                <div class="col-11 profile__content">
+                  <%= @user.phone %>
+                </div>
+              </li>
+              <li class="d-flex">
+                <div class="col-1 profile__label">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="col-11 profile__content">
+                  <%= @user.address %>
+                </div>
+              </li>            
+            </ul>
+            <div class="center">
+              <%= link_to 'Chỉnh sửa thông tin', edit_user_path(current_user), class: "btn btn-secondary profile__btn" %>
+              <%# <button type="button" class="btn btn-secondary profile__btn">
+                Chỉnh sửa thông tin
+              </button> %>
+            </div>
+          </div>
         </div>
-      </div>         
+        <div class="col-8 profile__box-2">
+          <div class="profile__micropost">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
