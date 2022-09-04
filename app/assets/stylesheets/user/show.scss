@@ -1,6 +1,10 @@
 .profile-container {
     background-color: var(--black);
     padding: 30px;
+
+    .container {
+        max-width: 1100px;
+    }
 }
 
 .profile__information {
@@ -36,17 +40,17 @@
 
 .profile__box-1,
 .profile__box-2 {
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .profile__box-2 {
-    padding-right: 20px;
+    padding-right: 15px;
 }
 
 .profile__infor,
 .profile__micropost {
-    padding: 15px;
-    border-radius: 6px;
+    padding: 10px 15px;
+    border-radius: 10px;
     background-color: var(--night);
     color: var(--white);
 }
@@ -84,4 +88,236 @@
 
 .profile__btn {
     width: 100%;
+}
+
+// Enter_content
+.profile__micropost {
+    margin-bottom: 12px;
+}
+
+.profile__enter-content {
+    align-items: center;
+    // border-bottom: solid 1px var(--night-light);
+    padding: 5px 0 10px;
+}
+
+.btn-enter-content {
+    font-size: 0.9rem;
+    color: var(--text-white);
+    background-color: var(--night-light);
+    width: 100%;
+    text-align: left;
+    border-radius: 15px;
+    border: none;
+    padding: 5px 12px;
+}
+
+.profile__enter-icon {
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.profile__enter-image {
+    color: var(--green);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    .enter_image {
+        width: 25px;
+    }
+
+    span {
+        color: var(--text-white);
+        // col
+        font-size: 0.8rem;
+    }
+
+    &:hover {
+        background-color: var(--night-light);
+    }
+}
+
+.modal-title {
+    // color: var(--white) !important;
+    text-align: center !important;
+    font-size: 1.1rem;
+}
+
+.modal {
+    top: 20%;
+    color: var(--text-white);
+}
+
+.modal-top {
+    top: 16%;
+}
+
+.modal-content {
+    background-color: var(--night);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--night-light);
+}
+
+.modal-header {
+    padding: 10px 16px;
+}
+
+.modal-avatar {
+    width: 40px;
+    padding-right: 10px;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.modal-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.modal-form {
+    padding-top: 10px;
+}
+
+.modal-field {
+    textarea {
+        width: 100%;
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--text-white);
+
+        &:focus-visible {
+            border-color: transparent;
+            outline: none;
+        }
+    }
+}
+
+.modal-image {
+    display: none;
+}
+
+.modal-show {
+    display: block !important;
+}
+
+.modal-add-field {
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.modal-icon {
+    font-size: 1.2rem;
+    color: var(--green);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(228, 230, 235, 0.1)
+    }
+}
+
+.btn-close {
+    background: none;
+    height: unset;
+    width: unset;
+    font-size: 1.5rem;
+    color: var(--white);
+
+    &:hover { 
+        opacity: 1;
+        color: var(--white);
+    }
+}
+
+.post__container {
+    padding-left: 0;
+}
+
+.post__title {
+    font-weight: bold;
+}
+
+.post__inner {
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--night-light);
+}
+
+.post__avatar {
+    width: 50px;
+    padding-right: 10px;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.post__infor {
+    font-size: 0.8rem;
+    flex-grow: 1;
+}
+
+.post__name {
+    font-weight: bold;
+    a {
+        color: var(--text-white);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+}
+
+.post__time {
+
+}
+
+.btn-post__setting {
+    background-color: transparent;
+    color: var(--text-white);
+    border-color: transparent;
+
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+.dropdown-post__setting {
+    right: 0 !important;
+    left: unset !important;
+    background-color: var(--night-light);
+    button {
+        color: var(--text-white) !important;
+    }
+
+    button:hover {
+        background-color: var(--night);
+    }
+}
+
+.post__content {
+    padding: 5px 0 10px;
+    font-size: 0.9rem;
+    color: var(--text-white);
+}
+
+.post__image {
+    padding-bottom: 10px;
+}
+
+
+// Responsive 
+@media (max-width: 1023px) {
+    .modal {
+        top: 0;
+    }
 }

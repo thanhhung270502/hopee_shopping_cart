@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home' 
   get '/help', to: 'static_pages#help'
   get '/blog', to: 'static_pages#blog'
+  get '/status', to: 'static_pages#status'
   get '/contact', to: 'static_pages#contact'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :shops
+  resources :microposts, only: [:create, :destroy]
+
 
   # Defines the root path route ("/")
   # root "articles#index"

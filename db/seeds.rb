@@ -6,11 +6,25 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(name: "HungAd",
-    email: "admin@polkadots.com",
-    password:               "polkadots",
-    password_confirmation:  "polkadots",
-    phone:                  "0923115467",
-    address:                "KTX Khu A - ĐHQG, TPHCM"
-    cover_color:            
+User.create!(name: "Thanh Hùng Lý",
+            email: "admin@polkadots.com",
+            password:               "polkadots",
+            password_confirmation:  "polkadots"
 )
+
+5.times do |n|
+    name = "Thanh Hùng #{n}"
+    email = "user#{n+1}@gmail.com"
+    password = "password"
+    User.create!(name: name,
+                email: email,
+                password: password,
+                password_confirmation: password)
+
+# Generate microposts for a subset of users.
+# users = User.order(:created_at).take(6)
+# 10.times do
+#     content = "Và ngày nào đó..."
+#     users.each { |user| user.microposts.create!(content: content) }
+# end
+end

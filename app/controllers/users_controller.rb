@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
+        @microposts = @user.microposts.paginate(page: params[:page])
+        @micropost = @user.microposts.build
+        @feed_items = current_user.feed.paginate(page: params[:page])
     end
     
     def new
@@ -50,6 +53,11 @@ class UsersController < ApplicationController
         User.find(params[:id]).destroy
         redirect_to @@current_path
     end
+
+    def feed
+        Micropost.where("user_id = ?", id)
+    end
+        
 
     private
         def user_params

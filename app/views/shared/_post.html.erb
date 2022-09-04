@@ -1,0 +1,43 @@
+<div class="profile__micropost">
+    <div class="post__title">Bài viết</div>
+</div>
+<ul class="post__container">
+    <% @microposts.each do |micropost| %>   
+    <% if micropost.image.attached? %>
+        <li class="profile__micropost">
+            <div class="d-flex post__inner">
+                <div class="post__avatar">
+                    <%= image_tag 'logo.jpg', class: "img-fluid" %>
+                </div>
+                <div class="post__infor">
+                    <div class="post__name">
+                        <%= link_to @user.name, user_path(current_user) %>
+                        <%#= @user.name %>
+                    </div>
+                    <div class="post__time">
+                        <%= time_ago_in_words(micropost.created_at) %> ago.
+                    </div>
+                </div>
+                <div class="post__setting">
+                    <div class="dropdown">
+                        <button class="btn-post__setting dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-post__setting">
+                            <li>
+                                <%= button_to "Xóa bài viết", micropost, method: :delete, data: { confirm: "You sure?" }, class: "dropdown-item" %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post__content">
+                <%= micropost.content %>
+            </div>
+            <div class="post__image">
+                <%= image_tag micropost.image.variant(:display) %>
+            </div>
+        </li>
+    <% end %>
+    <% end %>
+</ul>

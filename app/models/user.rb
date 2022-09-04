@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
     has_secure_password
     has_one :shop
+    has_many :microposts, dependent: :destroy
 
     validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, massage: "must be a valid email address" }
     validates :name, presence: true, length: { maximum: 50 }
