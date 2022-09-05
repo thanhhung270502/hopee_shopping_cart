@@ -17,10 +17,15 @@ Rails.application.routes.draw do
 
   get 'setting',    to: 'users#setting'
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :shops
   resources :microposts, only: [:create, :destroy]
-
+  resources :relationships, only: [:create, :destroy]
 
   # Defines the root path route ("/")
   # root "articles#index"

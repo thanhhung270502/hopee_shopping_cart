@@ -12,7 +12,7 @@ User.create!(name: "Thanh Hùng Lý",
             password_confirmation:  "polkadots"
 )
 
-5.times do |n|
+10.times do |n|
     name = "Thanh Hùng #{n}"
     email = "user#{n+1}@gmail.com"
     password = "password"
@@ -20,6 +20,7 @@ User.create!(name: "Thanh Hùng Lý",
                 email: email,
                 password: password,
                 password_confirmation: password)
+end
 
 # Generate microposts for a subset of users.
 # users = User.order(:created_at).take(6)
@@ -27,4 +28,11 @@ User.create!(name: "Thanh Hùng Lý",
 #     content = "Và ngày nào đó..."
 #     users.each { |user| user.microposts.create!(content: content) }
 # end
-end
+
+# Create following relationships.
+users = User.all
+user = users.first
+following = users[2..10]
+followers = users[3..8]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

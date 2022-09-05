@@ -8,6 +8,12 @@
         <div class="profile__name center">
           <%= @user.name %>
         </div>
+        
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+
+        <%= render 'follow_form' if logged_in? %>
       <% end %>
       
       <div class="d-flex profile__inforOther">

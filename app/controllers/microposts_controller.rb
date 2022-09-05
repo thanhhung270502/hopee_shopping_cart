@@ -8,10 +8,10 @@ class MicropostsController < ApplicationController
 
         if @micropost.save
             flash[:success] = "Micropost created!"
-            redirect_to status_path
+            redirect_to current_user
         else
             @feed_items = current_user.feed.paginate(page: params[:page])
-            redirect_to status_path
+            redirect_to current_user
         end
     end
 
@@ -20,7 +20,7 @@ class MicropostsController < ApplicationController
         @micropost.destroy
         flash[:success] = "Micropost deleted"
         if request.referrer.nil? || request.referrer == microposts_url
-            redirect_to root_url
+            redirect_to current_user
         else
             redirect_to request.referrer
         end

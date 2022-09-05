@@ -1,6 +1,6 @@
-<div class="container-sign sign-up">
+<div class="container-sign create-shop">
     <div class="inner-sign-up">
-        <h1 class="title">Sign Up!</h1>
+        <h1 class="title">Create Shop</h1>
         
         <%#= form_with model: @user, url: sign_up_path do |form| %>
         <%= form_with(model: @shop, local: true)  do |form|  %>
@@ -8,8 +8,8 @@
             <%= render 'shared/error_messages', object: form.object %>
         <div class="form-sign-up">
             <div class="mb-1 row">
-                <%# <label for="user_name">Name</label> %>
-                 <%= form.label :name %>
+                <label>Name_shop</label>
+                 <%#= form.label :name %>
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-1 row">
                 <div class="col-sm-12">
-                    <%= form.submit "Create new  account!" , class: "btn btn-secondary max-width btn-border btn-blue-green" %>
+                    <%= form.submit "Create new Shop!" , class: "btn btn-secondary max-width btn-border create-shop" %>
                 </div>
             </div>
         </div>
