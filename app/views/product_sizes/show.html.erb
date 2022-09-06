@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @product_size %>
+
+<div>
+  <%= link_to "Edit this product size", edit_product_size_path(@product_size) %> |
+  <%= link_to "Back to product sizes", product_sizes_path %>
+
+  <%= button_to "Destroy this product size", @product_size, method: :delete %>
+</div>

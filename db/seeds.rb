@@ -36,3 +36,7 @@ following = users[2..10]
 followers = users[3..8]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+Size.create!(name: "M");
+Size.create!(name: "L");
+Size.create!(name: "XL");

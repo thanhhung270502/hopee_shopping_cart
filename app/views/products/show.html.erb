@@ -1,0 +1,77 @@
+<div class="site-item">
+    <div class="row item__inner">
+        <div class="col__ col_10">
+            <div class="row image_small">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid image__small image__active" %>
+              <% end %>
+            </div>
+            <div class="row image_small">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid image__small" %>
+              <% end %>
+            </div>
+            <div class="row image_small">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid image__small" %>
+              <% end %>
+            </div>
+        </div>
+        <div class="col__ col_40">
+            <div class="image__large image-large__active">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid" %>
+              <% end %>
+            </div>
+            <div class="image__large">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid" %>
+              <% end %>
+            </div>
+            <div class="image__large">
+              <% if @product.image.attached? %>
+                <%= image_tag @product.image, class: "img-fluid" %>
+              <% end %>
+            </div>
+        </div>
+        <div class="col__ col_50 item-inner">
+            <div class="item__title">
+              <%= @product.name %>
+            </div>
+            <div class="item__price">
+              <%= @product.price %>
+            </div>
+            <%# if @product.%>
+            <div class="item__status">Trạng thái: <span>Còn hàng</span></div>
+            <div class="item__number">Số lượng: <span>7</span></div>
+            <div class="item__color">
+                Màu sắc: 
+            </div>
+            <div class="d-flex">
+                <div class="item__button">
+                    <button type="button" class="btn btn-outline-dark">Dark</button>
+                </div>
+                <div class="item__button">
+                    <button type="button" class="btn btn-outline-light">White</button>
+                </div>
+            </div>
+            <div class="item__size">
+                Size:
+            </div>
+            <div class="d-flex">
+                <div class="item__button">
+                    <button type="button" class="btn btn-secondary">M</button>
+                </div>
+                <div class="item__button">
+                    <button type="button" class="btn btn-secondary">L</button>
+                </div>
+                <div class="item__button">
+                    <button type="button" class="btn btn-secondary">XL</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<%= javascript_importmap_tags("custom/menu") %>
