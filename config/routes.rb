@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  get '/shop_products', to: 'products#showAll'
+  get '/products/:id/shop_products', to: 'products#showAll'
 
   # Defines the root path route ("/")
   # root "articles#index"

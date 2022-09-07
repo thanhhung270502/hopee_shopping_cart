@@ -1,3 +1,4 @@
+ <%= button_to "Destroy", @product, method: :delete %>
 <div class="site-item">
     <div class="row item__inner">
         <div class="col__ col_10">
@@ -39,7 +40,7 @@
               <%= @product.name %>
             </div>
             <div class="item__price">
-              <%= @product.price %>
+              <%= @product.price %> đ
             </div>
             <%# if @product.%>
             <div class="item__status">Trạng thái: <span>Còn hàng</span></div>

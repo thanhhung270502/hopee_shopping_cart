@@ -33,9 +33,11 @@
     <div class="site__products">
       <div class="products__title-2">
         <p>TẤT CẢ SẢN PHẨM</p>
+        <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>
+          <% if product.shop_id == current_shop.id %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to do %>
@@ -54,10 +56,11 @@
                 <%= product.name %>
               <% end %>
               <%= content_tag :div, class: "products__price" do %>
-                <%= product.price %>
+                <%= product.price %> đ
               <% end %>
             <% end %>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -4,25 +4,6 @@
     border-bottom: 1px solid var(--night-light);
 }
 
-.navbar-name {
-    font-weight: bold;
-    font-size: 1.6rem;
-    color: var(--primary);
-    padding: 0 !important;
-
-    span {
-        color: var(--white) !important;
-    }
-
-    &:hover {
-        color: var(--white) !important;
-
-        span {
-            color: var(--primary) !important;
-        }
-    }
-}
-
 .nav-button {
     li {
         padding-left: 10px;
@@ -39,21 +20,6 @@
 
 .container-fluid {
     --bs-gutter-x: 3.5rem !important;
-}
-
-.drop-menu-right {
-    right: 0 !important;
-    left: unset !important;
-    top: 80% !important;
-    width: 250px !important;
-
-    li {
-        padding: 0 10px;
-    }
-}
-
-.dropdown-toggle::after {
-    display: none !important;
 }
 
 // Sub-menu

@@ -1,199 +1,97 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-night navbar_header">
-  <div class="container-fluid">
-    <a class="navbar-brand navbar-name" href="/">
-      <%#= image_tag 'logo-01.png', style: "height: 40px; width: 40px" %>
-      Polka<span>Dots</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <% if logged_in? %>
-        <ul class="navbar-nav justify-content-center flex-grow-1">
-          <li class="nav-item nav-li">
-            <a class="nav-link active" aria-current="page" href="/">
-              <i class="fa-solid fa-house"></i>
-            </a>
-          </li>
-          <li class="nav-item dropdown nav-li shop">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-square-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-shop">
-              <div class="row row-menu">
-                <div class="col">
-                  <div class="menu-title">ÁO THUN</div>
-                  <li><a href="#">Áo thun cổ tròn</a></li>
-                  <li><a href="#">Áo thun form rộng</a></li>
-                  <li><a href="#">Áo Polo</a></li>
-                  <li><a href="#">Áo sweeter</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">ÁO KHOÁC</div>
-                  <li><a href="#">Áo khoác dù</a></li>
-                  <li><a href="#">Hoddie</a></li>
-                  <li><a href="#">Bomber</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">ÁO SƠ MI</div>
-                  <li><a href="#">Áo sơ mi tay dài</a></li>
-                  <li><a href="#">Áo sơ mi tay ngắn</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">QUẦN</div>
-                  <li><a href="#">Quần jean</a></li>
-                  <li><a href="#">Quần kaki</a></li>
-                  <li><a href="#">Quần short</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">GIÀY</div>
-                  <li><a href="#">Nike</a></li>
-                  <li><a href="#">Adidas</a></li>
-                  <li><a href="#">Converse</a></li>
-                </div>
-              </div>
-            </ul>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-link" href="/static_pages/about">
-              <i class="fa-brands fa-blogger"></i>
-            </a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-link" href="/static_pages/contact">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </li>
-          <% if create_shop? %>
-            <li class="nav-item nav-li">
-              <%= link_to shop_path(current_shop.id), class: "nav-link" do %>
-                <i class="fa-solid fa-store"></i>
-              <% end%>
+<div class="bg-night nfbar">
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand navbar-name logo" href="/">
+          Polka<span>Dots</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex form__search" role="search">
+            <input class="form_search" type="search" placeholder="Search" aria-label="Search">
+            <button class="button_search" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              Search
+            </button>
+          </form>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 nf-menu">
+            <li class="nav-item nav-item2">
+              <a class="nav-link nav-link-sub active" aria-current="page" href="#">Shop</a>
             </li>
-          <% else %>
-            <li class="nav-item nav-li">
-              <%= link_to new_shop_path, class: "dropdown-item" do %>
-                <i class='fa-solid fa-store'></i>
-              <% end %>
+            <li class="nav-item nav-item2">
+              <a class="nav-link nav-link-sub" href="#">Blog</a>
             </li>
-          <% end %>
-        </ul>
-        <ul class="navbar-nav justify-content-end align-item-center">
-          <li class="nav-item pe-2 nav-user">
-            <a class="nav-link active" aria-current="page" href="/">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag 'logo.jpg', style: "height: 40px; width: 40px; border-radius: 50%;", class: "nav-link dropdown-toggle nav-avatar", role: "button", 
-            'data-bs-toggle' => 'dropdown' , aria: {expanded: "false"} %>
-            <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
-              <li class="">
-                <%= link_to '<i class="fa-solid fa-address-card dropdown-icon"></i> Profile'.html_safe, user_path(current_user), class: "dropdown-item dropdown-padding" %>
-                <%# <a href="#"><i class="fa-solid fa-address-card dropdown-icon"></i> Profile</a> %>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li>
-                <%# <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
-                  <i class="fa-solid fa-gear dropdown-icon"></i>
-                  Cài đặt
-                </a> %>
-                <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
-              </li>
-              <li>
-                <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
-                  <i class="fa-solid fa-moon dropdown-icon"></i>
-                  Chế độ
-                </a>
-              </li>
-              <li>
-                <%= button_to '<i class="fa-solid fa-right-from-bracket dropdown-icon"></i> Đăng xuất'.html_safe, log_out_path, method: :delete, class: "dropdown-item dropdown-padding" %>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      <% else %>
-        <ul class="navbar-nav justify-content-center flex-grow-1">
-          <li class="nav-item nav-li">
-            <a class="nav-link active" aria-current="page" href="/">
-              <i class="fa-solid fa-house"></i>
-            </a>
-          </li>
-          <li class="nav-item dropdown nav-li shop">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-square-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-shop">
-              <div class="row row-menu">
-                <div class="col">
-                  <div class="menu-title">ÁO THUN</div>
-                  <li><a href="#">Áo thun cổ tròn</a></li>
-                  <li><a href="#">Áo thun form rộng</a></li>
-                  <li><a href="#">Áo Polo</a></li>
-                  <li><a href="#">Áo sweeter</a></li>
+            <li class="nav-item nav-item2">
+              <a class="nav-link nav-link-sub" href="#">
+                <div class="cart-icon">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span class="count">2</span>
                 </div>
-                <div class="col">
-                  <div class="menu-title">ÁO KHOÁC</div>
-                  <li><a href="#">Áo khoác dù</a></li>
-                  <li><a href="#">Hoddie</a></li>
-                  <li><a href="#">Bomber</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">ÁO SƠ MI</div>
-                  <li><a href="#">Áo sơ mi tay dài</a></li>
-                  <li><a href="#">Áo sơ mi tay ngắn</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">QUẦN</div>
-                  <li><a href="#">Quần jean</a></li>
-                  <li><a href="#">Quần kaki</a></li>
-                  <li><a href="#">Quần short</a></li>
-                </div>
-                <div class="col">
-                  <div class="menu-title">GIÀY</div>
-                  <li><a href="#">Nike</a></li>
-                  <li><a href="#">Adidas</a></li>
-                  <li><a href="#">Converse</a></li>
-                </div>
-              </div>
-            </ul>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-link" href="/static_pages/about">
-              <i class="fa-brands fa-blogger"></i>
-            </a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-link" href="/static_pages/contact">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav justify-content-end pe-3 nav-button">
-          <li class="nav-item dropdown nav-user">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-clipboard-user"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
-              <li>
-                <%= link_to "Login", log_in_path, class: "dropdown-item" %>
-                <%#= link_to "Login", "#", class: "dropdown-item" %>
+              </a>
+            </li>
+            <% if logged_in? %>
+            <% if create_shop? %>
+              <li class="nav-item nav-item2">
+                <%= link_to "My Shop", shop_path(current_shop.id), class: "nav-link nav-link-sub" %>
               </li>
-              <li>
-                <%= link_to "Sign Up", sign_up_path, class: "dropdown-item" %>
-                <%#= link_to "Sign Up", "#", class: "dropdown-item" %>
+            <% else %>
+              <li class="nav-item nav-item2">
+                <%= link_to new_shop_path, class: "dropdown-item" do %>
+                  <i class='fa-solid fa-store'></i>
+                <% end %>
               </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-      <% end %>
-    </div>
+            <% end %>
+            <li class="nav-item nav-item2 dropdown">
+              <%= image_tag 'logo.jpg', style: "height: 40px; width: 40px; border-radius: 50%;", class: "nav-link dropdown-toggle nav-avatar", role: "button", 
+              'data-bs-toggle' => 'dropdown' , aria: {expanded: "false"} %>
+              <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
+                <li class="">
+                  <%= link_to '<i class="fa-solid fa-address-card dropdown-icon"></i> Profile'.html_safe, user_path(current_user), class: "dropdown-item dropdown-padding" %>
+                  <%# <a href="#"><i class="fa-solid fa-address-card dropdown-icon"></i> Profile</a> %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <%# <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
+                    <i class="fa-solid fa-gear dropdown-icon"></i>
+                    Cài đặt
+                  </a> %>
+                  <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
+                </li>
+                <li>
+                  <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
+                    <i class="fa-solid fa-moon dropdown-icon"></i>
+                    Chế độ
+                  </a>
+                </li>
+                <li>
+                  <%= button_to '<i class="fa-solid fa-right-from-bracket dropdown-icon"></i> Đăng xuất'.html_safe, log_out_path, method: :delete, class: "dropdown-item dropdown-padding" %>
+                </li>
+              </ul>
+            </li>
+            <% else %>
+            <li class="nav-item nav-item2 dropdown">
+              <a class="nav-link nav-link-sub dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tài khoản
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
+                <li>
+                  <%= link_to "Login", log_in_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Sign Up", sign_up_path, class: "dropdown-item" %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
