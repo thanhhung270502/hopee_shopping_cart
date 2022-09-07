@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
-
+  before_action :set_product, only: %i[ show edit update destroy getProduct ]
+  before_action :createCartSession, only: %i[ getProduct ]
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    
   end
 
   def show_hot
@@ -81,7 +82,19 @@ class ProductsController < ApplicationController
     end      
   end
 
+  def getProduct
+    puts "Hello"
+    puts @product
+    # puts params[:id];
+    # @product = Product.find(@product.id);
+    getId(@product);
+  end
 
+  def createCartSession
+    @cart_session = CartSession.new
+    @cart_session.user_id = session[:user_id]
+    @cart_session.save
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
