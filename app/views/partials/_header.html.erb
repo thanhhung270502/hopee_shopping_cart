@@ -38,9 +38,7 @@
               </li>
             <% else %>
               <li class="nav-item nav-item2">
-                <%= link_to new_shop_path, class: "dropdown-item" do %>
-                  <i class='fa-solid fa-store'></i>
-                <% end %>
+                <%= link_to "Create Shop", new_shop_path, class: "nav-link nav-link-sub" %> 
               </li>
             <% end %>
             <li class="nav-item nav-item2 dropdown">

@@ -83,17 +83,16 @@ class ProductsController < ApplicationController
   end
 
   def getProduct
-    puts "Hello"
-    puts @product
-    # puts params[:id];
-    # @product = Product.find(@product.id);
     getId(@product);
+    redirect_to new_cart_item_path
   end
 
   def createCartSession
-    @cart_session = CartSession.new
-    @cart_session.user_id = session[:user_id]
-    @cart_session.save
+    if (!first_cart_session) 
+      @cart_session = CartSession.new
+      @cart_session.user_id = session[:user_id]
+      @cart_session.save
+    end
   end
 
   private

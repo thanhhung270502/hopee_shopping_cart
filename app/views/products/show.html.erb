@@ -70,6 +70,7 @@
                     <button type="button" class="btn btn-secondary">XL</button>
                 </div>
             </div>
+            <%#= render "form", cart_item: @cart_item %>
             <%= button_to "Add to cart", add_product_path, method: :post, class: "btn btn-secondary" %>
         </div>
     </div>
