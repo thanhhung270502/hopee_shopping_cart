@@ -1,84 +1,87 @@
  <%= button_to "Destroy", @product, method: :delete %>
 <div class="site-item">
-    <div class="row item__inner">
-        <div class="col__ col_10">
-            <div class="row image_small">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid image__small image__active" %>
-              <% end %>
-            </div>
-            <div class="row image_small">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid image__small" %>
-              <% end %>
-            </div>
-            <div class="row image_small">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid image__small" %>
-              <% end %>
-            </div>
-        </div>
-        <div class="col__ col_40">
-            <div class="image__large image-large__active">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid" %>
-              <% end %>
-            </div>
-            <div class="image__large">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid" %>
-              <% end %>
-            </div>
-            <div class="image__large">
-              <% if @product.image.attached? %>
-                <%= image_tag @product.image, class: "img-fluid" %>
-              <% end %>
-            </div>
-        </div>
-        <div class="col__ col_50 item-inner">
-            <div class="item__title">
-              <%= @product.name %>
-            </div>
-            <div class="item__price">
-              <%= @product.price %> đ
-            </div>
-            <%# if @product.%>
-            <div class="item__status">Trạng thái: <span>Còn hàng</span></div>
-            <div class="item__number">Số lượng: <span>7</span></div>
-            <div class="item__color">
-                Màu sắc: 
-            </div>
-            <div class="d-flex">
-                <div class="item__button">
-                    <button type="button" class="btn btn-outline-dark">Dark</button>
-                </div>
-                <div class="item__button">
-                    <button type="button" class="btn btn-outline-light">White</button>
-                </div>
-            </div>
-            <div class="item__size">
-                Size:
-            </div>
-            <div class="d-flex">
-                <div class="item__button">
-                    <button type="button" class="btn btn-secondary">M</button>
-                </div>
-                <div class="item__button">
-                    <button type="button" class="btn btn-secondary">L</button>
-                </div>
-                <div class="item__button">
-                    <button type="button" class="btn btn-secondary">XL</button>
-                </div>
-            </div>
-            <%= form_with url: add_product_path do |form| %>
-              <%= form.label :quantity %>
-              <%= form.text_field :quantity %>
-              <%= form.submit %>
-              <%#= button_to "Add to cart", add_product_path, method: :post, class: "btn btn-secondary" %>
-            <% end %>
-            <%#= render "form", cart_item: @cart_item %>
-        </div>
+  <div class="row item__inner">
+    <div class="col__ col_10">
+      <div class="row image_small">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid image__small image__active" %>
+        <% end %>
+      </div>
+      <div class="row image_small">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid image__small" %>
+        <% end %>
+      </div>
+      <div class="row image_small">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid image__small" %>
+        <% end %>
+      </div>
     </div>
+    <div class="col__ col_40">
+      <div class="image__large image-large__active">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="image__large">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="image__large">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "img-fluid" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col__ col_50 item-inner">
+      <div class="item__title">
+        <%= @product.name %>
+      </div>
+      <div class="item__price">
+        <%= @product.price %> đ
+      </div>
+      <%# if @product.%>
+      <div class="item__status">Trạng thái: <span>Còn hàng</span></div>
+      <div class="item__number">Số lượng: <span>7</span></div>
+      <div class="item__color">
+          Màu sắc: 
+      </div>
+      <div class="d-flex">
+        <div class="item__button">
+          <button type="button" class="btn btn-pink">Pink</button>
+        </div>
+      </div>
+      <div class="item__size">
+        Size:
+      </div>
+      <div class="d-flex">
+        <% @product.sizes.each do |size| %>
+        <div class="item__button">
+          <%= content_tag :div, class: "btn btn-secondary" do %>
+            <%= size.name %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <%= form_with url: add_product_path do |form| %>
+        <div class="item__quantity">
+          <%= form.label :quantity %>
+        </div>
+        <div class="d-flex">
+          <%# <div class="btn_quantity btn-minus">-</div> %>
+          <input type="button" value="-" class="btn_quantity">
+          <%= form.text_field :quantity, value: 1, class: "btn_quantity" %>
+          <input type="button" value="+" class="btn_quantity">
+          <%# <div class="btn_quantity btn-add">+</div> %>
+        </div>
+        <%= form.submit "Add to cart", class: "btn btn-secondary mt-2" %>
+        <%#= button_to "Add to cart", add_product_path, method: :post, class: "btn btn-secondary" %>
+      <% end %>
+      <%#= render "form", cart_item: @cart_item %>
+    </div>
+  </div>
 </div>
 
-<%= javascript_importmap_tags("custom/menu") %>
+<%= javascript_importmap_tags("custom/show_product") %>
