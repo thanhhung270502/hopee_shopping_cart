@@ -50,14 +50,6 @@
     padding: 0 50px;
 }
 
-.btn-dark {
-    color: #212529;
-}
-
-.btn-light {
-    color: #f8f9fa;
-}
-
 .item__button {
     padding-right: 10px;
 }
@@ -72,7 +64,8 @@
 }
 
 .item__price,
-.item__number {
+.item__number,
+.item__quantity {
     font-size: 1rem;
     font-weight: bold;
     padding: 10px 0;
@@ -96,4 +89,16 @@
 
 .item__size {
 
+}
+
+.btn_quantity {
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    color: #2A3132;
+    font-size: 18px;
+    margin-right: 5px;
 }

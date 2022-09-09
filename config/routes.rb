@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   get 'setting',    to: 'users#setting'
 
+  get 'avaUs',     to: 'users#getAva'
+  get 'avaUs',     to: 'users#setAva'
+
   resources :users do
     member do
       get :following, :followers

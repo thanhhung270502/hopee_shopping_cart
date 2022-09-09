@@ -4,10 +4,10 @@
             Cài đặt
         </div>
         <ul class="setting__container">
-            <li class="setting__active">
+            <li>
                 <%= link_to '<i class="fa-solid fa-circle-user setting__icon"></i> Lý Thanh Hùng'.html_safe, edit_user_path(current_user) %>
             </li>
-            <li>
+            <li class="setting__active">
                 <%= link_to avaUs_path, class: "dropdown-item" do %>
                     <i class="fa-solid fa-image setting__icon"></i>
                     Thay đổi hình ảnh
@@ -29,37 +29,15 @@
         </div>
         <%= form_with(model: @user, local: true) do |f| %>
         <div class="mb-3 row">
-            <%= f.label :name, class: "col-sm-2 col-form-label" %>
-            <%# <label for="staticEmail" class="col-sm-2 col-form-label">Email</label> %>
-            <div class="col-sm-10">
-                <%= f.text_field :name, class: 'form-control form-trans' %>
-                <%# <input type="text" class="form-control form-trans" id="staticEmail"> %>
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <%= f.label :email, class: "col-sm-2 col-form-label" %>
-            <div class="col-sm-10">
-                <%= f.email_field :email, class: 'form-control form-trans' %>
-            </div>
-        </div>
-        
-        <div class="mb-3 row">
-            <%= f.label :phone, class: "col-sm-2 col-form-label" %>
-            <div class="col-sm-10">
-                <%= f.text_field :phone, class: 'form-control form-trans' %>
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <%= f.label :address, class: "col-sm-2 col-form-label" %>
-            <div class="col-sm-10">
-                <%= f.text_field :address, class: 'form-control form-trans' %>
-            </div>
-        </div>
-        <div class="mb-3 row">
             <%= f.label :cover_color, class: "col-sm-2 col-form-label" %>
             <div class="col-sm-10">
                 <%= f.text_field :cover_color, class: 'form-control form-trans' %>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Ảnh đại diện</label>
+            <div class="col-sm-10">
+                <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "modal-file-image" %>
             </div>
         </div>
 

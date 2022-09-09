@@ -1,14 +1,4 @@
 //// Header
-.navbar_header {
-    --bs-navbar-padding-y: 0.1rem;
-    border-bottom: 1px solid var(--night-light);
-}
-
-.nav-button {
-    li {
-        padding-left: 10px;
-    }
-}
 
 .nav-avatar {
     padding: 4px !important;
@@ -16,10 +6,6 @@
 
 .align-item-center {
     align-items: center !important;
-}
-
-.container-fluid {
-    --bs-gutter-x: 3.5rem !important;
 }
 
 // Sub-menu
@@ -48,6 +34,10 @@
     }
 }
 
+.dropdown-toggle::after {
+    display: none !important;
+}
+
 .menu-title {
     color: var(--primary);
     font-weight: 500;
@@ -63,7 +53,6 @@
 
 .dropdown-padding {
     padding: 10px;
-    // margin: 0 5px ;
     border-radius: 7px;
 }
 

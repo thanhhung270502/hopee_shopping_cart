@@ -1,14 +1,55 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Cart items</h1>
-
-<div id="cart_items">
-  <% @cart_items.each do |cart_item| %>
-    <%= render cart_item %>
-    <p>
-      <%= link_to "Show this cart item", cart_item %>
-    </p>
-  <% end %>
+<div class="cart__items">
+  <div class="cart-items__header">
+    <div class="container d-flex" style="align-items: center;">
+      <div class="cart-items__brand">
+        PolkaDots
+      </div>
+      <div class="cart-items__title">
+        Cart Items
+      </div>
+    </div>
+  </div>
+  <div class="container cart-items__container">
+    <ul class="cart-items__field">
+      <li class="d-flex">
+        <div class="col-4 cart-items_col-title">Sản Phẩm</div>
+        <div class="col-2 cart-items_col-title">Đơn Giá</div>
+        <div class="col-2 cart-items_col-title">Số Lượng</div>
+        <div class="col-2 cart-items_col-title">Số Tiền</div>
+        <div class="col-2 cart-items_col-title">Thao Tác</div>
+      </li>
+      <% @cart_items.each do |cart_item| %>
+      <li class="d-flex">
+        <div class="col-4 cart-items_col">
+          <%= link_to cart_item.product, class: "d-flex" do %>
+            <div class="cart-items__avatar">
+              <%= image_tag cart_item.product.image, class: "img-fluid" %>
+            </div>
+            <div class="cart-items__name">
+              <%= cart_item.product.name %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-2 cart-items_col">
+          <div class="cart-items__price">
+            <%= cart_item.product.price %>
+          </div>
+        </div>
+        <div class="col-2 cart-items_col">
+          <div class="cart-items__quantity">
+            <%= cart_item.quantity %>
+          </div>
+        </div>
+        <div class="col-2 cart-items_col">
+          <div class="cart-items__price">
+            <%= cart_item.product.price * cart_item.quantity %>
+          </div>
+        </div>
+        <div class="col-2 cart-items_col">
+          <%= button_to "Destroy this cart item", @cart_item, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-<%= link_to "New cart item", new_cart_item_path %>

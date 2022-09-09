@@ -1,5 +1,5 @@
 <div id="" class="d-flex setting">
-    <div class="col_ col_20 bg-night-dark setting__menu">
+    <div class="col_ col_20 setting__menu">
         <div class="setting__title">
             Cài đặt
         </div>
@@ -7,6 +7,12 @@
             <%= form_with(model: @user, local: true) do |f| %>
             <li>
                 <%= link_to '<i class="fa-solid fa-circle-user setting__icon"></i> Lý Thanh Hùng'.html_safe, edit_user_path(current_user), class: "dropdown-item" %>
+            </li>
+            <li>
+                <%= link_to avaUs_path, class: "dropdown-item" do %>
+                    <i class="fa-solid fa-image setting__icon"></i>
+                    Thay đổi hình ảnh
+                <% end %>
             </li>
             <li><a href="#">
                 <i class="fa-solid fa-user-lock setting__icon"></i>
@@ -19,7 +25,7 @@
             <% end %>
         </ul>
     </div>
-    <div class="col_ col_80 bg-black setting__content">
+    <div class="col_ col_80 setting__content">
         
     </div>
 </div>
