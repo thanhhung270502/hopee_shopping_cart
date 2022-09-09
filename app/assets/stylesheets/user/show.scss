@@ -1,5 +1,5 @@
 .profile-container {
-    background-color: var(--text-white);
+    background-color: var(--black);
     padding: 30px;
 
     .container {
@@ -25,7 +25,7 @@
 .profile__name {
     font-size: 1.7rem;
     font-weight: bold;
-    color: var(--black);
+    color: var(--white);
     padding-bottom: 20px;
 }
 
@@ -51,8 +51,8 @@
 .profile__micropost {
     padding: 10px 15px;
     border-radius: 10px;
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--night);
+    color: var(--white);
 }
 
 .profile__infor {
@@ -104,8 +104,8 @@
 
 .btn-enter-content {
     font-size: 0.9rem;
-    color: var(--dark-gray);
-    background-color: var(--text-white);
+    color: var(--text-white);
+    background-color: var(--night-light);
     width: 100%;
     text-align: left;
     border-radius: 15px;
@@ -130,7 +130,7 @@
     }
 
     span {
-        color: var(--text-white);
+        color: var(--white);
         // col
         font-size: 0.8rem;
     }
@@ -141,14 +141,14 @@
 }
 
 .modal-title {
-    // color: var(--white) !important;
+    // color: var(--night) !important;
     text-align: center !important;
     font-size: 1.1rem;
 }
 
 .modal {
     top: 20%;
-    color: var(--black);
+    color: var(--white);
 }
 
 .modal-top {
@@ -156,7 +156,7 @@
 }
 
 .modal-content {
-    background-color: var(--white);
+    background-color: var(--night);
 }
 
 .modal-header,
@@ -166,6 +166,7 @@
 
 .modal-header {
     padding: 10px 16px;
+    border-bottom: 1px solid var(--night-light);
 }
 
 .modal-footer {
@@ -216,7 +217,7 @@
 .modal-add-field {
     align-items: center;
     font-size: 0.9rem;
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--night-light);
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -238,11 +239,11 @@
     height: unset;
     width: unset;
     font-size: 1.5rem;
-    color: var(--white);
+    color: var(--night);
 
     &:hover { 
         opacity: 1;
-        color: var(--white);
+        color: var(--night);
     }
 }
 
@@ -277,7 +278,7 @@
 .post__name {
     font-weight: bold;
     a {
-        color: var(--dark-gray);
+        color: var(--white);
         text-decoration: none;
     }
 
@@ -292,7 +293,7 @@
 
 .btn-post__setting {
     background-color: transparent;
-    color: var(--text-white);
+    color: var(--white);
     border-color: transparent;
 
     &:hover {
@@ -305,7 +306,7 @@
     left: unset !important;
     background-color: var(--night-light);
     button {
-        color: var(--text-white) !important;
+        color: var(--white) !important;
     }
 
     button:hover {
@@ -316,7 +317,7 @@
 .post__content {
     padding: 5px 0 10px;
     font-size: 0.9rem;
-    color: var(--dark-gray);
+    color: var(--white);
 }
 
 .post__image {

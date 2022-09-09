@@ -62,6 +62,9 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1 or /cart_items/1.json
   def destroy
+    total = @cart_item.cart_session.sum_money
+    total -= @cart_item.product.price * @cart_item.quantity
+    @cart_item.cart_session.update_attribute(:sum_money, total)
     @cart_item.destroy
 
     respond_to do |format|

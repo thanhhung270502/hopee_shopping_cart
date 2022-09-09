@@ -31,6 +31,7 @@
         height: 40px;
         margin: 10px 0;
         padding: 0 10px;
+        background-color: var(--white);
     }
 }
 
@@ -63,7 +64,7 @@
 .drop-menu-right {
     right: 0 !important;
     left: unset !important;
-    top: 100% !important;
+    top: 0 !important;
     width: 250px !important;
 
     li {
@@ -77,8 +78,8 @@
 
 .count {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: -5px;
+    right: -5px;
     z-index: 1000;
     width: 15px;
     height: 15px;
