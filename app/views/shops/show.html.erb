@@ -34,9 +34,11 @@
   </div>
   <div class="shop__show">
     <div class="site__products">
-      <div class="products__title-2">
+      <div class="products__title-2 pb-3">
         <p>TẤT CẢ SẢN PHẨM</p>
-        <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
+        <% if @shop.id == current_shop.id %>
+          <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
+        <% end %>
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>

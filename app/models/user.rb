@@ -3,7 +3,11 @@ class User < ApplicationRecord
     before_save :downcase_email
 
     has_secure_password
+
     has_one :shop
+
+    has_one_attached :image
+
     has_many :microposts, dependent: :destroy
     
     has_many :cart_sessions
@@ -14,10 +18,11 @@ class User < ApplicationRecord
     has_many :following, through: :active_relationships, source: :followed
     has_many :followers, through: :passive_relationships, source: :follower
 
-                                    
-
     validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, massage: "must be a valid email address" }
     validates :name, presence: true, length: { maximum: 50 }
+
+    validates :image, content_type: { in: %w[image/jpeg image/gif image/png], message: "must be a valid image format" },
+                    size: { less_than: 5.megabytes, message: "should be less than 5MB" }
 
     # Returns the hash digest of the given string.
     def User.digest(string)
@@ -49,7 +54,6 @@ class User < ApplicationRecord
         BCrypt::Password.new(digest).is_password?(token)
     end
     
-
     # Forgets a user.
     def forget
         update_attribute(:remember_digest, nil)

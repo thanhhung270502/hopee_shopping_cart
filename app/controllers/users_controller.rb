@@ -29,6 +29,22 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
+    def getAva
+        @user = current_user
+        # @user.image.attach(params[:user][:image])
+    end
+
+    def setAva
+        @user = current_user
+        @user.image.attach(params[:user][:image])
+        if @user.update(user_params)
+            # Handle a successful update.
+            redirect_to @user
+        else
+            render 'setAva'
+        end
+    end 
+
     def edit
         @user = User.find_by(id: params[:id])
     end        
@@ -74,7 +90,7 @@ class UsersController < ApplicationController
 
     private
         def user_params
-            params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address, :web_url, :cover_color);
+            params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address, :web_url, :cover_color, :image);
         end
 
         # Confirms a logged-in user.

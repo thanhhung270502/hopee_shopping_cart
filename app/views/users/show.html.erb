@@ -1,17 +1,28 @@
 <div class="profile-container">
   <div class="container">
     <div class="profile__information">
-      <%= content_tag :div, style: "background-color: #{@user.cover_color}" do %>
-        <div class="profile__avatar center">
-          <%= image_tag 'logo.jpg', class: "img-fluid" %>
+      <%= content_tag :div, style: "background-color: #{@user.cover_color}; border-radius: 10px;" do %>
+        <div class="dropdown-center">
+          <div class="profile__avatar center dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image, class: "img-fluid" %>
+            <% else %>
+              <%= image_tag 'logo.jpg', class: "img-fluid" %>
+            <% end %>
+          </div>
+          <ul class="dropdown-menu dropdown_avatar">
+            <li>
+              <%= link_to "Cập nhật ảnh đại diện", avaUs_path, class: "dropdown-item" %>
+            </li>
+          </ul>
         </div>
         <div class="profile__name center">
           <%= @user.name %>
         </div>
         
-        <section class="stats">
-          <%= render 'shared/stats' %>
-        </section>
+          <%#= render 'shared/stats' %>
+        <%# <section class="stats">
+        </section> %>
 
         <%= render 'follow_form' if logged_in? %>
       <% end %>
