@@ -73,6 +73,26 @@ class CartItemsController < ApplicationController
     end
   end
 
+  def update_quantity
+    @cart_item = CartItem.find(params[:cart_item][:current_id]);
+    prevQuantity = @cart_item.quantity.to_i;
+    newQuantity = params[:cart_item][:quantity].to_i;
+    puts "Hello";
+    puts newQuantity;
+    
+    total = @cart_item.cart_session.sum_money;
+    if (newQuantity > prevQuantity) 
+      npQuantity = newQuantity - prevQuantity;
+      total += @cart_item.product.price * npQuantity;
+    else 
+      npQuantity = prevQuantity - newQuantity;
+      total -= @cart_item.product.price * npQuantity;
+    end
+    @cart_item.cart_session.update_attribute(:sum_money, total)
+    @cart_item.update_attribute(:quantity, newQuantity);
+    redirect_to cart_items_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_item

@@ -1,3 +1,4 @@
+<div class="fixed-top">
 <div class="topbar_container">
   <div class="row">
     <div class="col">
@@ -29,13 +30,37 @@
               <%= link_to "Create Shop", new_shop_path, class: "topbar__link" %> 
             </div>
           <% end %>
-          <div class="topbar__item">
-            <a class="topbar__link" href="#">
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="count">2</span>
-              </div>
+          <div class="topbar__item dropdown">
+            <a class="topbar__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="count">2</span>
             </a>
+            <ul class="dropdown-menu drop-menu-right dropdown-cart">
+              <% cart_items.each do |cart_item| %>
+                <% if current_cart_item(cart_item.cart_session_id) %>
+                  <li><a class="dropdown-item dropdown-padding">
+                    <div class="d-flex">
+                      <div class="cart-item__avatar">
+                        <%= image_tag cart_item.product.image, class: "img-fluid" %>
+                      </div>
+                      <div class="cart-item__name">
+                        <%= cart_item.product.name %>
+                      </div>
+                      <div class="cart-item__price">
+                        <%= cart_item.product.price %>
+                      </div>
+                    </div>
+                  </a></li>
+                <% end %>
+              <% end %>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <div class="d-flex" style="justify-content: flex-end;">
+                  <%= link_to "Show All", cart_items_path, class: "btn-cart" %>
+                  <%# <div class="btn-cart">Show All</div> %>
+                </div>
+              </li>
+            </ul>
           </div>
           <div class="dropdown">
             <div class="topbar__item dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,4 +136,5 @@
       </div>
     </nav>
   </div>
+</div>
 </div>

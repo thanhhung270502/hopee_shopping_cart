@@ -36,6 +36,10 @@ Rails.application.routes.draw do
 
   get '/products/:id/shop_products', to: 'products#showAll'
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
+
+  # get 'update_quantity', to: 'cart_items#update_quantity'
+  patch 'update_quantity', to: 'cart_items#update_quantity'
+
   # get '/add_product', to: 'products#getProduct'
 
   # Defines the root path route ("/")

@@ -16,7 +16,7 @@
 
 .site-item {
     margin-top: 20px;
-    padding: 100px;
+    padding: 50px 100px 100px;
 }
 
 .item__inner {
@@ -91,7 +91,10 @@
 
 }
 
-.btn_quantity {
+.btn_quantity,
+.btn_quantity_1,
+.btn_quantity_2,
+.btn_quantity_3 {
     height: 45px;
     width: 45px;
     text-align: center;

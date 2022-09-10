@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy getProduct ]
+  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot ]
   before_action :createCartSession, only: %i[ getProduct ]
   # GET /products or /products.json
   def index
