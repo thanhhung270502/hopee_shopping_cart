@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_030944) do
     t.bigint "cart_session_id"
     t.bigint "product_id"
     t.integer "quantity"
+    t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_session_id"], name: "index_cart_items_on_cart_session_id"
@@ -100,7 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_030944) do
     t.string "color"
     t.integer "price"
     t.text "description"
-    t.boolean "hot"
+    t.text "product_information"
+    t.boolean "hot_product"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_products_on_shop_id"

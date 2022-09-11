@@ -6,7 +6,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :color
       t.integer :price
       t.text :description 
-      t.boolean :hot
+      t.text :product_information
+      t.boolean :hot_product
       
       t.timestamps
     end

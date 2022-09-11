@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
-    @product.hot = false
+    @product.hot_product = false
     # @product.image.attach(params[:product][:image])
     # @product.images.attach(params[:product][:images])
     
