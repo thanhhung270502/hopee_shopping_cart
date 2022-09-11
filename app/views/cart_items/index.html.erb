@@ -23,10 +23,15 @@
         <div class="col-4 cart-items_col">
           <%= link_to cart_item.product, class: "d-flex" do %>
             <div class="cart-items__avatar">
-              <%= image_tag cart_item.product.image, class: "img-fluid" %>
+              <%= image_tag cart_item.product.product_images[1].image.url, class: "img-fluid" %>
             </div>
             <div class="cart-items__name">
-              <%= cart_item.product.name %>
+                <div>
+                  <%= cart_item.product.name %>
+                </div>
+                <div>
+                  <%= cart_item.size %>
+                </div>
             </div>
           <% end %>
         </div>
@@ -62,4 +67,4 @@
     </ul>
   </div>
 </div>
-<%= javascript_importmap_tags("custom/show_product") %>
+<%= javascript_importmap_tags("custom/change_quantity") %>

@@ -3,7 +3,11 @@ class Product < ApplicationRecord
     # has_one_attached :image do |attachable|
     #     attachable.variant :display, resize_to_limit: [500, 500]
     # end
-    has_many_attached :images
+    
+    # has_many_attached :images
+
+    has_many :product_images
+    accepts_nested_attributes_for :product_images, allow_destroy: true, reject_if: proc { |attributes| attributes['image'].blank? }
 
     has_many :product_categories
     has_many :categories, through: :product_categories

@@ -21,10 +21,12 @@
     <div class="d-flex">
       <div class="col_15">
         <div class="product__carousel">
-          <% if @product.images.attached? %>
-            <% @product.images.each do |image| %>
+          <% if @product.product_images %>
+            <% @product.product_images.each do |image| %>
               <div class="image__left">
-                <%= image_tag image, class: "img-fluid image__small" %>
+                <% if !image.image.url.nil? %>
+                  <%= image_tag image.image.url, class: "img-fluid image__small" %>
+                <% end %>
               </div>
             <% end %>
           <% end %>
@@ -32,11 +34,13 @@
       </div>
       <div class="col_35">
         <div class="product__image-field">
-          <% if @product.images.attached? %>
-            <% @product.images.each do |image| %>
-              <div class="image__large">
-                <%= image_tag image, class: "img-fluid" %>
-              </div>
+          <% if @product.product_images %>
+            <% @product.product_images.each do |image| %>
+              <% if !image.image.url.nil? %>
+                <div class="image__large">
+                    <%= image_tag image.image.url, class: "img-fluid" %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -81,17 +85,15 @@
                 Size:
               </div>
               <div class="d-flex">
-                <% @product.sizes.each do |size| %>
                   <div class="item__button">
                     <div class="input-group">
                       <div class="input-group-text">
-                        <%= radio_button_tag 'store', size.name, :require => true, class: "form-check-input mt-0", 'aria-label' => 'Radio button for following text input' %>
-                        <%# <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"> %>
+                        <%= form.collection_radio_buttons :size_ids, Size.all, :id, :name do |b| %>
+                          <% b.label(class: "form-control") {b.radio_button(class: "form-check-input mt-0") + b.text}  %>
+                        <% end %>
                       </div>
-                      <span class="form-control"> <%= size.name %> </span>
                     </div>
                   </div>
-                <% end %>
               </div>
             </div>
             <div class="product__quantity">

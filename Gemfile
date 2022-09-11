@@ -6,8 +6,11 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
-gem "active_storage_validations", "0.9.8"
-gem "image_processing", "1.12.2"
+# gem "active_storage_validations", "0.9.8"
+# gem "image_processing", "1.12.2"
+
+gem 'carrierwave'
+gem 'rmagick'
 
 # SASS
 gem 'sass-rails'
