@@ -1,83 +1,55 @@
-// var btn_quantity = document.querySelectorAll('.btn_quantity');
-// var minus = btn_quantity[0];
-// var value = btn_quantity[1];
-// var add = btn_quantity[2];
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
-// console.log(btn_quantity);
+const image__large = $$('.image__large');
+const image__large_1 = image__large[0];
+const image__large_2 = image__large[1];
+const image__large_3 = image__large[2];
 
-// for (var i = 0; i <= btn_quantity.length - 3; i = i+3) {
-//     var a = btn_quantity[i]
-//     var b = btn_quantity[i+1]
-//     // a.onclick = () => {
-//     //     console.log("a: ", a);
-//     //     var b = btn_quantity[i+1]
-//     //     console.log("b: ", b);
-//     //     b.value--;
-//     // }
-//     a.addEventListener("click", (e) => {
-//         console.log("a: ", e.target);
-//         console.log("b: ", b.value);
-//         console.log("i: ", i);
-//     })
-//     console.log("Log: ", btn_quantity[i]);
-// }
+const image__small = $$('.image__small');
+const image__small_1 = image__small[0];
+const image__small_2 = image__small[1];
+const image__small_3 = image__small[2];
 
-// for (var i = 2; i < btn_quantity.length; i = i+3) {
-//     var a = btn_quantity[i]
-//     a.onclick = () => {
-//         console.log(a);
-//         var b = btn_quantity[i - 1]
-//         console.log(b);
-//         b.value
-//     }
-// }
+image__small_1.classList.add('image__active');
+image__large_1.classList.add('image-large__active');
 
-// add.onclick = () => {
-//     value.value++;
-// }
+image__small_1.onclick = () => {
+    if (!image__small_1.classList.contains('image__active')) {
+        image__small_1.classList.add('image__active');
+        image__large_1.classList.add('image-large__active');
 
-// minus.onclick = () => {
-//     if (value.value > 0) {
-//         value.value--;  
-//     }
-// }
+        image__small_2.classList.remove('image__active');
+        image__small_3.classList.remove('image__active');
 
-var minus = document.querySelectorAll('.btn_quantity_1');
-var data = document.querySelectorAll('.btn_quantity_2');
-var add = document.querySelectorAll('.btn_quantity_3');
-
-console.log(minus);
-
-minus.forEach((value, index) => {
-    // value.addEventListener("click", () => {
-    //     data[index].value--;
-    //     console.log("data: ", data[index].value);
-    // })
-    value.onclick = () => {
-        if (data[index].value > 0) {
-            data[index].value--;
-        }
+        image__large_2.classList.remove('image-large__active');
+        image__large_3.classList.remove('image-large__active');
     }
-})
+}
 
-add.forEach((value, index) => {
-    // value.addEventListener("click", () => {
-    //     data[index].value--;
-    //     console.log("data: ", data[index].value);
-    // })
-    value.onclick = () => {
-        data[index].value++;
+image__small_2.onclick = () => {
+    if (!image__small_2.classList.contains('image__active')) {
+        image__small_2.classList.add('image__active');
+        image__large_2.classList.add('image-large__active');
+
+        image__small_1.classList.remove('image__active');
+        image__small_3.classList.remove('image__active');
+
+        image__large_1.classList.remove('image-large__active');
+        image__large_3.classList.remove('image-large__active');
     }
-})
-// var btn_quantity = document.querySelectorAll('.btn_quantity');
-// var minus1 = btn_quantity[0];
-// var data1 = btn_quantity[1];
-// var add1 = btn_quantity[2];
+}
 
-// minus1.onclick = () => {
-//     data1.value--;
-// }
+image__small_3.onclick = () => {
+    if (!image__small_3.classList.contains('image__active')) {
+        image__small_3.classList.add('image__active');
+        image__large_3.classList.add('image-large__active');
 
-// minus1.addEventListener("click", () => {
-//     data1.value--;
-// })
+        image__small_2.classList.remove('image__active');
+        image__small_1.classList.remove('image__active');
+
+        image__large_2.classList.remove('image-large__active');
+        image__large_1.classList.remove('image-large__active');
+    }
+}
+

@@ -27,9 +27,9 @@
     <%= render "partials/header", cart_items: CartItem.all %>
 
     <%= render partial: "shared/flash" %>
-    <div style="padding-top: 148px">
+    <%# <div style="padding-top: 148px"> %>
       <%= yield %>
-    </div>
+    <%# </div> %>
     <%= render partial: "partials/footer" %>
     <%= javascript_importmap_tags("custom/dark_mode") %>
     

@@ -32,7 +32,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
     @product.hot = false
-    @product.image.attach(params[:product][:image])
+    # @product.image.attach(params[:product][:image])
+    # @product.images.attach(params[:product][:images])
     
     if @product.save
         flash[:success] = 'Create shop successfully!'
@@ -126,6 +127,6 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :color, :price, 
                                       :description, :hot, 
-                                      :image, size_ids:[])
+                                      images: [], size_ids:[])
     end
 end

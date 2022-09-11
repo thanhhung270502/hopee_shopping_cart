@@ -10,6 +10,7 @@
     --night: #242526;
     --white: #fff;
     --text-white: #e4e6eb;
+    --beige: #f5f5f5;
 
     --text-color: #333;
     --blue-black: #161d27;
@@ -81,6 +82,10 @@ $gray-medium-light: #eaeaea;
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 #myBtn {
