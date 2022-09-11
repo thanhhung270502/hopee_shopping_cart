@@ -1,87 +1,116 @@
- <%= button_to "Destroy", @product, method: :delete %>
-<div class="site-item">
-  <div class="row item__inner">
-    <div class="col__ col_10">
-      <div class="row image_small">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid image__small image__active" %>
-        <% end %>
-      </div>
-      <div class="row image_small">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid image__small" %>
-        <% end %>
-      </div>
-      <div class="row image_small">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid image__small" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="col__ col_40">
-      <div class="image__large image-large__active">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid" %>
-        <% end %>
-      </div>
-      <div class="image__large">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid" %>
-        <% end %>
-      </div>
-      <div class="image__large">
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: "img-fluid" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="col__ col_50 item-inner">
-      <div class="item__title">
-        <%= @product.name %>
-      </div>
-      <div class="item__price">
-        <%= @product.price %> đ
-      </div>
-      <%# if @product.%>
-      <div class="item__status">Trạng thái: <span>Còn hàng</span></div>
-      <div class="item__number">Số lượng: <span>7</span></div>
-      <div class="item__color">
-          Màu sắc: 
-      </div>
+<div class="product__field">
+  <div class="product-container">
+    <div class="breadcrumbz">
       <div class="d-flex">
-        <div class="item__button">
-          <button type="button" class="btn btn-pink">Pink</button>
+        <div class="breadcrumbz__item">
+          <a href="/" class="breadcrumbz__link">Home</a>
+        </div>
+        <span>/</span>
+        <div class="breadcrumbz__item">
+          <a href="#" class="breadcrumbz__link">Product</a>
+        </div>
+        <span>/</span>
+        <div class="breadcrumbz__item breadcrumbz__item-active">
+          <%= @product.name %>
         </div>
       </div>
-      <div class="item__size">
-        Size:
-      </div>
-      <div class="d-flex">
-        <% @product.sizes.each do |size| %>
-        <div class="item__button">
-          <%= content_tag :div, class: "btn btn-secondary" do %>
-            <%= size.name %>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <div class="d-flex">
+      <div class="col_15">
+        <div class="product__carousel">
+          <% if @product.images.attached? %>
+            <% @product.images.each do |image| %>
+              <div class="image__left">
+                <%= image_tag image, class: "img-fluid image__small" %>
+              </div>
+            <% end %>
           <% end %>
         </div>
-        <% end %>
       </div>
-      <%= form_with url: add_product_path do |form| %>
-        <div class="item__quantity">
-          <%= form.label :quantity %>
+      <div class="col_35">
+        <div class="product__image-field">
+          <% if @product.images.attached? %>
+            <% @product.images.each do |image| %>
+              <div class="image__large">
+                <%= image_tag image, class: "img-fluid" %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-        <div class="d-flex">
-          <%# <div class="btn_quantity btn-minus">-</div> %>
-          <input type="button" value="-" class="btn_quantity">
-          <%= form.text_field :quantity, value: 1, class: "btn_quantity" %>
-          <input type="button" value="+" class="btn_quantity">
-          <%# <div class="btn_quantity btn-add">+</div> %>
+      </div>
+      <div class="col_50">
+        <div class="product__infor">
+          <div class="product__title">
+            <%= @product.name %>
+          </div>
+          <div class="product__star">
+            <div class="d-flex">
+              <i class="fa-solid fa-star product__star"></i>
+              <i class="fa-solid fa-star product__star"></i>
+              <i class="fa-solid fa-star product__star"></i>
+              <i class="fa-solid fa-star product__star"></i>
+              <i class="fa-solid fa-star product__star"></i>
+            </div>
+          </div>
+          <div class="product__price" >
+            $<%= @product.price %>.00
+          </div>
+          <div class="product__status">
+            Trạng thái: <span>Còn hàng</span>
+          </div>
+          <div class="product__number">
+            Số lượng: <span>7</span>
+          </div>
+          <div class="product__description">
+            <%= @product.description %>
+          </div>
+          <div class="product__color">
+            <div class="item__title">
+              Màu sắc: 
+            </div>
+            <div class="item__button">
+              <button type="button" class="item__btn">Pink</button>
+            </div>
+          </div>
+          <%= form_with url: add_product_path do |form| %>
+            <div class="product__size">
+              <div class="item__title">
+                Size:
+              </div>
+              <div class="d-flex">
+                <% @product.sizes.each do |size| %>
+                  <div class="item__button">
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <%= radio_button_tag 'store', size.name, :require => true, class: "form-check-input mt-0", 'aria-label' => 'Radio button for following text input' %>
+                        <%# <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"> %>
+                      </div>
+                      <span class="form-control"> <%= size.name %> </span>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="product__quantity">
+                <div class="item__quantity">
+                  <%= form.label :quantity %>
+                </div>
+                <div class="d-flex">
+                  <input type="button" value="-" class="btn_quantity">
+                  <%= form.text_field :quantity, value: 1, class: "btn_quantity" %>
+                  <input type="button" value="+" class="btn_quantity">
+                </div>
+                <%= form.submit "Add to cart", class: "btn btn-secondary mt-2" %>
+            </div>
+          <% end %>
         </div>
-        <%= form.submit "Add to cart", class: "btn btn-secondary mt-2" %>
-        <%#= button_to "Add to cart", add_product_path, method: :post, class: "btn btn-secondary" %>
-      <% end %>
-      <%#= render "form", cart_item: @cart_item %>
+      </div>
     </div>
   </div>
 </div>
 
+<%= javascript_importmap_tags("custom/change_quantity") %>
 <%= javascript_importmap_tags("custom/show_product") %>

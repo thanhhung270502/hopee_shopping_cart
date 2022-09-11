@@ -37,8 +37,17 @@
         </div>
         <div class="col-2 cart-items_col">
           <div class="cart-items__quantity">
-            <%= cart_item.quantity %>
+            <%= form_for cart_item, url: update_quantity_path do |form| %>
+              <%= form.hidden_field :current_id, value: cart_item.id %>
+              <div class="d-flex">
+                <input type="button" value="-" class="btn_quantity_1">
+                <%= form.text_field :quantity, value: cart_item.quantity, class: "btn_quantity_2" %>
+                <input type="button" value="+" class="btn_quantity_3">
+              </div>
+              <%= form.submit "Update", class: "btn btn-secondary mt-2" %>
+            <% end %>
           </div>
+          
         </div>
         <div class="col-2 cart-items_col">
           <div class="cart-items__price">
@@ -46,10 +55,11 @@
           </div>
         </div>
         <div class="col-2 cart-items_col">
-          <%= button_to "Destroy this cart item", @cart_item, method: :delete, class: "btn btn-danger" %>
+          <%= button_to "Destroy this cart item", cart_item, method: :delete, class: "btn btn-danger" %>
         </div>
       </li>
       <% end %>
     </ul>
   </div>
 </div>
+<%= javascript_importmap_tags("custom/show_product") %>

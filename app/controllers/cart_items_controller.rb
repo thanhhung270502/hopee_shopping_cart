@@ -62,12 +62,35 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1 or /cart_items/1.json
   def destroy
+    total = @cart_item.cart_session.sum_money
+    total -= @cart_item.product.price * @cart_item.quantity
+    @cart_item.cart_session.update_attribute(:sum_money, total)
     @cart_item.destroy
 
     respond_to do |format|
       format.html { redirect_to cart_items_url, notice: "Cart item was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def update_quantity
+    @cart_item = CartItem.find(params[:cart_item][:current_id]);
+    prevQuantity = @cart_item.quantity.to_i;
+    newQuantity = params[:cart_item][:quantity].to_i;
+    puts "Hello";
+    puts newQuantity;
+    
+    total = @cart_item.cart_session.sum_money;
+    if (newQuantity > prevQuantity) 
+      npQuantity = newQuantity - prevQuantity;
+      total += @cart_item.product.price * npQuantity;
+    else 
+      npQuantity = prevQuantity - newQuantity;
+      total -= @cart_item.product.price * npQuantity;
+    end
+    @cart_item.cart_session.update_attribute(:sum_money, total)
+    @cart_item.update_attribute(:quantity, newQuantity);
+    redirect_to cart_items_path
   end
 
   private

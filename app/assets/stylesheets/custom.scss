@@ -10,6 +10,7 @@
     --night: #242526;
     --white: #fff;
     --text-white: #e4e6eb;
+    --beige: #f5f5f5;
 
     --text-color: #333;
     --blue-black: #161d27;
@@ -28,21 +29,6 @@
     --default-layout-horizontal-spacer: 24px;
     
     box-sizing: border-box;
-}
-
-[data-theme="dark"] {
-    --primary: #0d5cb6;
-    --black: white;
-    --night: #1a94ff;
-    --text-white: #242526;
-    --white: black;
-
-
-    --primary: #fe2c55;
-    --black: #000;
-    --night: #242526;
-    --white: #fff;
-    --text-white: #e4e6eb;
 }
 
 * {
@@ -96,6 +82,10 @@ $gray-medium-light: #eaeaea;
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 #myBtn {

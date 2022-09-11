@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy getProduct ]
+  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot ]
   before_action :createCartSession, only: %i[ getProduct ]
   # GET /products or /products.json
   def index
@@ -31,8 +31,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
-    @product.hot = false
-    @product.image.attach(params[:product][:image])
+    @product.hot_product = false
+    # @product.image.attach(params[:product][:image])
+    # @product.images.attach(params[:product][:images])
     
     if @product.save
         flash[:success] = 'Create shop successfully!'
@@ -126,6 +127,6 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :color, :price, 
                                       :description, :hot, 
-                                      :image, size_ids:[])
+                                      images: [], size_ids:[])
     end
 end
