@@ -20,7 +20,7 @@
   <div class="product-container">
     <div class="d-flex">
       <div class="col_15">
-        <div class="product__carousel">
+        <div class="product__carousel maxHeight">
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
               <div class="image__left">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="col_35">
-        <div class="product__image-field">
+        <div class="product__image-field maxHeight">
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
               <% if !image.image.url.nil? %>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="col_50">
-        <div class="product__infor">
+        <div class="product__infor maxHeight">
           <div class="product__title">
             <%= @product.name %>
           </div>
@@ -115,6 +115,46 @@
       </div>
     </div>
   </div>
+
+  <div class="product-container">
+    <div class="product__other">
+      <div class="product__nav d-flex mb-4">
+        <div class="product__nav_item product__nav_item-active">
+          Description
+        </div>
+        <div class="product__nav_item">
+          Information
+        </div>
+        <div class="product__nav_item">
+          Reviews
+        </div>
+      </div>
+      
+      <div class="product-field__content">
+        <div class="product-field__item product-field__item-active">
+          <h4 class="mb-3" style="font-weight: 400;">
+            Product Description
+          </h4>
+          <% if @product.description %>
+            <%= @product.description %>
+          <% else %>
+            ...
+          <% end %>
+        </div>
+        <div class="product-field__item">
+          <% if @product.product_information %>
+            <%= @product.product_information %>
+          <% else %>
+            ...
+          <% end %>
+        </div>
+        <div class="product-field__item">
+          Not review...
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <%= javascript_importmap_tags("custom/change_quantity") %>

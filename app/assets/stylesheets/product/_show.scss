@@ -61,6 +61,7 @@
 
 .product__image-field {
     margin: 0 10px;
+    background-color: var(--white);
 }
 
 .product__infor {
@@ -143,4 +144,34 @@
     border-radius: 0 !important;
     border-top-right-radius: 0.375rem !important;
     border-bottom-right-radius: 0.375rem !important;
+}
+
+.product__other {
+    background-color: var(--white);
+    margin: 0 15px;
+    padding: 30px;
+}
+.product__nav {
+    border-bottom: 1px solid var(--light-gray);
+}
+.product__nav_item {
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--light-gray);
+    }
+}
+
+.product__nav_item-active {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.product-field__item {
+    display: none;
+}
+
+.product-field__item-active {
+    display: block;
 }

@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by(id: params[:id])
     puts params
-    if @product.update_attribute(product_params)
+    if @product.update(product_params)
       redirect_to @product
     else
       render 'edit'
@@ -130,7 +130,7 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :color, :price, 
-                                      :description, :hot, size_ids:[],
+                                      :description, :product_information, :hot, size_ids:[],
                                       product_images_attributes: [:id, :product_id, :image])
     end
 end
