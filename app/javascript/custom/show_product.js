@@ -53,3 +53,51 @@ image__small_3.onclick = () => {
     }
 }
 
+
+// Footer
+const product__nav_item = $$('.product__nav_item');
+const product_field__item = $$('.product-field__item');
+
+console.log(product__nav_item);
+console.log(product_field__item);
+
+var product__nav_item_0 = product__nav_item[0];
+var product__nav_item_1 = product__nav_item[1];
+var product__nav_item_2 = product__nav_item[2];
+
+var product_field__item_0 = product_field__item[0];
+var product_field__item_1 = product_field__item[1];
+var product_field__item_2 = product_field__item[2];
+
+product__nav_item_0.onclick = () => {
+    product__nav_item_0.classList.add('product__nav_item-active');
+    product_field__item_0.classList.add('product-field__item-active');
+    
+    product__nav_item_1.classList.remove('product__nav_item-active');
+    product_field__item_1.classList.remove('product-field__item-active');
+    
+    product__nav_item_2.classList.remove('product__nav_item-active');
+    product_field__item_2.classList.remove('product-field__item-active');
+}
+
+product__nav_item_1.onclick = () => {
+    product__nav_item_1.classList.add('product__nav_item-active');
+    product_field__item_1.classList.add('product-field__item-active');
+    
+    product__nav_item_0.classList.remove('product__nav_item-active');
+    product_field__item_0.classList.remove('product-field__item-active');
+    
+    product__nav_item_2.classList.remove('product__nav_item-active');
+    product_field__item_2.classList.remove('product-field__item-active');
+}
+
+product__nav_item_2.onclick = () => {
+    product__nav_item_2.classList.add('product__nav_item-active');
+    product_field__item_2.classList.add('product-field__item-active');
+    
+    product__nav_item_1.classList.remove('product__nav_item-active');
+    product_field__item_1.classList.remove('product-field__item-active');
+    
+    product__nav_item_0.classList.remove('product__nav_item-active');
+    product_field__item_0.classList.remove('product-field__item-active');
+}

@@ -4,8 +4,8 @@
       <%= content_tag :div, style: "background-color: #{@user.cover_color}; border-radius: 10px;" do %>
         <div class="dropdown-center">
           <div class="profile__avatar center dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <% if @user.image.attached? %>
-              <%= image_tag @user.image, class: "img-fluid" %>
+            <% if @user.image? %>
+              <%= image_tag @user.image.url, class: "img-fluid" %>
             <% else %>
               <%= image_tag 'logo.jpg', class: "img-fluid" %>
             <% end %>

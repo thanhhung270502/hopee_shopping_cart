@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product_image = @product.product_images.build
   end
 
   # GET /products/1/edit
@@ -32,12 +33,12 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
     @product.hot_product = false
-    # @product.image.attach(params[:product][:image])
-    # @product.images.attach(params[:product][:images])
-    
     if @product.save
-        flash[:success] = 'Create shop successfully!'
-        redirect_to root_path 
+      params[:product_images]['image'].each do |a|
+        @product_images = @product.product_images.create!(:image => a, :product_id => @product.id)
+      end
+      flash[:success] = 'Create shop successfully!'
+      redirect_to products_path 
     else
         flash[:warning] = "Cannot create shop!!"
         render :new
@@ -48,12 +49,14 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     @product = Product.find_by(id: params[:id])
+    puts params
     if @product.update(product_params)
       redirect_to @product
     else
       render 'edit'
     end
 
+    # Product.create!(shop_id: 1, name: "Hello", color: "White", price: 12, description: "abc", product_information: "edf", hot_product: false)
     # respond_to do |format|
     #   if @product.update_attribute(product_params)
     #     format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
@@ -76,8 +79,8 @@ class ProductsController < ApplicationController
   end
 
   def toggle_hot
-    if (@product.hot) 
-      @product.hot = false
+    if (@product.hot_product) 
+      @product.update_attribute(:hot_product)
     else
       @product.hot = true
     end      
@@ -88,6 +91,7 @@ class ProductsController < ApplicationController
 
     @cart_item = CartItem.new
     @cart_item.quantity = params[:quantity]
+    @cart_item.size = Size.find(params[:size_ids]).name
     @cart_item.cart_session_id = current_cart_session.id
     @cart_item.product_id = current_product.id
     if (count_cart_sessions == 2)
@@ -126,7 +130,7 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :color, :price, 
-                                      :description, :hot, 
-                                      images: [], size_ids:[])
+                                      :description, :product_information, :hot, size_ids:[],
+                                      product_images_attributes: [:id, :product_id, :image])
     end
 end

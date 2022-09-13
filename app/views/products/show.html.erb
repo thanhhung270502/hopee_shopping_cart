@@ -20,29 +20,33 @@
   <div class="product-container">
     <div class="d-flex">
       <div class="col_15">
-        <div class="product__carousel">
-          <% if @product.images.attached? %>
-            <% @product.images.each do |image| %>
+        <div class="product__carousel maxHeight">
+          <% if @product.product_images %>
+            <% @product.product_images.each do |image| %>
               <div class="image__left">
-                <%= image_tag image, class: "img-fluid image__small" %>
+                <% if !image.image.url.nil? %>
+                  <%= image_tag image.image.url, class: "img-fluid image__small" %>
+                <% end %>
               </div>
             <% end %>
           <% end %>
         </div>
       </div>
       <div class="col_35">
-        <div class="product__image-field">
-          <% if @product.images.attached? %>
-            <% @product.images.each do |image| %>
-              <div class="image__large">
-                <%= image_tag image, class: "img-fluid" %>
-              </div>
+        <div class="product__image-field maxHeight">
+          <% if @product.product_images %>
+            <% @product.product_images.each do |image| %>
+              <% if !image.image.url.nil? %>
+                <div class="image__large">
+                    <%= image_tag image.image.url, class: "img-fluid" %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
       </div>
       <div class="col_50">
-        <div class="product__infor">
+        <div class="product__infor maxHeight">
           <div class="product__title">
             <%= @product.name %>
           </div>
@@ -72,7 +76,10 @@
               Màu sắc: 
             </div>
             <div class="item__button">
-              <button type="button" class="item__btn">Pink</button>
+              <%# <button type="button" class="item__btn">Pink</button> %>
+              <%= content_tag :button, class: "item__btn", style: "background-color: var(--#{@product.color}); border-color: var(--#{@product.color}); text-transform: capitalize;" do %>
+                <%= @product.color %>
+              <% end %>
             </div>
           </div>
           <%= form_with url: add_product_path do |form| %>
@@ -81,35 +88,73 @@
                 Size:
               </div>
               <div class="d-flex">
-                <% @product.sizes.each do |size| %>
                   <div class="item__button">
                     <div class="input-group">
-                      <div class="input-group-text">
-                        <%= radio_button_tag 'store', size.name, :require => true, class: "form-check-input mt-0", 'aria-label' => 'Radio button for following text input' %>
-                        <%# <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"> %>
-                      </div>
-                      <span class="form-control"> <%= size.name %> </span>
+                      <%= form.collection_radio_buttons :size_ids, Size.all, :id, :name do |b| %>
+                        <% b.label(class: "d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.radio_button(class: "form-check-input mt-0", "aria-label" => "Checkbox for following text input" )} + b.label(class:"form-control form_control") {b.text}} %>
+                        <%# b.label {b.text} %>
+                      <% end %>
                     </div>
+                        
                   </div>
-                <% end %>
               </div>
             </div>
             <div class="product__quantity">
-                <div class="item__quantity">
-                  <%= form.label :quantity %>
+                <div class="item__title">
+                  Số lượng:
                 </div>
                 <div class="d-flex">
                   <input type="button" value="-" class="btn_quantity">
                   <%= form.text_field :quantity, value: 1, class: "btn_quantity" %>
                   <input type="button" value="+" class="btn_quantity">
                 </div>
-                <%= form.submit "Add to cart", class: "btn btn-secondary mt-2" %>
+                <%= form.submit "Add to cart", class: "btn btn-primary mt-4" %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="product-container">
+    <div class="product__other">
+      <div class="product__nav d-flex mb-4">
+        <div class="product__nav_item product__nav_item-active">
+          Description
+        </div>
+        <div class="product__nav_item">
+          Information
+        </div>
+        <div class="product__nav_item">
+          Reviews
+        </div>
+      </div>
+      
+      <div class="product-field__content">
+        <div class="product-field__item product-field__item-active">
+          <h4 class="mb-3" style="font-weight: 400;">
+            Product Description
+          </h4>
+          <% if @product.description %>
+            <%= @product.description %>
+          <% else %>
+            ...
+          <% end %>
+        </div>
+        <div class="product-field__item">
+          <% if @product.product_information %>
+            <%= @product.product_information %>
+          <% else %>
+            ...
+          <% end %>
+        </div>
+        <div class="product-field__item">
+          Not review...
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <%= javascript_importmap_tags("custom/change_quantity") %>

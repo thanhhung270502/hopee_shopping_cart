@@ -121,6 +121,11 @@
     color: var(--white);
     cursor: pointer;
     text-decoration: none;
+
+    &:hover {
+        background-color: var(--primary-dark);
+        color: var(--white) !important;
+    }
 }
 
 // Responsive 
