@@ -79,8 +79,8 @@ class ProductsController < ApplicationController
   end
 
   def toggle_hot
-    if (@product.hot) 
-      @product.hot = false
+    if (@product.hot_product) 
+      @product.update_attribute(:hot_product)
     else
       @product.hot = true
     end      

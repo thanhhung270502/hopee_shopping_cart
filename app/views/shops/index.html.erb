@@ -1,33 +1,20 @@
-  <div class="shop__show">
-    <div class="site__products">
-      <div class="products__title-2">
-        <p>TẤT CẢ SẢN PHẨM</p>
-      </div>
-      <div class="row pb-3">
-        <% @products.each do |product| %>
-          <div class="col-lg-2 products__column">
-            <div class="products__image">
-              <%= link_to do %>
-                <% if product.product_images %>
-                  <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
-                <% end %>
-                <div class="overlay">
-                  <div class="other-image">
-                    <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
-                  </div>  
-                </div>
-              <% end %>
-            </div>
-            <%= link_to product_path(product), class: "products__infor" do %>
-              <%= content_tag :div, class: "products__name" do %>
-                <%= product.name %>
-              <% end %>
-              <%= content_tag :div, class: "products__price" do %>
-                <%= product.price %> đ
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+<div class="shop-index">
+  <div class="row">
+    <% @shops.each do |shop| %>
+    <div class="col-lg-2 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag 'logo.jpg', class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= shop.name %>
+          </h5>
+          <p class="card-text">
+            <%= shop.description %>
+          </p>
+          <%= link_to "View", shop_path(shop), class: "btn btn-primary" %>  
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
+</div>
