@@ -33,15 +33,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
     @product.hot_product = false
-    # @product.image.attach(params[:product][:image])
-    # @product.images.attach(params[:product][:images])
-    # puts "Hello"
-    # puts @product.id
-    # puts "Hi"
-    # params[:product_images]['image'].each do |a|
-    #   @product.product_images.create!(:image => a, :product_id => @product.id)
-    # end
-    
     if @product.save
       params[:product_images]['image'].each do |a|
         @product_images = @product.product_images.create!(:image => a, :product_id => @product.id)
@@ -58,7 +49,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     @product = Product.find_by(id: params[:id])
-    if @product.update(product_params)
+    puts params
+    if @product.update_attribute(product_params)
       redirect_to @product
     else
       render 'edit'

@@ -11,6 +11,16 @@
     font-family: 'Rubik', sans-serif;
 }
 
+.topbar__item {
+    &:hover {
+        color: var(--primary);
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+}
+
 @media (min-width: 1024px) {
     .topbar_container {
         background-color: var(--night);

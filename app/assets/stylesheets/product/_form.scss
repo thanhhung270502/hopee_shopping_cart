@@ -1,0 +1,27 @@
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #000; 
+    background-image: linear-gradient(315deg, #000 0%, #01BAEF 75%);
+}
+
+.form-inner {
+    background-color: var(--white);
+    width: 70%;
+    margin: 90px;
+    padding: 20px 50px;
+    border-radius: 15px;
+}
+
+.form__title {
+    padding: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form__content {
+
+}

@@ -1,6 +1,6 @@
 // Field
 .product__field {
-    background-color: var(--beige);
+    background-color: var(--beige-light);
     padding: 30px 50px;
     font-family: 'Rubik', sans-serif;
 }
@@ -108,13 +108,16 @@
 }
 .product__number,
 .product__description,
-.product__color {
+.product__color,
+.product__size,
+.product__quantity {
     margin-bottom: 16px;
 }
 
 .item__title {
     font-size: 1rem;
     font-weight: bold;
+    padding-bottom: 7px;
 }
 
 .item__button {
@@ -122,9 +125,22 @@
 }
 
 .item__btn {
-    padding: 10px 20px;
+    padding: 7px 20px;
+    border-radius: 10px;
 }
 
 .product__size {
 
+}
+
+.input_group_text {
+    border-radius: 0 !important;
+    border-top-left-radius: 0.375rem !important;
+    border-bottom-left-radius: 0.375rem !important;
+}
+
+.form_control {
+    border-radius: 0 !important;
+    border-top-right-radius: 0.375rem !important;
+    border-bottom-right-radius: 0.375rem !important;
 }

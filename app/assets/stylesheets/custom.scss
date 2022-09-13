@@ -6,22 +6,29 @@
 :root {
     --primary: #1a94ff;
     --primary-dark: #0d5cb6;
-    --black: #000;
     --night: #242526;
-    --white: #fff;
     --text-white: #e4e6eb;
-    --beige: #f5f5f5;
+    --beige-light: #f5f5f5;
 
     --text-color: #333;
     --blue-black: #161d27;
-    --yellow: #ffc174;
     --night-light: #3A3B3C;
     --night-dark: #303030;
-    --blue: #0C97FF;
-    --green: #2df3aa;
-    --pink: rgb(250, 125, 175);
+
     --light-gray: #BFBFBF;
     --dark-gray: #5E5E5E;
+
+    --black: #000;
+    --white: #fff;
+    --red: #ec3355;
+    --orange: #FF8D5C;
+    --blue: #0C97FF;
+    --green: #2df3aa;
+    --yellow: #ffc174;
+    --purple: #e574ff;
+    --pink: #fa7daf;
+    --beige: #c9ba9b;
+
 
     // Default layout
     --default-layout-header-height: 160px;

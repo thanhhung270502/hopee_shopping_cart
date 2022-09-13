@@ -46,8 +46,8 @@
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to do %>
-                <% if product.image.attached? %>
-                  <%= image_tag product.image.variant(:display), class: "img-fluid image" %>
+                <% if product.product_images %>
+                  <%= image_tag product.product_images[1].image.url, class: "img-fluid image" %>
                 <% end %>
                 <div class="overlay">
                   <div class="other-image">
