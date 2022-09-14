@@ -47,11 +47,11 @@
             <div class="products__image">
               <%= link_to product_path(product) do %>
                 <% if product.product_images %>
-                  <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+                  <%#= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
                 <% end %>
                 <div class="overlay">
                   <div class="other-image">
-                    <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+                    <%#= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
                   </div>  
                 </div>
               <% end %>
