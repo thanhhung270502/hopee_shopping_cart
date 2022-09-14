@@ -1,0 +1,69 @@
+// Field
+.cart_session__field {
+    padding: 30px 50px;
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--beige-light);
+}
+
+.cart_session__container {
+    margin-bottom: 30px;
+}
+
+.cart_session__row {
+    padding: 12px 16px;
+    margin: 0 15px;
+    background-color: var(--white);
+    text-align: center;
+
+    .cart-items__name, .cart-items__price, .cart-items__quantity, .cart-items__price {
+        color: var(--night-light) !important;
+    }
+
+    .cart-items__avatar {
+        width: 50px;
+    }
+
+    .cart-items__name {
+        padding-left: 10px;
+    }
+
+    .btn_quantity_1, 
+    .btn_quantity_2, 
+    .btn_quantity_3 {
+        height: 35px;
+        width: 35px;
+        font-size: 14px;
+        margin-right: 3px;
+    }
+
+    .btn_quantity_1, 
+    .btn_quantity_3 {
+        background-color: var(--primary);
+        color: var(--white);
+    }
+
+    .cart_session__btn {
+        height: 35px;
+        line-height: 20px;
+    }
+}
+
+.cart_session__title {
+    padding: 12px 16px;
+    margin: 0 15px;
+    background-color: var(--night-light);
+    color: var(--white);
+    text-align: center;
+
+    .item-title {
+        font-weight: bold;
+        padding: 0;
+    }
+}
+
+.cart_session__heading {
+    padding: 12px 0px;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

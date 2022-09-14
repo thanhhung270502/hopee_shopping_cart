@@ -155,11 +155,13 @@
     border-bottom: 1px solid var(--light-gray);
 }
 .product__nav_item {
+    margin-right: 5px;
     padding: 8px 16px;
     cursor: pointer;
 
     &:hover {
-        background-color: var(--light-gray);
+        background-color: var(--primary);
+        color: var(--white);
     }
 }
 
