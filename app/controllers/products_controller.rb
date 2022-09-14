@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
         images.delete_at(i)
       end
     end
-    binding.pry
+    # binding.pry
     if @product.update(product_params)
       for i in 0...images.length
         if !images[i].blank?
@@ -99,11 +99,12 @@ class ProductsController < ApplicationController
     else
       @product.update_attribute(:hot_product, true)
     end      
+    redirect_to @product
   end
 
   def getProduct
     getId(@product);
-
+    
     @cart_item = CartItem.new
     @cart_item.quantity = params[:quantity]
     @cart_item.size = Size.find(params[:size_ids]).name
