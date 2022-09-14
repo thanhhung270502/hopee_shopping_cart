@@ -1,5 +1,5 @@
 class CartSessionsController < ApplicationController
-  before_action :set_cart_session, only: %i[ show edit update destroy ]
+  before_action :set_cart_session, only: %i[ show edit update destroy checkout ]
 
   # GET /cart_sessions or /cart_sessions.json
   def index
@@ -64,6 +64,20 @@ class CartSessionsController < ApplicationController
     end
   end
 
+  def checkout
+    @order = Order.new(@cart_session.attributes)
+    if  @order.save 
+      @cart_session.cart_items.each do |cart_item|
+        OrderItem.create(newAtrs(@order, cart_item))
+      end
+      @cart_session.destroy
+      flash[:success] = "Order successfully"
+      redirect_to root_path
+    else 
+      flash[:danger] = "Order fail"  
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_session
@@ -73,5 +87,14 @@ class CartSessionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def cart_session_params
       params.require(:cart_session).permit(:sum_money, :user_id)
+    end
+
+    def newAtrs(order, cart_item)
+      {
+        order_id: order.id,
+        product_id: cart_item.product_id,
+        quantity: cart_item.quantity,
+        size: cart_item.size
+      }
     end
 end

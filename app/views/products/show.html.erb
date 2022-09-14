@@ -23,11 +23,11 @@
         <div class="product__carousel maxHeight">
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
-              <div class="image__left">
-                <% if !image.image.url.nil? %>
+              <% if !image.image.url.nil? %>
+                <div iv class="image__left">
                   <%= image_tag image.image.url, class: "img-fluid image__small" %>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -47,8 +47,31 @@
       </div>
       <div class="col_50">
         <div class="product__infor maxHeight">
-          <div class="product__title">
-            <%= @product.name %>
+          <div class="d-flex justify-content-between">
+            <div class="product__title">
+              <%= @product.name %>
+              <% if @product.hot_product %>
+                <i class="fa-brands fa-hotjar"></i>
+              <% end %>
+            </div>
+            <% if @product.shop.id == current_shop.id %>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= button_to "Destroy", @product, method: :delete, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Edit", edit_product_path(@product), class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= button_to "Choose Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
+                </li>
+              </ul>
+            </div>
+            <% end %>
           </div>
           <div class="product__star">
             <div class="d-flex">
@@ -142,6 +165,9 @@
           <% end %>
         </div>
         <div class="product-field__item">
+          <h4 class="mb-3" style="font-weight: 400;">
+            Product Information
+          </h4>
           <% if @product.product_information %>
             <%= @product.product_information %>
           <% else %>

@@ -34,8 +34,11 @@ class ProductsController < ApplicationController
     @product.shop_id = current_shop.id
     @product.hot_product = false
     if @product.save
-      params[:product_images]['image'].each do |a|
-        @product_images = @product.product_images.create!(:image => a, :product_id => @product.id)
+      paramImages = params[:product_images]['image']
+      paramImages.each do |a|
+        if (!a.blank?)
+          @product_images = @product.product_images.create!(:image => a, :product_id => @product.id)
+        end
       end
       flash[:success] = 'Create shop successfully!'
       redirect_to products_path 
@@ -50,7 +53,19 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by(id: params[:id])
     puts params
+    images = params[:product_images][:image]
+    for i in 0...images.length
+      if images[i].blank?
+        images.delete_at(i)
+      end
+    end
+    # binding.pry
     if @product.update(product_params)
+      for i in 0...images.length
+        if !images[i].blank?
+          @product.product_images[i].update_attribute(:image, images[i])
+        end
+      end
       redirect_to @product
     else
       render 'edit'
@@ -79,16 +94,17 @@ class ProductsController < ApplicationController
   end
 
   def toggle_hot
-    if (@product.hot_product) 
-      @product.update_attribute(:hot_product)
+    if (@product.hot_product == true) 
+      @product.update_attribute(:hot_product, false)
     else
-      @product.hot = true
+      @product.update_attribute(:hot_product, true)
     end      
+    redirect_to @product
   end
 
   def getProduct
     getId(@product);
-
+    
     @cart_item = CartItem.new
     @cart_item.quantity = params[:quantity]
     @cart_item.size = Size.find(params[:size_ids]).name

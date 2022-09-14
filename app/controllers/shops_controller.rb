@@ -41,6 +41,11 @@ class ShopsController < ApplicationController
         
     end
 
+    def showHot
+        @shop = Shop.find_by(id: params[:id])
+        @products = Product.all
+    end
+
     private
         def shop_params
             params.require(:shop).permit(:name, :user_id, :description, :avatar)

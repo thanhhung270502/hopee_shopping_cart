@@ -14,10 +14,10 @@
       <div class="d-flex navbar-shop">
         <ul class="nav nav-shop">
           <li class="nav-item nav-item-shop">
-            <%= link_to "Dạo", showHot_path, class: "nav-link" %>
+            <%= link_to "Dạo", showHot_path, class: "nav-link nav-active-shop" %>
           </li>
           <li class="nav-item nav-item-shop">
-            <%= link_to "Tất cả sản phẩm", shop_path, class: "nav-link nav-active-shop" %>
+            <%= link_to "Tất cả sản phẩm", shop_path, class: "nav-link" %>
           </li>
           <li class="nav-item nav-item-shop">
             <a class="nav-link" href="#">SALE OFF</a>
@@ -35,14 +35,14 @@
   <div class="shop__show">
     <div class="site__products">
       <div class="products__title-2 pb-3">
-        <p>TẤT CẢ SẢN PHẨM</p>
+        <p>Hot Products</p>
         <% if @shop.id == current_shop.id %>
           <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
         <% end %>
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id %>
+          <% if product.shop_id == @shop.id && product.hot_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
