@@ -1,8 +1,11 @@
-var minus = document.querySelectorAll('.btn_quantity_1');
-var data = document.querySelectorAll('.btn_quantity_2');
-var add = document.querySelectorAll('.btn_quantity_3');
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
-console.log(minus);
+var minus = $$('.btn_quantity_1');
+var data = $$('.btn_quantity_2');
+var add = $$('.btn_quantity_3');
+
+const product__remain = $('.remain__active');
 
 minus.forEach((value, index) => {
     // value.addEventListener("click", () => {
@@ -26,7 +29,7 @@ add.forEach((value, index) => {
     }
 })
 
-var btn_quantity = document.querySelectorAll('.btn_quantity');
+var btn_quantity = $$('.btn_quantity');
 var minus1 = btn_quantity[0];
 var data1 = btn_quantity[1];
 var add1 = btn_quantity[2];
@@ -40,3 +43,5 @@ minus1.onclick = () => {
 add1.onclick = () => {
     data1.value++;
 }
+
+

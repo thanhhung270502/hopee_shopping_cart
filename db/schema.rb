@@ -115,7 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
   create_table "product_sizes", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "size_id"
-    t.integer "number"
+    t.integer "number", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_sizes_on_product_id"
@@ -127,6 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
     t.string "name"
     t.string "color"
     t.integer "price"
+    t.integer "total_quantity", default: 0
+    t.boolean "status", default: false
     t.text "description"
     t.text "product_information"
     t.boolean "hot_product"

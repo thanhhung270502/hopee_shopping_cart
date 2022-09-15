@@ -111,6 +111,16 @@
         font-weight: normal;
     }
 }
+
+.product__remain {
+    display: none;
+}
+
+.remain__active {
+    display: inline-block;
+}
+
+
 .product__number,
 .product__description,
 .product__color,
