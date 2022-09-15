@@ -38,6 +38,10 @@ Rails.application.routes.draw do
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
   
   patch '/products/:id/toggle_hot', to: 'products#toggle_hot', as: 'toggle_hot'
+  patch '/products/:id/publicProduct', to: 'products#publicProduct', as: 'publicProduct'
+
+  get '/products/:id/editQuantity', to: 'products#editQuantity', as: 'editQuantity'
+  patch '/products/:id/editQuantity', to: 'products#updateQuantity'
 
   get '/shops/:id/showHot', to: 'shops#showHot', as: 'showHot'
 

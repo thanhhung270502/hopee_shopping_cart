@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot ]
+  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot editQuantity updateQuantity   publicProduct ]
   before_action :createCartSession, only: %i[ getProduct ]
   # GET /products or /products.json
   def index
@@ -137,6 +137,37 @@ class ProductsController < ApplicationController
     end
   end
 
+  def editQuantity
+    
+  end
+
+  def updateQuantity
+    puts params
+    numbers = params[:product_size][:number]
+    puts @product
+
+    for i in 0...@product.product_sizes.length
+      @product.product_sizes[i].update_attribute(:number, numbers[i])
+    end
+
+    total = 0
+    @product.product_sizes.each do |product_size|
+      total += product_size.number
+    end
+    @product.update_attribute(:total_quantity, total)
+
+    redirect_to @product
+  end
+
+  def publicProduct
+    if (@product.status == true) 
+      @product.update_attribute(:status, false)
+    else
+      @product.update_attribute(:status, true)
+    end      
+    redirect_to @product
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -145,8 +176,8 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :color, :price, 
+      params.require(:product).permit(:name, :color, :price, :total_quantity, :status,
                                       :description, :product_information, :hot, size_ids:[],
-                                      product_images_attributes: [:id, :product_id, :image])
+                                      product_images_attributes: [:id, :product_id, :image], numbers: [])
     end
 end

@@ -89,7 +89,11 @@
             Trạng thái: <span>Còn hàng</span>
           </div>
           <div class="product__number">
-            Số lượng: <span>7</span>
+            Số lượng: 
+            <span class="product__remain remain__active"> <%= @product.total_quantity %> </span>  
+            <% @product.product_sizes.each do |product_size| %>
+              <span class="product__remain"> <%= product_size.number %> </span>
+            <% end %>
           </div>
           <div class="product__description">
             <%= @product.description %>
@@ -114,7 +118,7 @@
                   <div class="item__button">
                     <div class="input-group">
                       <%= form.collection_radio_buttons :size_ids, Size.all, :id, :name do |b| %>
-                        <% b.label(class: "d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.radio_button(class: "form-check-input mt-0", "aria-label" => "Checkbox for following text input" )} + b.label(class:"form-control form_control") {b.text}} %>
+                        <% b.label(class: "item__size d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.radio_button(class: "form-check-input mt-0", "aria-label" => "Checkbox for following text input" )} + b.label(class:"form-control form_control") {b.text}} %>
                         <%# b.label {b.text} %>
                       <% end %>
                     </div>
@@ -183,5 +187,5 @@
 
 </div>
 
-<%= javascript_importmap_tags("custom/change_quantity") %>
+<%#= javascript_importmap_tags("custom/change_quantity") %>
 <%= javascript_importmap_tags("custom/show_product") %>
