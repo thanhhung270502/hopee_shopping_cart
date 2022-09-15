@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   get '/shops/:id/showHot', to: 'shops#showHot', as: 'showHot'
 
   # get 'update_quantity', to: 'cart_items#update_quantity'
-  patch 'update_quantity', to: 'cart_items#update_quantity'
+  patch '/update_quantity', to: 'cart_items#update_quantity'
 
   post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: 'order'
 

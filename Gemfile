@@ -10,6 +10,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 # gem "image_processing", "1.12.2"
 
 gem 'carrierwave'
+gem "fog-aws"
 gem 'rmagick'
 
 # SASS
@@ -75,6 +76,7 @@ group :development do
   gem "web-console"
   gem 'annotate'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
