@@ -67,6 +67,9 @@
                   <%= link_to "Edit", edit_product_path(@product), class: "dropdown-item" %>
                 </li>
                 <li>
+                  <%= link_to "Edit Quantity", editQuantity_path, class: "dropdown-item" %>
+                </li>
+                <li>
                   <%= button_to "Choose Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
                 </li>
               </ul>
