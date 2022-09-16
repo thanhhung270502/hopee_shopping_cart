@@ -88,7 +88,14 @@ class User < ApplicationRecord
     # Defines a proto-feed.
     # See "Following users" for the full implementation.
     def feed
-        Micropost.where("user_id = ?", id)
+      shop_ids = "SELECT id 
+                  FROM Shops
+                  WHERE user_id IN (
+                    SELECT followed_id
+                    FROM Relationships 
+                    WHERE followed_id = user_id
+                  )"
+      Product.where("shop_id IN (#{shop_ids})")
     end
 
     # Follows a user.

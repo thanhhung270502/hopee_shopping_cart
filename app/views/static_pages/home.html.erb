@@ -62,8 +62,9 @@
 
 <div class="site__products">
     <div class="products__title">
-        <p>Hot Products</p>
+        <p>Shop Followed</p>
     </div>
+
     <div class="row pb-3">
         <div class="col-lg-3 col-sm-4 products__column">
             <div class="products__image">
@@ -201,4 +202,11 @@
             </a>
         </div>
     </div>
+</div>
+
+ <div class="col-md-8">
+    <h3>Product Feed</h3>
+    <% if logged_in? %>
+        <%= render 'shared/feed' %>
+    <% end %>
 </div>

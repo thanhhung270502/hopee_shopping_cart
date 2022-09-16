@@ -4,12 +4,6 @@
         <%= product.name %>
     </p>
 
-    <% if product.images.attached? %>
-        <% product.images.each do |image| %>
-            <%= image_tag image %> <br/>
-        <% end %>
-    <% end %>
-
     <p>
         <strong>color:</strong>
         <%= product.color %>

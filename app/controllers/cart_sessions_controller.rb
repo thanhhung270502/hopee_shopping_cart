@@ -68,7 +68,20 @@ class CartSessionsController < ApplicationController
     @order = Order.new(@cart_session.attributes)
     if  @order.save 
       @cart_session.cart_items.each do |cart_item|
+        # Copy CartItem to OrderItem
         OrderItem.create(newAtrs(@order, cart_item))
+
+        # Decrease quantity product
+        total = 0
+        cart_item.product.product_sizes.each do |product_size|
+          if (product_size.size.name == cart_item.size)
+            number = product_size.number 
+            number -= cart_item.quantity
+            product_size.update_attribute(:number, number)
+          end
+          total += product_size.number
+        end
+        cart_item.product.update_attribute(:total_quantity, total)
       end
       @cart_session.destroy
       flash[:success] = "Order successfully"

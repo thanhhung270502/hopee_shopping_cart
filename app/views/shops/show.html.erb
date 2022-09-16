@@ -9,6 +9,12 @@
       </div>
     </div>
   </div>
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </section>
+  <section class="follow">
+    <%= render 'follow_form' if logged_in? %>
+  </section>
   <div class="shop__menu">
     <div class="container">
       <div class="d-flex navbar-shop">
