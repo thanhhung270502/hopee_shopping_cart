@@ -61,16 +61,16 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <%= button_to "Destroy", @product, method: :delete, class: "dropdown-item" %>
-                </li>
-                <li>
                   <%= link_to "Edit", edit_product_path(@product), class: "dropdown-item" %>
                 </li>
                 <li>
                   <%= link_to "Edit Quantity", editQuantity_path, class: "dropdown-item" %>
                 </li>
                 <li>
-                  <%= button_to "Choose Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
+                  <%= button_to "Toggle Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
+                </li>
+                <li>
+                  <%= button_to "Destroy", @product, method: :delete, class: "dropdown-item" %>
                 </li>
               </ul>
             </div>
@@ -89,7 +89,11 @@
             $<%= @product.price %>.00
           </div>
           <div class="product__status">
-            Trạng thái: <span>Còn hàng</span>
+            <% if @product.total_quantity > 0 %>
+              Trạng thái: <span>Còn hàng</span>
+            <% else %>
+              Trạng thái: <span>Hết hàng</span>
+            <% end %>
           </div>
           <div class="product__number">
             Số lượng: 
@@ -106,9 +110,14 @@
               Màu sắc: 
             </div>
             <div class="item__button">
-              <%# <button type="button" class="item__btn">Pink</button> %>
-              <%= content_tag :button, class: "item__btn", style: "background-color: var(--#{@product.color}); border-color: var(--#{@product.color}); text-transform: capitalize;" do %>
-                <%= @product.color %>
+              <% if @product.color == "black" %>
+                <%= content_tag :button, class: "item__btn", style: "background-color: var(--#{@product.color}); border-color: var(--#{@product.color}); text-transform: capitalize; color: #fff" do %>
+                  <%= @product.color %>
+                <% end %>
+              <% else %>
+                <%= content_tag :button, class: "item__btn", style: "background-color: var(--#{@product.color}); border-color: var(--#{@product.color}); text-transform: capitalize;" do %>
+                  <%= @product.color %>
+                <% end %>
               <% end %>
             </div>
           </div>

@@ -30,38 +30,64 @@
               <%= link_to "Create Shop", new_shop_path, class: "topbar__link" %> 
             </div>
           <% end %>
-          <div class="topbar__item dropdown">
-            <a class="topbar__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-cart-shopping"></i>
+          <!-- Button trigger modal -->
+          <button type="button" class="cart-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-cart-shopping"></i>
               <span class="count">2</span>
-            </a>
-            <ul class="dropdown-menu drop-menu-right dropdown-cart">
-              <% cart_items.each do |cart_item| %>
-                <% if current_cart_item(cart_item.cart_session_id) %>
-                  <li><a class="dropdown-item dropdown-padding">
-                    <div class="d-flex">
-                      <div class="cart-item__avatar">
-                        <%= image_tag cart_item.product.product_images[1].image.url, class: "img-fluid" %>
-                        <%#= image_tag cart_item.product.image, class: "img-fluid" %>
-                      </div>
-                      <div class="cart-item__name">
-                        <%= cart_item.product.name %>
-                      </div>
-                      <div class="cart-item__price">
-                        <%= cart_item.product.price %>
-                      </div>
-                    </div>
-                  </a></li>
-                <% end %>
-              <% end %>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <div class="d-flex" style="justify-content: flex-end;">
-                  <%= link_to "Show All", cart_items_path, class: "btn-cart" %>
-                  <%# <div class="btn-cart">Show All</div> %>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade cart_modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </li>
-            </ul>
+                <div class="modal-body">
+                  <% cart_items.each do |cart_item| %>
+                    <% if current_cart_item(cart_item.cart_session_id) %>
+                      <li class="border-bottom"><a class="dropdown-item dropdown-padding">
+                        <div class="d-flex">
+                          <div class="cart-item__avatar">
+                            <%= image_tag cart_item.product.product_images[1].image.url, class: "img-fluid" %>
+                            <%#= image_tag cart_item.product.image, class: "img-fluid" %>
+                          </div>
+                          <div class="cart-item__infor">
+                            <div class="cart-item__name">
+                              <%= cart_item.product.name %>
+                            </div>
+                            <div class="cart-item__size">
+                              Size:
+                              <%= cart_item.size %>
+                            </div>
+                            <div class="cart-item__quantity">
+                              Qty:
+                              <%= cart_item.quantity %>
+                            </div>
+                          </div>
+                          <div class="cart-item__price">
+                            $<%= cart_item.product.price %>.00
+                          </div>
+                        </div>
+                      </a></li>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="modal-footer">
+                  <div class="d-flex justify-content-between modal_total w-100">
+                    <div>
+                      Subtotal
+                    </div>
+                    <div>
+                      $<%= current_cart_session.sum_money %>.00 
+                    </div>
+                  </div>
+                  <%= link_to "Checkout", cart_session_path(current_cart_session), class: "btn btn-primary w-100" %>
+                  <%= link_to "View Cart", cart_items_path, class: "btn btn-secondary w-100" %>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="dropdown">
             <div class="topbar__item dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

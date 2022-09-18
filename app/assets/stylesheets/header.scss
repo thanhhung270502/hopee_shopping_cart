@@ -74,6 +74,10 @@
 
 .cart-icon {
     position: relative !important;
+    background-color: transparent;
+    color: var(--white);
+    border: none;
+    margin: 5px 10px;
 }
 
 .count {
@@ -89,16 +93,6 @@
     text-align: center;
 }
 
-.cart-item__avatar {
-    width: 45px;
-}
-
-.cart-item__name {
-    padding-left: 10px;
-    font-size: 14px;
-    flex-grow: 1;
-    color: var(--black) !important;
-}
 
 .cart-item__price {
     font-size: 14px;

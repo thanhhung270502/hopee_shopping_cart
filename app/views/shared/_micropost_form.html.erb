@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <div class="profile__micropost">
 	<div class="d-flex profile__enter-content">
-		<div class="modal-avatar">
+		<div class="modal-avatar modal_avatar">
 			<%= image_tag 'logo.jpg', class: "img-fluid" %>
 		</div>
 		<button type="button" class="btn-enter-content" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -11,42 +11,42 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade modal_" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-fullscreen-sm-down">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="staticBackdropLabel">Tạo bài viết</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+		<div class="modal-content modal_content">
+			<div class="modal-header modal_header">
+				<h5 class="modal-title modal_title" id="staticBackdropLabel">Tạo bài viết</h5>
+				<button type="button" class="btn-close btn_close" data-bs-dismiss="modal" aria-label="Close">
 						<i class="fa-solid fa-xmark"></i>
 				</button>
 			</div>
 			<%= form_with(model: @micropost) do |f| %>
 			<div class="modal-body">
 				<div class="d-flex modal-user">
-					<div class="modal-avatar">
+					<div class="modal-avatar modal_avatar">
 						<%= image_tag 'logo.jpg', class: "img-fluid" %>
 					</div>
-					<div class="modal-name">
+					<div class="modal-name modal_name">
 						<%= @user.name %>
 					</div>
 				</div>
-				<div class="modal-form">
+				<div class="modal-form modal_form">
 					<%= render 'shared/error_messages', object: f.object %>
-					<div class="modal-field">
+					<div class="modal-field modal_field">
 						<%= f.text_area :content, placeholder: "Nhập nội dung..." %>
 					</div>
-					<div class="modal-image">
+					<div class="modal-image modal_image">
 						<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "modal-file-image", title: "abc" %>
 					</div>
-					<div class="d-flex modal-add-field">
+					<div class="d-flex modal-add-field modal_add_field">
 						<div class="col">Thêm vào bài viết của bạn:</div>
 						<div class="col">
-							<i class="fa-solid fa-image modal-icon"></i>
+							<i class="fa-solid fa-image modal_icon"></i>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer modal_footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				<%= f.submit "Post", class: "btn btn-primary" %>
 			</div>

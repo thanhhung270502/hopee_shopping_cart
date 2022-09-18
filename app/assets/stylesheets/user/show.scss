@@ -140,13 +140,13 @@
     }
 }
 
-.modal-title {
+.modal_title {
     // color: var(--night) !important;
     text-align: center !important;
     font-size: 1.1rem;
 }
 
-.modal {
+.modal_ {
     top: 20%;
     color: var(--white);
 }
@@ -155,26 +155,26 @@
     top: 16%;
 }
 
-.modal-content {
+.modal_content {
     background-color: var(--night);
 }
 
-.modal-header,
-.modal-footer {
+.modal_header,
+.modal_footer {
     // border-color: var(--night-light);
 }
 
-.modal-header {
+.modal_header {
     padding: 10px 16px;
     border-bottom: 1px solid var(--night-light);
 }
 
-.modal-footer {
+.modal_footer {
     border: none;
     padding-top: 0 !important;
 }
 
-.modal-avatar {
+.modal_avatar {
     width: 40px;
     padding-right: 10px;
 
@@ -183,16 +183,16 @@
     }
 }
 
-.modal-name {
+.modal_name {
     font-size: 0.9rem;
     font-weight: bold;
 }
 
-.modal-form {
+.modal_form {
     padding-top: 10px;
 }
 
-.modal-field {
+.modal_field {
     textarea {
         width: 100%;
         background-color: transparent;
@@ -206,15 +206,15 @@
     }
 }
 
-.modal-image {
+.modal_image {
     display: none;
 }
 
-.modal-show {
+.modal_show {
     display: block !important;
 }
 
-.modal-add-field {
+.modal_add_field {
     align-items: center;
     font-size: 0.9rem;
     border: 1px solid var(--night-light);
@@ -222,7 +222,7 @@
     border-radius: 5px;
 }
 
-.modal-icon {
+.modal_icon {
     font-size: 1.2rem;
     color: var(--green);
     padding: 10px;
@@ -234,7 +234,7 @@
     }
 }
 
-.btn-close {
+.btn_close {
     background: none;
     height: unset;
     width: unset;

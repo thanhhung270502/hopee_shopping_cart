@@ -1,6 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+// Click hide/show product_image
 const image__large = $$('.image__large');
 const image__large_1 = image__large[0];
 const image__large_2 = image__large[1];
@@ -128,7 +129,7 @@ item__sizes.forEach((value, index) => {
     }
 })
 
-
+// Decrease/Increase quantity
 minus1.onclick = () => {
     if (data1.value > 0) {
         data1.value--;
@@ -141,3 +142,5 @@ add1.onclick = () => {
         console.log(data1.value);
     }
 }
+
+// 
