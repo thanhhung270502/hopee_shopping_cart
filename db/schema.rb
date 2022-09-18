@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_033614) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -147,6 +147,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "review_suggests", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "suggest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_review_suggests_on_review_id"
+    t.index ["suggest_id"], name: "index_review_suggests_on_suggest_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "star"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
@@ -160,6 +178,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
 
   create_table "sizes", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suggests", force: :cascade do |t|
+    t.text "suggest_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -83,7 +83,7 @@ class CartSessionsController < ApplicationController
         end
         cart_item.product.update_attribute(:total_quantity, total)
       end
-      @cart_session.destroy
+      @cart_session.d estroy
       flash[:success] = "Order successfully"
       redirect_to root_path
     else 

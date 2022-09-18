@@ -1,0 +1,17 @@
+<%= form_with(model: suggest) do |form| %>
+  <% if suggest.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(suggest.errors.count, "error") %> prohibited this suggest from being saved:</h2>
+
+      <ul>
+        <% suggest.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

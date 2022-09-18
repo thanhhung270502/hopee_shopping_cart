@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @review_suggest %>
+
+<div>
+  <%= link_to "Edit this review suggest", edit_review_suggest_path(@review_suggest) %> |
+  <%= link_to "Back to review suggests", review_suggests_path %>
+
+  <%= button_to "Destroy this review suggest", @review_suggest, method: :delete %>
+</div>
