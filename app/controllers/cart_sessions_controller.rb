@@ -83,7 +83,12 @@ class CartSessionsController < ApplicationController
         end
         cart_item.product.update_attribute(:total_quantity, total)
       end
-      @cart_session.d estroy
+      @cart_session.destroy
+
+      @order_information = OrderInformation.new
+      @order_information.order_id = @order.id 
+      @order_information.save
+
       flash[:success] = "Order successfully"
       redirect_to root_path
     else 

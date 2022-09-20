@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :reviews
+  resources :order_informations
+  resources :transport, only: [:create, :destroy]
 
   get '/products/:id/shop_products', to: 'products#showAll'
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
@@ -51,6 +53,9 @@ Rails.application.routes.draw do
 
   post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: 'order'
 
+  post 'order_informations/:id/updateTransport', to: "order_informations#updateTransport", as: 'updateTransport'
+  patch 'order_informations/:id/nextStatus', to: "order_informations#nextStatus", as: 'nextStatus'
+  patch 'order_informations/:id/prevStatus', to: "order_informations#prevStatus", as: 'prevStatus'
   # get '/add_product', to: 'products#getProduct'
 
   # Defines the root path route ("/")

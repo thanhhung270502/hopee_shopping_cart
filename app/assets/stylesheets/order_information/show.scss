@@ -1,0 +1,126 @@
+.ori_show {
+}
+
+.ori_header {
+    padding: 20px 30px;
+}
+
+.ori_header__content {
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.ori_transport {
+    padding: 40px 30px;
+}
+
+.stepper {
+    position: relative;
+}
+
+.stepper__step {
+    text-align: center;
+    color: var(--light-gray);
+    user-select: none;
+    cursor: default;
+    z-index: 1;
+}
+
+.stepper__step-icon {
+    font-size: 2.5rem;
+    border: 3px solid var(--light-gray);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.stepper__step-text {
+    color: var(--night-light);
+}
+
+.stepper__step-date {
+    color: var(--light-gray);
+}
+
+.stepper__step--finish {
+    color: var(--primary) !important;
+    .stepper__step-icon {
+        color: var(--primary) !important;
+        border-color: var(--primary);
+    }
+    .fa_star {
+        color: var(--primary) !important;
+    }
+}
+
+.fa_star {
+    color: var(--light-gray) !important; 
+}
+
+.stepper__line {
+    position: absolute;
+    top: 38px;
+    height: 4px;
+    width: 100%;
+}
+
+.stepper__line-background,
+.stepper__line-foreground {
+    position: absolute;
+    width: calc(100% - 140px);
+    margin: 0 70px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.stepper__line-background {
+    background-color: var(--light-gray);
+}
+
+.stepper__line-foreground {
+    // width: calc((100% - 140px) * 1);
+    background-color: var(--primary);
+}
+
+.ori_transport__detail {
+    padding: 30px;
+
+    h4, h6 {
+        font-weight: normal;
+    }
+
+    .col-4 {
+        p {
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+    }
+}
+
+.ori_transport__item {
+    position: relative;
+}
+
+.ori_transport__line {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: -15px;
+    left: 5px;
+    background: #26aa99;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    z-index: 1;
+    border-radius: 50%;
+    background: #26aa99;
+}
