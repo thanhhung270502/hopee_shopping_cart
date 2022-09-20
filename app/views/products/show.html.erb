@@ -54,7 +54,7 @@
                 <i class="fa-brands fa-hotjar"></i>
               <% end %>
             </div>
-            <% if @product.shop.id == current_shop.id %>
+            <% if current_shop and  @product.shop.id == current_shop.id %>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-ellipsis"></i>
