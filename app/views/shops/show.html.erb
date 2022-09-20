@@ -48,7 +48,7 @@
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id %>
+          <% if product.shop_id == @shop.id and product.status %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
@@ -67,7 +67,7 @@
                 <%= product.name %>
               <% end %>
               <%= content_tag :div, class: "products__price" do %>
-                <%= product.price %> đ
+                $<%= product.price %>.00
               <% end %>
             <% end %>
           </div>

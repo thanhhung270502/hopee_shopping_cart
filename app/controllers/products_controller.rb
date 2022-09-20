@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.shop_id = current_shop.id
     @product.hot_product = false
+    @product.status = false
     if @product.save
       paramImages = params[:product_images]['image']
       paramImages.each do |a|

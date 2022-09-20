@@ -66,9 +66,26 @@
                 <li>
                   <%= link_to "Edit Quantity", editQuantity_path, class: "dropdown-item" %>
                 </li>
-                <li>
-                  <%= button_to "Toggle Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
-                </li>
+                <% if @product.hot_product %>
+                  <li>
+                    <%= button_to "Remove Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= button_to "Add Hot-product", toggle_hot_path, class: "dropdown-item", method: :patch %>
+                  </li>
+                <% end %>
+
+                <% if @product.status %>
+                  <li>
+                    <%= button_to "Hide Product", publicProduct_path, class: "dropdown-item", method: :patch %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= button_to "Show Product", publicProduct_path, class: "dropdown-item", method: :patch %>
+                  </li>
+                <% end %>
+
                 <li>
                   <%= button_to "Destroy", @product, method: :delete, class: "dropdown-item" %>
                 </li>

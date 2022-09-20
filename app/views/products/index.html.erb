@@ -5,16 +5,17 @@
     </div>
     <div class="row pb-3">
       <% @products.each do |product| %>
+      <% if product.status %>
         <div class="col-lg-2 products__column">
           <div class="products__image">
             <%= link_to do %>
               <% if product.product_images %>
-                <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+                <%= image_tag product.product_images.first.image.url, class: "img-fluid image" %>
               <% end %>
               <div class="overlay">
                 <div class="other-image">
                   <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
-                </div>  
+                </div>
               </div>
             <% end %>
           </div>
@@ -23,10 +24,11 @@
               <%= product.name %>
             <% end %>
             <%= content_tag :div, class: "products__price" do %>
-              <%= product.price %> đ
+              $<%= product.price %>.00 
             <% end %>
           <% end %>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>
