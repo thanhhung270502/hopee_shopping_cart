@@ -1,0 +1,54 @@
+<%= form_with(model: review) do |form| %>
+  <% if review.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-6">
+    <label for="inputStar" class="form-label">Star</label>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupSelect01">Options</label>
+      <%= form.select :star, 
+        [["5 sao", 5], ["4 sao", 4], 
+        ["3 sao", 3], ["2 sao", 2], ["1 sao", 1]], 
+        class: "form-select", selected: 5, id: "inputGroupSelect01" %>
+    </div>
+  </div>
+
+  <div class="col-12 mb-3">
+    <label for="inputDescription" class="form-label">Content</label>
+    <%= form.text_area :content, class: "form-control", id: "inputAddress2"   %>
+  </div>
+
+  <div class="col-6">
+    <div class="mb-2">
+      <%= form.label "Suggest content:" %>
+    </div>
+    <div class="mb-3">
+      <div class="input-group" style="display: inline-block;">
+        <%= form.collection_check_boxes :suggests, Suggest.all, :id, :suggest_content do |b| %>
+          <% b.label(class: "d-flex mb-2") {b.label(class: "input-group-text input_group_text") {b.check_box(class: "form-check-input mt-0")} + b.label(class:"form-control form_control") {b.text} } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <%= form.submit "Submit" , class: "btn btn-primary max-width" %>
+  </div>
+<% end %>
+
+<script>
+  const review = document.querySelector('#review_star');
+
+  review.classList.add('form-select')
+</script>
+
+<%#= javascript_importmap_tags("custom/addClass") %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_091655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "order_informations", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_informations_on_order_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -147,6 +155,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "review_suggests", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "suggest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_review_suggests_on_review_id"
+    t.index ["suggest_id"], name: "index_review_suggests_on_suggest_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "star"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
@@ -162,6 +188,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "suggests", force: :cascade do |t|
+    t.text "suggest_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.bigint "order_information_id", null: false
+    t.integer "transport_type"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_information_id", "created_at"], name: "index_transports_on_order_information_id_and_created_at"
+    t.index ["order_information_id"], name: "index_transports_on_order_information_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -182,4 +224,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_072428) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "microposts", "users"
+  add_foreign_key "order_informations", "orders"
+  add_foreign_key "transports", "order_informations"
 end

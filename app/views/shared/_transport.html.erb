@@ -1,0 +1,19 @@
+<div class="">
+  <% transports.each_with_index do |transport, index| %>
+  <div class="ori_transport__item mb-2">
+    <% if index > 0 %>
+      <div class="ori_transport__line"></div>
+    <% end %>
+    <div class="d-flex align-item-center">
+      <div class="dot me-3">
+      </div>
+      <div class="me-3">
+        <%= transport.created_at %>
+      </div>
+      <div class="">
+        <%= transport.content %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,2 @@
+module ReviewSuggestsHelper
+end

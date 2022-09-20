@@ -45,32 +45,35 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <% cart_items.each do |cart_item| %>
-                    <% if current_cart_item(cart_item.cart_session_id) %>
-                      <li class="border-bottom"><a class="dropdown-item dropdown-padding">
-                        <div class="d-flex">
-                          <div class="cart-item__avatar">
-                            <%= image_tag cart_item.product.product_images[1].image.url, class: "img-fluid" %>
-                            <%#= image_tag cart_item.product.image, class: "img-fluid" %>
-                          </div>
-                          <div class="cart-item__infor">
-                            <div class="cart-item__name">
-                              <%= cart_item.product.name %>
+                  <% if current_cart_session %>
+                    <% cart_items.each do |cart_item| %>
+                      <% if cart_item &&  current_cart_item(cart_item.cart_session_id) %>
+                        <li class="border-bottom"><a class="dropdown-item dropdown-padding">
+                          <div class="d-flex">
+                            <div class="col-2">
+                            <%# <div class="cart-item__avatar"> %>
+                              <%= image_tag cart_item.product.product_images[1].image.url, class: "img-fluid" %>
+                              <%#= image_tag cart_item.product.image, class: "img-fluid" %>
                             </div>
-                            <div class="cart-item__size">
-                              Size:
-                              <%= cart_item.size %>
+                            <div class="col-8 cart-item__infor">
+                              <div class="cart-item__name">
+                                <%= cart_item.product.name %>
+                              </div>
+                              <div class="cart-item__size">
+                                Size:
+                                <%= cart_item.size %>
+                              </div>
+                              <div class="cart-item__quantity">
+                                Qty:
+                                <%= cart_item.quantity %>
+                              </div>
                             </div>
-                            <div class="cart-item__quantity">
-                              Qty:
-                              <%= cart_item.quantity %>
+                            <div class="col-2 cart-item__price">
+                              $<%= cart_item.product.price %>.00
                             </div>
                           </div>
-                          <div class="cart-item__price">
-                            $<%= cart_item.product.price %>.00
-                          </div>
-                        </div>
-                      </a></li>
+                        </a></li>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>
@@ -80,11 +83,20 @@
                       Subtotal
                     </div>
                     <div>
-                      $<%= current_cart_session.sum_money %>.00 
+                      <% if current_cart_session %>
+                        $<%= current_cart_session.sum_money %>.00 
+                      <% else %>
+                        $0.00
+                      <% end %>
                     </div>
                   </div>
-                  <%= link_to "Checkout", cart_session_path(current_cart_session), class: "btn btn-primary w-100" %>
-                  <%= link_to "View Cart", cart_items_path, class: "btn btn-secondary w-100" %>
+                  <% if current_cart_session %>
+                    <%= link_to "Checkout", cart_session_path(current_cart_session), class: "btn btn-primary w-100" %>
+                    <%= link_to "View Cart", cart_items_path, class: "btn btn-secondary w-100" %>
+                  <% else %>
+                    <%= link_to "Checkout", "#", class: "btn btn-primary w-100" %>
+                    <%= link_to "View Cart", "#", class: "btn btn-secondary w-100" %>
+                  <% end %>
                 </div>
               </div>
             </div>

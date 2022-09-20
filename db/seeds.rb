@@ -40,3 +40,9 @@ end
 Size.create!(name: "M");
 Size.create!(name: "L");
 Size.create!(name: "XL");
+
+Suggest.create!(suggest_content: "Chất lượng sản phẩm tuyệt vời");
+Suggest.create!(suggest_content: "Đóng gói đẹp và chắc chắn");
+Suggest.create!(suggest_content: "Shop phục vụ rất tốt");
+Suggest.create!(suggest_content: "Rất đáng tiền");
+Suggest.create!(suggest_content: "Giao hàng nhanh");

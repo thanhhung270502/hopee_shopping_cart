@@ -42,7 +42,7 @@
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id && product.hot_product %>
+          <% if product.shop_id == @shop.id and product.status and product.hot_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>

@@ -1,0 +1,234 @@
+<div style="background-color: var(--beige-light);">
+  <div class="container">
+    <div class="bg-white ori_header d-flex justify-content-between align-item-center mb-2">
+      <%= link_to order_informations_path do %>
+        <i class="fa-solid fa-arrow-left-long"></i>
+        Trở lại
+      <% end %>
+      <div class="ori_header__content">
+        <p>ID ĐƠN HÀNG: <%= @order_information.order.id %></p>  
+      </div>
+    </div>
+
+    <div class="bg-white ori_transport mb-2">
+      <div class="stepper d-flex justify-content-between align-item-center">
+        <div class="stepper__step stepper__step--finish">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-money-check-dollar"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang xử lý đơn hàng 
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 1).last.nil? %>
+              <%= @transports.where(transport_type: 1).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% if @order_information.status >= 2 %>
+        <div class="stepper__step stepper__step--finish">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-paper-plane"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang giao ĐVVC
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 2).last.nil? %>
+              <%= @transports.where(transport_type: 2).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% else %>
+        <div class="stepper__step">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-paper-plane"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang giao ĐVVC
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 2).last.nil? %>
+              <%= @transports.where(transport_type: 2).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <% if @order_information.status >= 3 %>
+        <div class="stepper__step stepper__step--finish">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang vận chuyển
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 3).last.nil? %>
+              <%= @transports.where(transport_type: 3).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% else %>
+        <div class="stepper__step">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang vận chuyển
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 3).last.nil? %>
+              <%= @transports.where(transport_type: 3).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <% if @order_information.status >= 4 %>
+        <div class="stepper__step stepper__step--finish">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-brands fa-first-order"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang giao hàng
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 4).last.nil? %>
+              <%= @transports.where(transport_type: 4).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% else %>
+        <div class="stepper__step">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-brands fa-first-order"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đang giao hàng
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 4).last.nil? %>
+              <%= @transports.where(transport_type: 4).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <% if @order_information.status >= 5 %>
+        <div class="stepper__step stepper__step--finish">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-star fa_star"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đã nhận + Đánh giá
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 5).last.nil? %>
+              <%= @transports.where(transport_type: 5).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% else %>
+        <div class="stepper__step">
+          <div class="stepper__step-icon mb-3">
+            <i class="fa-solid fa-star fa_star"></i>
+          </div>
+          <div class="stepper__step-text">
+            Đã nhận + Đánh giá
+          </div>
+          <div class="stepper__step-date">
+            <% if !@transports.where(transport_type: 5).last.nil? %>
+              <%= @transports.where(transport_type: 5).last.created_at %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <div class="stepper__line">
+          <div class="stepper__line-background"></div>
+          <% if @order_information.status == 1 %>
+            <div class="stepper__line-foreground" style="width: calc(0% - 175px);"></div>
+          <% else %>
+            <%= content_tag :div, class: "stepper__line-foreground",
+            style: "width: calc(calc(20%*#{@order_information.status}) - 175px);" do %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white ori_transport__detail">
+      <div class="d-flex justify-content-between align-item-center pb-4">
+        <h4 class="">Địa Chỉ Nhận Hàng</h4>
+        <% if @order_information.order.user.shop && @order_information.order.user.shop == current_shop %>
+        <div class="d-flex">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Cập nhật trạng thái giao hàng
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Cập nhật trạng thái giao hàng</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <%= form_with url: updateTransport_path do |form| %>
+                <div class="modal-body">
+                  <label for="inputColor" class="form-label">Transport_type</label>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                    <%= form.select :transport_type, 
+                      [["Đang xử lý đơn hàng", 1],["Đang giao ĐVVC", 2],["Đang vận chuyển", 3],
+                      ["Đang giao hàng", 4],["Đã nhận và Đánh giá", 5],], 
+                      class: "form-select", id: "inputGroupSelect01" %>
+                    </div>
+                  <div class="modal-form modal_form">
+                    <div class="modal-field modal_field">
+                      <%= form.text_area :content, placeholder: "Nhập nội dung..." %>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <%= form.submit "Update", class: "btn btn-primary" %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="dropdown ps-4">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <%= button_to "Next", nextStatus_path, method: :patch, class: "dropdown-item" %>
+              </li>
+              <li>
+                <%= button_to "Prev", prevStatus_path, method: :patch, class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="d-flex">
+        <div class="col-4 me-3 border-end">
+          <h6 class="pb-2"> <%= @order_information.order.user.name %> </h6>
+          <p class="mb-1"> <%= @order_information.order.user.phone %> </p>
+          <p> <%= @order_information.order.user.address %> </p>
+        </div>
+        <div class="col-8 ms-3">
+          <%= render 'shared/transport', transports: @transports %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const transport_type = document.getElementById("transport_type");
+
+  transport_type.classList.add('form-select')
+</script>

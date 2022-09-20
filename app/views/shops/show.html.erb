@@ -1,20 +1,38 @@
 <div class="shop__main">
   <div class="shop__banner">
-    <div class="shop__caption">
-      <div class="caption__content">
-        <%# <div class="caption__title">Shopee</div> %>
-        <%= content_tag :div, class: "caption__title" do %>
-            <%= @shop.name %>
-        <% end %>
+    <div class="d-flex shop__inner">
+      <div class="col-4 shop__image me-5">
+        <%= image_tag 'logo.jpg', class: "img-fluid" %>
+      </div>
+      <div class="col-8 ms-5">
+        <div class="d-flex justify-content-between align-item-center">
+          <div class="shop__name pt-3 pb-3"> <%= @shop.name %> </div>
+          <div class="shop__follow">
+            <%= render 'follow_form' if logged_in? %>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="col-6">
+            <div class="overview__item">
+              Sản phẩm: <span>15</span>
+            </div>
+            <div class="overview__item">
+              Tham gia: <span>2 tháng trước</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <% @shop.user ||= current_user %>
+            <div class="overview__item">
+              Đang theo dõi: <span><%= @shop.user.following.count %></span>
+            </div>
+            <div class="overview__item">
+              Người theo dõi: <span><%= @shop.user.followers.count %></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <section class="stats">
-    <%= render 'shared/stats' %>
-  </section>
-  <section class="follow">
-    <%= render 'follow_form' if logged_in? %>
-  </section>
   <div class="shop__menu">
     <div class="container">
       <div class="d-flex navbar-shop">
@@ -42,13 +60,13 @@
     <div class="site__products">
       <div class="products__title-2 pb-3">
         <p>TẤT CẢ SẢN PHẨM</p>
-        <% if @shop.id == current_shop.id %>
+        <% if current_shop and  @shop.id == current_shop.id %>
           <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
         <% end %>
       </div>
       <div class="row pb-3">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id %>
+          <% if product.shop_id == @shop.id and product.status %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
@@ -67,7 +85,7 @@
                 <%= product.name %>
               <% end %>
               <%= content_tag :div, class: "products__price" do %>
-                <%= product.price %> đ
+                $<%= product.price %>.00
               <% end %>
             <% end %>
           </div>
