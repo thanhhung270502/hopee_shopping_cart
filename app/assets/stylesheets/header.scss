@@ -22,27 +22,6 @@
 }
 
 
-.form__search {
-    align-items: center;
-    flex-grow: 1;
-    input {
-        border: none;
-        width: 100%;
-        height: 40px;
-        margin: 10px 0;
-        padding: 0 10px;
-        background-color: var(--white);
-    }
-}
-
-.button_search {
-    padding: 0 20px;
-    width: 150px;
-    height: 40px;
-    border: none;
-    background-color: var(--primary-dark);
-    color: var(--white);
-}
 
 .nf-menu {
 
@@ -72,26 +51,7 @@
     }
 } 
 
-.cart-icon {
-    position: relative !important;
-    background-color: transparent;
-    color: var(--white);
-    border: none;
-    margin: 5px 10px;
-}
 
-.count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    z-index: 1000;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: var(--primary-dark);
-    font-size: 0.6rem;
-    text-align: center;
-}
 
 
 .cart-item__price {

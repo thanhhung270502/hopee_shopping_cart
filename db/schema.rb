@@ -68,8 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091655) do
   end
 
   create_table "microposts", force: :cascade do |t|
-    t.text "content"
     t.bigint "user_id", null: false
+    t.text "content"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"

@@ -1,22 +1,24 @@
-<div class="topbar__container">
-  <div class="container">
-    <div class="d-flex justify-content-between align-item-center">
-      <div class="d-flex">
-        <div class="topbar__item color-red" >
-          Sell with Polkadots
+<div class="topbar_container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex topbar__left">
+        <div class="topbar__item">
+          Kênh Mua Bán
         </div>
         <span>|</span>
         <div class="topbar__item">
           Kết nối
-          <a href="#" class="topbar__icon">
+          <a href="#" class="topbar__link">
             <i class="fa-brands fa-facebook"></i>
           </a>
-          <a href="#" class="topbar__icon">
+          <a href="#" class="topbar__link">
             <i class="fa-brands fa-instagram"></i>
           </a>
         </div>
       </div>
-      <div class="d-flex align-item-center">
+    </div>
+    <div class="col">
+      <div class="d-flex topbar__right">
         <% if logged_in? %>
           <% if create_shop? %>
             <div class="topbar__item">
@@ -30,7 +32,7 @@
           <!-- Button trigger modal -->
           <button type="button" class="cart-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fa-solid fa-cart-shopping"></i>
-            <span class="count">2</span>
+              <span class="count">2</span>
           </button>
 
           <!-- Modal -->
@@ -99,7 +101,7 @@
             </div>
           </div>
           <div class="dropdown">
-            <div class="topbar__link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="topbar__item dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= "Chào, " + current_user.name %>
             </div>
             <ul class="dropdown-menu dropdown-menu-dark drop-menu-right">
@@ -137,52 +139,40 @@
   </div>
 </div>
 
-<div class="navbar__container">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg">
+<!-- Navbar Start -->
+<div class="navbar_container">
+  <div class="navbar_inner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar_bg">
       <div class="container-fluid">
-        <a class="navbar-brand navbar__brand" href="/">PolkaDots</a>
+        <a class="navbar-brand navbar__logo" href="/">PolkaDots</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div style="flex-grow: 1; padding: 10px 0;">
-            <div class="d-flex">
-              <%= search_form_for(@query, class: "d-flex form__search") do |f| %>
-                <%= f.search_field :name_cont, placeholder: "Search...", class: "form_search" %>
-                <%= f.submit class: "button_search" do %>
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                  Search
-                <% end %>
-              <% end %>
-            </div>
-            <div class="d-flex">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
-                <li class="nav-item">
-                  <a class="nav-link nav__link" href="#">Products</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link nav__link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Categories
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav__link" href="#">Hot Deals</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav__link" href="#">Customer services</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <%= search_form_for(@query, class: "d-flex form__search") do |f| %>
+            <%= f.search_field :name_cont, placeholder: "Search...", class: "form_search" %>
+            <%= f.submit class: "button_search" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              Search
+            <% end %>
+          <% end %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar__menu">
+            <li class="nav-item nav__item">
+              <a class="nav-link nav__link nav__link-active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item nav__item">
+              <a class="nav-link nav__link" href="#">Dạo</a>
+            </li>
+            <li class="nav-item nav__item">
+              <%= link_to "All Shop", products_path, class: "nav-link nav__link" %>
+            </li>
+            <li class="nav-item nav__item">
+              <a class="nav-link nav__link" href="#">Link</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
   </div>
+</div>
 </div>

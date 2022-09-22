@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   post 'order_informations/:id/updateTransport', to: "order_informations#updateTransport", as: 'updateTransport'
   patch 'order_informations/:id/nextStatus', to: "order_informations#nextStatus", as: 'nextStatus'
   patch 'order_informations/:id/prevStatus', to: "order_informations#prevStatus", as: 'prevStatus'
+
+  get 'search', to: 'search#index'
   # get '/add_product', to: 'products#getProduct'
 
   # Defines the root path route ("/")

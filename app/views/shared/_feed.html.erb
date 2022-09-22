@@ -1,6 +1,22 @@
 <% if @feed_items.any? %>
-    <ol class="microposts">
-        <%= render @feed_items %>
-    </ol>
-    <%#= will_paginate @feed_items, params: { controller: :static_pages, action: :status } %>
+  <% @feed_items.each do |product| %>
+    <div class="col-lg-2 col-md-3 products__column">
+      <div class="products__image">
+        <%= link_to product_path(product) do %>
+          <% if product.product_images %>
+            <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to product_path(product), class: "products__infor" do %>
+        <%= content_tag :div, class: "products__name pb-3" do %>
+          <%= product.name %>
+        <% end %>
+        <%= content_tag :div, class: "products__price pb-2" do %>
+          $<%= product.price %>.00
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
+

@@ -20,7 +20,8 @@
 
     --black: #000;
     --white: #fff;
-    --red: #ec3355;
+    // --red: #ec3355;
+    --red: #df2020;
     --orange: #FF8D5C;
     --blue: #0C97FF;
     --green: #2df3aa;
@@ -29,6 +30,7 @@
     --pink: #fa7daf;
     --beige: #c9ba9b;
 
+    --light-red: #f1dfdf;
 
     // Default layout
     --default-layout-header-height: 160px;
@@ -43,6 +45,10 @@
     margin: 0;
     box-sizing: border-box;
     clear: both;
+}
+
+.color-red {
+    color: var(--red);
 }
 
 .bg-primary {

@@ -3,7 +3,7 @@
 </div>
 <ul class="post__container">
     <% @microposts.each do |micropost| %>   
-    <% if micropost.image.attached? %>
+    <% if micropost.image? %>
         <li class="profile__micropost">
             <div class="d-flex post__inner">
                 <div class="post__avatar">
@@ -35,7 +35,7 @@
                 <%= micropost.content %>
             </div>
             <div class="post__image">
-                <%= image_tag micropost.image.variant(:display) %>
+                <%= image_tag micropost.image.url, class: "img-fluid" %>
             </div>
         </li>
     <% end %>

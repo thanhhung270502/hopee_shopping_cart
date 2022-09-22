@@ -5,6 +5,8 @@ class Micropost < ApplicationRecord
   #   attachable.variant :display, resize_to_limit: [500, 500]
   # end
 
+  mount_uploader :image, ImageUploader
+
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true

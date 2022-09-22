@@ -1,0 +1,28 @@
+<h1 class="text-center"> <%= pluralize(@products.count, "Result") %> </h1>
+<%= render 'search/form' %>
+<div class="d-flex">
+<% @products.each do |product| %>
+<div class="col-lg-2 products__column" style="opacity: 0.7;">
+    <div class="products__image">
+    <%= link_to product_path(product) do %>
+        <% if product.product_images %>
+        <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+        <% end %>
+        <div class="overlay">
+        <div class="other-image">
+            <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+        </div>  
+        </div>
+    <% end %>
+    </div>
+    <%= link_to product_path(product), class: "products__infor" do %>
+    <%= content_tag :div, class: "products__name" do %>
+        <%= product.name %>
+    <% end %>
+    <%= content_tag :div, class: "products__price" do %>
+        $<%= product.price %>.00
+    <% end %>
+    <% end %>
+</div>
+<% end %>
+</div>

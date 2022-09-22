@@ -37,12 +37,14 @@ end
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
 
-Size.create!(name: "M");
-Size.create!(name: "L");
-Size.create!(name: "XL");
+sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
+sizes.each do |size|
+    Size.create!(name: size);
+end
 
-Suggest.create!(suggest_content: "Chất lượng sản phẩm tuyệt vời");
-Suggest.create!(suggest_content: "Đóng gói đẹp và chắc chắn");
-Suggest.create!(suggest_content: "Shop phục vụ rất tốt");
-Suggest.create!(suggest_content: "Rất đáng tiền");
-Suggest.create!(suggest_content: "Giao hàng nhanh");
+suggest_contents = ["Chất lượng sản phẩm tuyệt vời", "Đóng gói đẹp và chắc chắn", "Shop phục vụ rất tốt", "Rất đáng tiền", "Giao hàng nhanh"]
+suggest_contents.each do |suggest_content|
+    Suggest.create!(suggest_content: suggest_content);
+end
+
+categorys = ["Business Attire", "Casual", "Formal", "Sports", "Bodysuit"];

@@ -64,6 +64,49 @@
           <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
         <% end %>
       </div>
+      <% if current_shop and  @shop.id == current_shop.id %>
+        <div class="row pb-3">
+          <% @products.each do |product| %>
+            <% if product.shop_id == @shop.id and product.status %>
+            <div class="col-lg-2 products__column">
+              <div class="products__image">
+                <%= link_to product_path(product) do %>
+                  <% if product.product_images %>
+                    <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <%= link_to product_path(product), class: "products__infor" do %>
+                <%= content_tag :div, class: "products__name" do %>
+                  <%= product.name %>
+                <% end %>
+                <%= content_tag :div, class: "products__price" do %>
+                  $<%= product.price %>.00
+                <% end %>
+              <% end %>
+            </div>
+            <% elsif product.shop_id == @shop.id %>
+            <div class="col-lg-2 products__column" style="opacity: 0.7;">
+              <div class="products__image">
+                <%= link_to product_path(product) do %>
+                  <% if product.product_images %>
+                    <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <%= link_to product_path(product), class: "products__infor" do %>
+                <%= content_tag :div, class: "products__name" do %>
+                  <%= product.name %>
+                <% end %>
+                <%= content_tag :div, class: "products__price" do %>
+                  $<%= product.price %>.00
+                <% end %>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
       <div class="row pb-3">
         <% @products.each do |product| %>
           <% if product.shop_id == @shop.id and product.status %>
@@ -92,6 +135,7 @@
           <% end %>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

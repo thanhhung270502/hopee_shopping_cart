@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    before_action :set_query
+
     include SessionsHelper
     include ShopsHelper
     include ProductsHelper
@@ -6,4 +8,9 @@ class ApplicationController < ActionController::Base
     include CartItemsHelper
 
     @cart_items = CartItem.all
+
+    def set_query
+        @query = Product.ransack(params[:q])
+        @products = @query.result(distinct: true)
+    end
 end
