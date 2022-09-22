@@ -20,3 +20,25 @@
 .maxHeight {
     height: 100%;
 }
+
+.outer__container {
+    padding-top: 1rem;
+    background-color: var(--beige-light);
+}
+
+.inner__container {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+
+.container__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 1rem 1rem;
+
+    i {
+        color: var(--red);
+        padding-right: 5px;
+    }
+}

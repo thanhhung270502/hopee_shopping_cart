@@ -1,126 +1,61 @@
-<div class="shop__main">
-  <div class="shop__banner">
-    <div class="d-flex shop__inner">
-      <div class="col-4 shop__image me-5">
-        <%= image_tag 'logo.jpg', class: "img-fluid" %>
-      </div>
-      <div class="col-8 ms-5">
-        <div class="d-flex justify-content-between align-item-center">
-          <div class="shop__name pt-3 pb-3"> <%= @shop.name %> </div>
-          <div class="shop__follow">
-            <%= render 'follow_form' if logged_in? %>
-          </div>
+<div class="outer__container">
+  <div class="container">
+    <%# <div class="inner__container"> %>
+      <div class="d-flex">
+        <div class="shop__image">
+          <%= image_tag 'logo.jpg', class: "img-fluid" %>
         </div>
-        <div class="d-flex">
-          <div class="col-6">
-            <div class="overview__item">
-              Sản phẩm: <span>15</span>
-            </div>
-            <div class="overview__item">
-              Tham gia: <span>2 tháng trước</span>
-            </div>
-          </div>
-          <div class="col-6">
-            <% @shop.user ||= current_user %>
-            <div class="overview__item">
-              Đang theo dõi: <span><%= @shop.user.following.count %></span>
-            </div>
-            <div class="overview__item">
-              Người theo dõi: <span><%= @shop.user.followers.count %></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="shop__menu">
-    <div class="container">
-      <div class="d-flex navbar-shop">
-        <ul class="nav nav-shop">
-          <li class="nav-item nav-item-shop">
-            <%= link_to "Dạo", showHot_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item nav-item-shop">
-            <%= link_to "Tất cả sản phẩm", shop_path, class: "nav-link nav-active-shop" %>
-          </li>
-          <li class="nav-item nav-item-shop">
-            <a class="nav-link" href="#">SALE OFF</a>
-          </li>
-        </ul>
-        <div class="search-form">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="shop__show">
-    <div class="site__products">
-      <div class="products__title-2 pb-3">
-        <p>TẤT CẢ SẢN PHẨM</p>
-        <% if current_shop and  @shop.id == current_shop.id %>
-          <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
-        <% end %>
-      </div>
-      <% if current_shop and  @shop.id == current_shop.id %>
-        <div class="row pb-3">
-          <% @products.each do |product| %>
-            <% if product.shop_id == @shop.id and product.status %>
-            <div class="col-lg-2 products__column">
-              <div class="products__image">
-                <%= link_to product_path(product) do %>
-                  <% if product.product_images %>
-                    <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
-                  <% end %>
-                <% end %>
-              </div>
-              <%= link_to product_path(product), class: "products__infor" do %>
-                <%= content_tag :div, class: "products__name" do %>
-                  <%= product.name %>
-                <% end %>
-                <%= content_tag :div, class: "products__price" do %>
-                  $<%= product.price %>.00
-                <% end %>
+        <div class="shop__informations ms-4 flex-grow-1">
+          <div class="d-flex align-item-center">
+            <div class="shop__name pt-3 pb-3"> <%= @shop.name %> </div>
+            <div class="shop__follow">
+              <%= render 'follow_form' if logged_in? %>
+              <% if current_shop and @shop.id == current_shop.id %>
+                <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
               <% end %>
             </div>
-            <% elsif product.shop_id == @shop.id %>
-            <div class="col-lg-2 products__column" style="opacity: 0.7;">
-              <div class="products__image">
-                <%= link_to product_path(product) do %>
-                  <% if product.product_images %>
-                    <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
-                  <% end %>
-                <% end %>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="overview__item">
+                Sản phẩm: <span>15</span>
               </div>
-              <%= link_to product_path(product), class: "products__infor" do %>
-                <%= content_tag :div, class: "products__name" do %>
-                  <%= product.name %>
-                <% end %>
-                <%= content_tag :div, class: "products__price" do %>
-                  $<%= product.price %>.00
-                <% end %>
-              <% end %>
+              <div class="overview__item">
+                Tham gia: <span>2 tháng trước</span>
+              </div>
             </div>
-            <% end %>
-          <% end %>
+            <div class="col">
+              <% @shop.user ||= current_user %>
+              <div class="overview__item">
+                Đang theo dõi: <span><%= @shop.user.following.count %></span>
+              </div>
+              <div class="overview__item">
+                Người theo dõi: <span><%= @shop.user.followers.count %></span>
+              </div>
+            </div>
+          </div>
         </div>
-      <% else %>
-      <div class="row pb-3">
+      <%# </div> %>
+    </div>
+  </div>
+</div>
+
+<div class="outer__container">
+  <div class="container">
+    <div class="inner__container">
+      <div class="container__title">
+        <i class="fa-brands fa-hotjar"></i>
+        BEST SELLER
+      </div>
+      <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id and product.status %>
+          <% if product.shop_id == @shop.id and product.status and product.hot_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
                 <% if product.product_images %>
-                  <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+                  <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
                 <% end %>
-                <div class="overlay">
-                  <div class="other-image">
-                    <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
-                  </div>  
-                </div>
               <% end %>
             </div>
             <%= link_to product_path(product), class: "products__infor" do %>
@@ -135,9 +70,40 @@
           <% end %>
         <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
 
-<%= javascript_importmap_tags("custom/shop") %> 
+<div class="outer__container pb-3">
+  <div class="container">
+    <div class="inner__container">
+      <div class="container__title">
+        <i class="fa-solid fa-box-open"></i>
+        ALL PRODDUCTS
+      </div>
+      <div class="field__products d-flex">
+        <% @products.each do |product| %>
+          <% if product.shop_id == @shop.id and product.status %>
+          <div class="col-lg-2 products__column">
+            <div class="products__image">
+              <%= link_to product_path(product) do %>
+                <% if product.product_images %>
+                  <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to product_path(product), class: "products__infor" do %>
+              <%= content_tag :div, class: "products__name" do %>
+                <%= product.name %>
+              <% end %>
+              <%= content_tag :div, class: "products__price" do %>
+                $<%= product.price %>.00
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
