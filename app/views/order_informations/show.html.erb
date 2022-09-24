@@ -1,6 +1,6 @@
 <div style="background-color: var(--beige-light);">
-  <div class="container">
-    <div class="bg-white ori_header d-flex justify-content-between align-item-center mb-2">
+  <div class="container pt-3">
+    <div class="bg-white ori_header d-flex justify-content-between align-item-center mb-3">
       <%= link_to order_informations_path do %>
         <i class="fa-solid fa-arrow-left-long"></i>
         Trở lại
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="bg-white ori_transport mb-2">
+    <div class="bg-white ori_transport mb-3">
       <div class="stepper d-flex justify-content-between align-item-center">
         <div class="stepper__step stepper__step--finish">
           <div class="stepper__step-icon mb-3">
@@ -153,6 +153,18 @@
         </div>
       </div>
     </div>
+    <% if @order_information.status == 5 %>
+    <div class="bg-white ori_review mb-3">
+      <div class="d-flex justify-content-between">
+        <div class="ori__wish">
+          Cảm ơn bạn đã mua sắm tại PolkaDots!
+        </div>
+        <div class="ori__review_button">
+          
+        </div>
+      </div>
+    </div>
+    <% end %>
 
     <div class="bg-white ori_transport__detail">
       <div class="d-flex justify-content-between align-item-center pb-4">
@@ -176,11 +188,31 @@
                   <label for="inputColor" class="form-label">Transport_type</label>
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                    <% if @order_information.status == 1 %>
                     <%= form.select :transport_type, 
                       [["Đang xử lý đơn hàng", 1],["Đang giao ĐVVC", 2],["Đang vận chuyển", 3],
                       ["Đang giao hàng", 4],["Đã nhận và Đánh giá", 5],], 
                       class: "form-select", id: "inputGroupSelect01" %>
-                    </div>
+                    <% elsif @order_information.status == 2 %>
+                    <%= form.select :transport_type, 
+                      [["Đang giao ĐVVC", 2],["Đang vận chuyển", 3],
+                      ["Đang giao hàng", 4],["Đã nhận và Đánh giá", 5],], 
+                      class: "form-select", id: "inputGroupSelect01" %>
+                    <% elsif @order_information.status == 3 %>
+                    <%= form.select :transport_type, 
+                      [["Đang vận chuyển", 3], ["Đang giao hàng", 4],["Đã nhận và Đánh giá", 5],], 
+                      class: "form-select", id: "inputGroupSelect01" %>
+                    <% elsif @order_information.status == 4 %>
+                    <%= form.select :transport_type, 
+                      [["Đang giao hàng", 4],["Đã nhận và Đánh giá", 5],], 
+                      class: "form-select", id: "inputGroupSelect01" %>
+                    <% elsif @order_information.status == 5 %>
+                    <%= form.select :transport_type, 
+                      [["Đã nhận và Đánh giá", 5]], 
+                      class: "form-select", id: "inputGroupSelect01" %>
+                    <% end %>
+                  </div>
+                    
                   <div class="modal-form modal_form">
                     <div class="modal-field modal_field">
                       <%= form.text_area :content, placeholder: "Nhập nội dung..." %>
@@ -224,6 +256,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
 

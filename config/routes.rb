@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :reviews
   resources :order_informations
+  resources :orders
   resources :transport, only: [:create, :destroy]
 
   get '/products/:id/shop_products', to: 'products#showAll'
@@ -51,7 +52,7 @@ Rails.application.routes.draw do
   # get 'update_quantity', to: 'cart_items#update_quantity'
   patch '/update_quantity', to: 'cart_items#update_quantity'
 
-  post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: 'order'
+  post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: 'orderz'
 
   post 'order_informations/:id/updateTransport', to: "order_informations#updateTransport", as: 'updateTransport'
   patch 'order_informations/:id/nextStatus', to: "order_informations#nextStatus", as: 'nextStatus'

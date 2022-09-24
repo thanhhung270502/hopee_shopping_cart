@@ -24,7 +24,7 @@
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
               <% if !image.image.url.nil? %>
-                <div iv class="image__left">
+                <div class="image__left">
                   <%= image_tag image.image.url, class: "img-fluid image__small" %>
                 </div>
               <% end %>
@@ -146,7 +146,7 @@
               <div class="d-flex">
                   <div class="item__button">
                     <div class="input-group">
-                      <%= form.collection_radio_buttons :size_ids, Size.all, :id, :name do |b| %>
+                      <%= form.collection_radio_buttons :size_ids, @product.sizes, :id, :name do |b| %>
                         <% b.label(class: "item__size d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.radio_button(class: "form-check-input mt-0", "aria-label" => "Checkbox for following text input" )} + b.label(class:"form-control form_control") {b.text}} %>
                         <%# b.label {b.text} %>
                       <% end %>
@@ -218,3 +218,4 @@
 
 <%#= javascript_importmap_tags("custom/change_quantity") %>
 <%= javascript_importmap_tags("custom/show_product") %>
+

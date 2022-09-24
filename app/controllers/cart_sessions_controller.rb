@@ -90,7 +90,7 @@ class CartSessionsController < ApplicationController
       @order_information.save
 
       flash[:success] = "Order successfully"
-      redirect_to root_path
+      redirect_to @order_information
     else 
       flash[:danger] = "Order fail"  
     end

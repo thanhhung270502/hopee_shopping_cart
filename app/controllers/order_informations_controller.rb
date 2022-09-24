@@ -17,7 +17,12 @@ class OrderInformationsController < ApplicationController
   def updateTransport
     @transport = @order_information.transports.build
     @transport.content = params[:content]
-    @transport.transport_type = params[:transport_type]
+    type = params[:transport_type].to_i
+    @transport.transport_type = type
+    if type > @order_information.status 
+      currentStatus = @order_information.status + 1;
+      @order_information.update_attribute(:status, currentStatus);
+    end
     if @transport.save
       flash[:success] = "Update transport successfully~~~"
       redirect_to @order_information

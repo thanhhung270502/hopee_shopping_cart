@@ -18,10 +18,10 @@
           <div class="row mt-3">
             <div class="col">
               <div class="overview__item">
-                Sản phẩm: <span>15</span>
+                Tổng sản phẩm: <span> <%= @shop.products.count %> </span>
               </div>
               <div class="overview__item">
-                Tham gia: <span>2 tháng trước</span>
+                Tham gia: <span> <%= calcTime(@shop.created_at) %> </span>
               </div>
             </div>
             <div class="col">
