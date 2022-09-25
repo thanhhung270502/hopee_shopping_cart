@@ -6,8 +6,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :phone
       t.string :address
       t.string :password_digest
-      t.string :web_url
-      t.string :cover_color
       t.string :image
       t.integer :role, default: 0
 

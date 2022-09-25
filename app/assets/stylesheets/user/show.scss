@@ -1,14 +1,19 @@
 .profile-container {
-    background-color: var(--black);
-    padding: 30px;
-
-    .container {
-        max-width: 1100px;
-    }
+    background-color: var(--white);
+    padding: 20px 0;
 }
 
 .profile__information {
 
+}
+
+.profile__banner {
+    background-color: var(--primary-light);
+    border-radius: 10px;
+
+    .dropdown-toggle::after {
+        display: none !important;
+    }
 }
 
 .profile__avatar {
@@ -25,7 +30,7 @@
 .profile__name {
     font-size: 1.7rem;
     font-weight: bold;
-    color: var(--white);
+    color: var(--primary-dark);
     padding-bottom: 20px;
 }
 
@@ -51,8 +56,8 @@
 .profile__micropost {
     padding: 10px 15px;
     border-radius: 10px;
-    background-color: var(--night);
-    color: var(--white);
+    background-color: var(--primary-light);
+    color: var(--black);
 }
 
 .profile__infor {
@@ -104,8 +109,8 @@
 
 .btn-enter-content {
     font-size: 0.9rem;
-    color: var(--text-white);
-    background-color: var(--night-light);
+    color: var(--black);
+    background-color: var(--white);
     width: 100%;
     text-align: left;
     border-radius: 15px;
@@ -156,7 +161,8 @@
 }
 
 .modal_content {
-    background-color: var(--night);
+    background-color: var(--primary-light);
+    color: var(--black);
 }
 
 .modal_header,
@@ -166,7 +172,7 @@
 
 .modal_header {
     padding: 10px 16px;
-    border-bottom: 1px solid var(--night-light);
+    border-bottom: 1px solid var(--light-gray);
 }
 
 .modal_footer {
@@ -217,14 +223,14 @@
 .modal_add_field {
     align-items: center;
     font-size: 0.9rem;
-    border: 1px solid var(--night-light);
+    border: 1px solid var(--light-gray);
     padding: 5px 10px;
     border-radius: 5px;
 }
 
 .modal_icon {
     font-size: 1.2rem;
-    color: var(--green);
+    color: var(--green-dark);
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;

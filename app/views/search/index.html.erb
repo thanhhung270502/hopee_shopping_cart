@@ -1,5 +1,4 @@
 <h1 class="text-center"> <%= pluralize(@products.count, "Result") %> </h1>
-<%= render 'search/form' %>
 <div class="d-flex">
 <% @products.each do |product| %>
 <div class="col-lg-2 products__column" style="opacity: 0.7;">

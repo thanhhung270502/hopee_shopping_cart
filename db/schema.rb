@@ -136,6 +136,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091655) do
     t.string "name"
     t.string "color"
     t.integer "price"
+    t.integer "discount", default: 0
+    t.integer "current_price"
     t.integer "total_quantity", default: 0
     t.boolean "status", default: false
     t.text "description"
@@ -179,7 +181,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091655) do
     t.string "name", null: false
     t.text "description"
     t.string "web_url"
-    t.string "navbar_color"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shops_on_user_id"
@@ -213,8 +215,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091655) do
     t.string "phone"
     t.string "address"
     t.string "password_digest"
-    t.string "web_url"
-    t.string "cover_color"
     t.string "image"
     t.integer "role", default: 0
     t.datetime "created_at", null: false

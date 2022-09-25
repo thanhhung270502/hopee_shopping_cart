@@ -6,8 +6,8 @@
           <%= image_tag 'logo.jpg', class: "img-fluid" %>
         </div>
         <div class="shop__informations ms-4 flex-grow-1">
-          <div class="d-flex align-item-center">
-            <div class="shop__name pt-3 pb-3"> <%= @shop.name %> </div>
+          <div class="d-flex align-items-center">
+            <div class="shop__name"> <%= @shop.name %> </div>
             <div class="shop__follow">
               <%= render 'follow_form' if logged_in? %>
               <% if current_shop and @shop.id == current_shop.id %>
@@ -107,3 +107,39 @@
     </div>
   </div>
 </div>
+
+<% if current_shop %>
+<div class="outer__container pb-3">
+  <div class="container">
+    <div class="inner__container">
+      <div class="container__title">
+        <i class="fa-solid fa-box-open"></i>
+        PRODUCTS HIDED
+      </div>
+      <div class="field__products d-flex">
+        <% @products.each do |product| %>
+          <% if product.shop_id == @shop.id and !product.status %>
+          <div class="col-lg-2 products__column">
+            <div class="products__image">
+              <%= link_to product_path(product) do %>
+                <% if product.product_images %>
+                  <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to product_path(product), class: "products__infor" do %>
+              <%= content_tag :div, class: "products__name" do %>
+                <%= product.name %>
+              <% end %>
+              <%= content_tag :div, class: "products__price" do %>
+                $<%= product.price %>.00
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

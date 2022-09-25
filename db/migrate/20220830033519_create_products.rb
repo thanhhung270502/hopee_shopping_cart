@@ -5,6 +5,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :color
       t.integer :price
+      t.integer :discount, default: 0
+      t.integer :current_price
       t.integer :total_quantity, default: 0
       t.boolean :status, default: false
       t.text :description 

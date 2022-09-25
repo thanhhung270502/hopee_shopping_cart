@@ -1,13 +1,13 @@
 <div class="profile-container">
   <div class="container">
     <div class="profile__information">
-      <%= content_tag :div, style: "background-color: #{@user.cover_color}; border-radius: 10px;" do %>
+      <div class="profile__banner">
         <div class="dropdown-center">
           <div class="profile__avatar center dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <% if @user.image? %>
               <%= image_tag @user.image.url, class: "img-fluid" %>
             <% else %>
-              <%= image_tag 'logo.jpg', class: "img-fluid" %>
+              <%= image_tag 'default_avatar.png', class: "img-fluid" %>
             <% end %>
           </div>
           <ul class="dropdown-menu dropdown_avatar">
@@ -19,10 +19,10 @@
         <div class="profile__name center">
           <%= @user.name %>
         </div>
-      <% end %>
+      </div>
       
-      <div class="d-flex profile__inforOther">
-        <div class="col-4 profile__box-1">
+      <div class="row profile__inforOther">
+        <div class="col-lg-4 col-md-12 profile__box-1 mb-2">
           <div class="profile__infor">
             <div class="profile__title">
               Thông tin
@@ -51,15 +51,7 @@
                 <div class="col-11 profile__content">
                   <%= @user.address %>
                 </div>
-              </li>       
-              <li class="d-flex">
-                <div class="col-1 profile__label">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="col-11 profile__content">
-                  <%= @user.cover_color %>
-                </div>
-              </li>            
+              </li>                
             </ul>
             <div class="center">
               <%= link_to 'Chỉnh sửa thông tin', edit_user_path(current_user), class: "btn btn-secondary profile__btn" %>
@@ -69,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="col-8 profile__box-2">
+        <div class="col-lg-8 col-md-12 profile__box-2">
           <div class="">
             <section class="micropost_form">
               <%= render 'shared/micropost_form' %>

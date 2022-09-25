@@ -71,17 +71,6 @@ class ProductsController < ApplicationController
     else
       render 'edit'
     end
-
-    # Product.create!(shop_id: 1, name: "Hello", color: "White", price: 12, description: "abc", product_information: "edf", hot_product: false)
-    # respond_to do |format|
-    #   if @product.update_attribute(product_params)
-    #     format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
-    #     format.json { render :show, status: :ok, location: @product }
-    #   else
-    #     format.html { render :edit, status: :unprocessable_entity }
-    #     format.json { render json: @product.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /products/1 or /products/1.json
@@ -178,7 +167,8 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :color, :price, :total_quantity, :status,
-                                      :description, :product_information, :hot, size_ids:[],
+                                      :discount, :current_price,
+                                      :description, :product_information, :hot, size_ids:[], category_ids: [],
                                       product_images_attributes: [:id, :product_id, :image], numbers: [])
     end
 end

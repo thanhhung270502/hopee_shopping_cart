@@ -2,7 +2,11 @@
 <div class="profile__micropost">
 	<div class="d-flex profile__enter-content">
 		<div class="modal-avatar modal_avatar">
-			<%= image_tag 'logo.jpg', class: "img-fluid" %>
+			<% if @user.image? %>
+              <%= image_tag @user.image.url, class: "img-fluid" %>
+            <% else %>
+              <%= image_tag 'default_avatar.png', class: "img-fluid" %>
+            <% end %>
 		</div>
 		<button type="button" class="btn-enter-content" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 			Bạn muốn đăng gì?
@@ -24,7 +28,11 @@
 			<div class="modal-body">
 				<div class="d-flex modal-user">
 					<div class="modal-avatar modal_avatar">
-						<%= image_tag 'logo.jpg', class: "img-fluid" %>
+						<% if @user.image? %>
+							<%= image_tag @user.image.url, class: "img-fluid" %>
+						<% else %>
+							<%= image_tag 'default_avatar.png', class: "img-fluid" %>
+						<% end %>
 					</div>
 					<div class="modal-name modal_name">
 						<%= @user.name %>

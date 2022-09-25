@@ -63,6 +63,19 @@
         </div>
       </div>
 
+      <div class="col-12">
+        <div class="mb-1">
+          <%= form.label "Categories:" %>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+              <% b.label(class: "d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.check_box(class: "form-check-input mt-0")} + b.label(class:"form-control form_control") {b.text} } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <div class="col-12 mb-3">
         <label for="inputDescription" class="form-label">Description</label>
         <%= form.text_area :description, class: "form-control", id: "inputAddress2"   %>
