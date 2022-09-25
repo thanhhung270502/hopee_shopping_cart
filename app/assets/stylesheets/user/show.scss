@@ -1,5 +1,5 @@
 .profile-container {
-    background-color: var(--white);
+    background-color: var(--beige-light);
     padding: 20px 0;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .profile__banner {
-    background-color: var(--primary-light);
+    background-color: var(--beige-light);
     border-radius: 10px;
 
     .dropdown-toggle::after {
@@ -30,7 +30,7 @@
 .profile__name {
     font-size: 1.7rem;
     font-weight: bold;
-    color: var(--primary-dark);
+    color: var(--black);
     padding-bottom: 20px;
 }
 
@@ -56,7 +56,7 @@
 .profile__micropost {
     padding: 10px 15px;
     border-radius: 10px;
-    background-color: var(--primary-light);
+    background-color: var(--white);
     color: var(--black);
 }
 
@@ -110,7 +110,7 @@
 .btn-enter-content {
     font-size: 0.9rem;
     color: var(--black);
-    background-color: var(--white);
+    background-color: var(--beige-light);
     width: 100%;
     text-align: left;
     border-radius: 15px;

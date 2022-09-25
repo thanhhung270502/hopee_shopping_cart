@@ -60,13 +60,12 @@
 }
 
 .product__image-field {
-    margin: 0 10px;
+    margin: 0 15px;
     background-color: var(--white);
 }
 
 .product__infor {
-    margin-left: 10px;
-    margin-right: 15px;
+    margin: 0 15px;
     background-color: white;
     padding: 30px;
 }
@@ -91,10 +90,24 @@
     padding-right: 5px;
 }
 
-.product__price {
+.product__price,
+.product__new_price {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 16px;
+}
+
+.product__old_price {
+    color: var(--red);
+
+    span {
+        color: var(--black);
+        text-decoration: line-through;
+    }
+}
+
+.product__new_price {
+    color: var(--red);
 }
 
 .product__status {
@@ -192,4 +205,23 @@
 
 .product-field__item-active {
     display: block;
+}
+
+// Responsive
+@media (min-width: 1024px) {
+    .col__left {
+        flex: 0 0 auto;
+        width: 12.5%;
+    }
+
+    .col__center {
+        flex: 0 0 auto;
+        width: 37.5%;
+    }
+
+    .col__right {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
 }

@@ -18,8 +18,8 @@
   </div>
 
   <div class="product-container">
-    <div class="d-flex">
-      <div class="col_15">
+    <div class="row">
+      <div class="col__left col-md-3">
         <div class="product__carousel maxHeight">
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
@@ -32,7 +32,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col_35">
+      <div class="col__center col-md-9">
         <div class="product__image-field maxHeight">
           <% if @product.product_images %>
             <% @product.product_images.each do |image| %>
@@ -45,7 +45,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col_50">
+      <div class="col__right col-md-12">
         <div class="product__infor maxHeight">
           <div class="d-flex justify-content-between">
             <div class="product__title">
@@ -65,6 +65,12 @@
                 </li>
                 <li>
                   <%= link_to "Edit Quantity", editQuantity_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Discount
+                  </button>
                 </li>
                 <% if @product.hot_product %>
                   <li>
@@ -93,6 +99,30 @@
             </div>
             <% end %>
           </div>
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Discount</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <%= form_with url: discount_path, method: :patch do |form| %>
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Discount:</span>
+                    <%= form.number_field :discount, class: "form-control" %>
+                    <span class="input-group-text">%</span>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <%= form.submit "Submit", class: "btn btn-primary" %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
           <div class="product__star">
             <div class="d-flex">
               <i class="fa-solid fa-star product__star"></i>
@@ -102,9 +132,18 @@
               <i class="fa-solid fa-star product__star"></i>
             </div>
           </div>
-          <div class="product__price" >
-            $<%= @product.price %>.00
-          </div>
+          <% if @product.price == @product.current_price %>
+            <div class="product__price">
+              $<%= @product.price %>.00
+            </div>
+          <% else %>
+            <div class="product__old_price">
+              <span>$<%= @product.price %>.00</span> -<%= @product.discount %>%
+            </div>
+            <div class="product__new_price">
+              $<%= @product.current_price %>.00
+            </div>
+          <% end %>
           <div class="product__status">
             <% if @product.total_quantity > 0 %>
               Trạng thái: <span>Còn hàng</span>

@@ -131,7 +131,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.status %>
+          <% if product.status and product.price > product.current_price %>
             <div class="col-lg-2 col-md-3 products__column">
               <div class="products__image">
                 <%= link_to product_path(product) do %>
@@ -144,8 +144,8 @@
                 <%= content_tag :div, class: "products__name" do %>
                   <%= product.name %>
                 <% end %>
-                <%= content_tag :div, class: "products__price" do %>
-                  $<%= product.price %>.00 
+                <%= content_tag :div, class: "products__new_price pb-3" do %>
+                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
                 <% end %>
               <% end %>
             </div>

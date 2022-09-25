@@ -3,7 +3,11 @@
     <%# <div class="inner__container"> %>
       <div class="d-flex">
         <div class="shop__image">
-          <%= image_tag 'logo.jpg', class: "img-fluid" %>
+          <% if @shop.image? %>
+            <%= image_tag @shop.image.url, class: "img-fluid" %>
+          <% else %>
+            <%= image_tag 'shop_default.png', class: "img-fluid" %>
+          <% end %>
         </div>
         <div class="shop__informations ms-4 flex-grow-1">
           <div class="d-flex align-items-center">
@@ -11,8 +15,41 @@
             <div class="shop__follow">
               <%= render 'follow_form' if logged_in? %>
               <% if current_shop and @shop.id == current_shop.id %>
-                <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success" %>
+                <%= link_to "Thêm sản phẩm" ,new_product_path, class: "btn btn-success me-2" %>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Edit Profile
+                </button>
               <% end %>
+            </div>
+          </div>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <%= form_with(model: @shop, url: editProfile_path, method: :patch) do |form| %>
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Name: </span>
+                    <%= form.text_field :name, class: "form-control" %>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">With textarea</span>
+                    <%= form.text_area :description, class: "form-control" %>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Avatar Shop</label>
+                    <%= form.file_field :image, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <%= form.submit "Update", class: "btn btn-primary" %>
+                </div>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="row mt-3">
@@ -44,6 +81,40 @@
   <div class="container">
     <div class="inner__container">
       <div class="container__title">
+        <i class="fa-solid fa-bolt"></i>
+        FLASH SALE
+      </div>
+      <div class="field__products d-flex">
+        <% @products.each do |product| %>
+          <% if product.shop_id == @shop.id and product.status and product.price != product.current_price %>
+          <div class="col-lg-2 products__column">
+            <div class="products__image">
+              <%= link_to product_path(product) do %>
+                <% if product.product_images %>
+                  <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to product_path(product), class: "products__infor" do %>
+              <%= content_tag :div, class: "products__name" do %>
+                <%= product.name %>
+              <% end %>
+              <%= content_tag :div, class: "products__new_price pb-3" do %>
+                <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="outer__container">
+  <div class="container">
+    <div class="inner__container">
+      <div class="container__title">
         <i class="fa-brands fa-hotjar"></i>
         BEST SELLER
       </div>
@@ -62,8 +133,14 @@
               <%= content_tag :div, class: "products__name" do %>
                 <%= product.name %>
               <% end %>
-              <%= content_tag :div, class: "products__price" do %>
-                $<%= product.price %>.00
+              <% if product.price == product.current_price %>
+                <%= content_tag :div, class: "products__price" do %>
+                  $<%= product.price %>.00
+                <% end %>
+              <% else %>
+                <%= content_tag :div, class: "products__new_price" do %>
+                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                <% end %>
               <% end %>
             <% end %>
           </div>
@@ -96,8 +173,14 @@
               <%= content_tag :div, class: "products__name" do %>
                 <%= product.name %>
               <% end %>
-              <%= content_tag :div, class: "products__price" do %>
-                $<%= product.price %>.00
+              <% if product.price == product.current_price %>
+                <%= content_tag :div, class: "products__price" do %>
+                  $<%= product.price %>.00
+                <% end %>
+              <% else %>
+                <%= content_tag :div, class: "products__new_price" do %>
+                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                <% end %>
               <% end %>
             <% end %>
           </div>

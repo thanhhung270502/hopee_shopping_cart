@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot editQuantity updateQuantity   publicProduct ]
+  before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot editQuantity updateQuantity publicProduct discount ]
   before_action :createCartSession, only: %i[ getProduct ]
   # GET /products or /products.json
   def index
@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
     @product.shop_id = current_shop.id
     @product.hot_product = false
     @product.status = false
+    @product.current_price = @product.price
     if @product.save
       paramImages = params[:product_images]['image']
       paramImages.each do |a|
@@ -53,7 +54,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     @product = Product.find_by(id: params[:id])
-    puts params
+    @product.update_attribute(:discount, 0)
+    @product.update_attribute(:current_price, params[:product][:price])
     images = params[:product_images][:image]
     for i in 0...images.length
       if images[i].blank?
@@ -128,7 +130,6 @@ class ProductsController < ApplicationController
   end
 
   def editQuantity
-    
   end
 
   def updateQuantity
@@ -155,6 +156,14 @@ class ProductsController < ApplicationController
     else
       @product.update_attribute(:status, true)
     end      
+    redirect_to @product
+  end
+
+  def discount 
+    discount_ = params[:discount].to_i
+    @product.update_attribute(:discount, discount_)
+    newPrice = @product.price * (100 - discount_) / 100
+    @product.update_attribute(:current_price, newPrice)
     redirect_to @product
   end
 

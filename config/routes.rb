@@ -43,11 +43,12 @@ Rails.application.routes.draw do
   
   patch '/products/:id/toggle_hot', to: 'products#toggle_hot', as: 'toggle_hot'
   patch '/products/:id/publicProduct', to: 'products#publicProduct', as: 'publicProduct'
+  patch '/products/:id/discount', to: 'products#discount', as: 'discount'
 
   get '/products/:id/editQuantity', to: 'products#editQuantity', as: 'editQuantity'
   patch '/products/:id/editQuantity', to: 'products#updateQuantity'
 
-  get '/shops/:id/showHot', to: 'shops#showHot', as: 'showHot'
+  patch '/shops/:id/editProfile', to: 'shops#editProfile', as: 'editProfile'
 
   # get 'update_quantity', to: 'cart_items#update_quantity'
   patch '/update_quantity', to: 'cart_items#update_quantity'

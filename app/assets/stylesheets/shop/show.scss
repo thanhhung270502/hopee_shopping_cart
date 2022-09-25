@@ -20,3 +20,11 @@
         color: var(--red);
     }
 }
+
+.products__new_price {
+    color: var(--red);
+    span {
+        color: var(--light-gray);
+        text-decoration: line-through;
+    }
+}
