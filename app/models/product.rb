@@ -6,6 +6,11 @@ class Product < ApplicationRecord
     
     # has_many_attached :images
 
+    validates :name, presence: true, length: { maximum: 50 }
+    validates :color, presence: true
+    validates :price, presence: true
+    # validates :images, presence: true
+
     has_many :product_images
     accepts_nested_attributes_for :product_images, allow_destroy: true, reject_if: proc { |attributes| attributes['image'].blank? }
 

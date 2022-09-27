@@ -171,6 +171,16 @@
     text-align: right;
 }
 
+.cart-item__new_price {
+    color: var(--red);
+    padding: 0 10px;
+    span {
+        color: var(--light-gray);
+        text-decoration: line-through;
+        padding: 0 !important;
+    }
+}
+
 .topbar__container {
     padding: 12px 0;
     background-color: var(--white);

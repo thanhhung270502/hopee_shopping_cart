@@ -167,6 +167,28 @@ class ProductsController < ApplicationController
     redirect_to @product
   end
 
+  def arrivals_HS
+    all_products = Product.all
+    @products = all_products.select { |value|
+      value.type_product >= 3 and
+      value.type_product <= 5
+    }
+  end
+
+  def arrivals_TP
+    all_products = Product.all
+    @products = all_products.select { |value|
+      value.type_product <= 2
+    }
+  end
+
+  def arrivals_TJ
+    all_products = Product.all
+    @products = all_products.select { |value|
+      value.type_product >= 6
+    }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -176,7 +198,7 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :color, :price, :total_quantity, :status,
-                                      :discount, :current_price,
+                                      :discount, :current_price, :type_product,
                                       :description, :product_information, :hot, size_ids:[], category_ids: [],
                                       product_images_attributes: [:id, :product_id, :image], numbers: [])
     end

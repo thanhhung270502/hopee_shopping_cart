@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   get 'setting',    to: 'users#setting'
 
   get 'avaUs',     to: 'users#getAva'
-  get 'avaUs',     to: 'users#setAva'
+  patch 'avaUs',     to: 'users#setAva'
+
+  get 'edit_password',     to: 'users#edit_password'
+  patch 'edit_password',     to: 'users#update_password'
 
   resources :users do
     member do
@@ -47,6 +50,10 @@ Rails.application.routes.draw do
 
   get '/products/:id/editQuantity', to: 'products#editQuantity', as: 'editQuantity'
   patch '/products/:id/editQuantity', to: 'products#updateQuantity'
+
+  get '/arrivals_HS', to: 'products#arrivals_HS'
+  get '/arrivals_TP', to: 'products#arrivals_TP'
+  get '/arrivals_TJ', to: 'products#arrivals_TJ'
 
   patch '/shops/:id/editProfile', to: 'shops#editProfile', as: 'editProfile'
 

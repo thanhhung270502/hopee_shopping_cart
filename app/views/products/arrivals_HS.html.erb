@@ -1,0 +1,30 @@
+<div class="shop__show">
+  <div class="site__products">
+    <div class="products__title-2">
+      <p>TẤT CẢ SẢN PHẨM</p>
+    </div>
+    <div class="row pb-3">
+      <% @products.each do |product| %>
+      <% if product.status %>
+        <div class="col-lg-2 products__column">
+          <div class="products__image">
+            <%= link_to do %>
+              <% if product.product_images %>
+                <%= image_tag product.product_images.last.image.url, class: "img-fluid image" %>
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to product_path(product), class: "products__infor" do %>
+            <%= content_tag :div, class: "products__name" do %>
+              <%= product.name %>
+            <% end %>
+            <%= content_tag :div, class: "products__price" do %>
+              $<%= product.price %>.00 
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

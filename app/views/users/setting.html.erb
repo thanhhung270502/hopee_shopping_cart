@@ -14,10 +14,12 @@
                     Thay đổi hình ảnh
                 <% end %>
             </li>
-            <li><a href="#">
-                <i class="fa-solid fa-user-lock setting__icon"></i>
-                Thiết lập tài khoản
-            </a></li>
+            <li>
+                <%= link_to edit_password_path, class: "dropdown-item" do %>
+                    <i class="fa-solid fa-user-lock setting__icon"></i>
+                    Thiết lập tài khoản
+                <% end %>
+            </li>
             <li><a href="#">
                 <i class="fa-solid fa-shield setting__icon"></i>
                 Bảo mật

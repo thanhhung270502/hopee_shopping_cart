@@ -134,14 +134,14 @@
           </div>
           <% if @product.price == @product.current_price %>
             <div class="product__price">
-              $<%= @product.price %>.00
+              $<%= @product.price %>
             </div>
           <% else %>
             <div class="product__old_price">
-              <span>$<%= @product.price %>.00</span> -<%= @product.discount %>%
+              <span>$<%= @product.price %></span> -<%= @product.discount %>%
             </div>
             <div class="product__new_price">
-              $<%= @product.current_price %>.00
+              $<%= @product.current_price %>
             </div>
           <% end %>
           <div class="product__status">

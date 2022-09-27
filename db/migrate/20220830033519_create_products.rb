@@ -4,9 +4,10 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :shop
       t.string :name
       t.string :color
-      t.integer :price
+      t.decimal :price
       t.integer :discount, default: 0
-      t.integer :current_price
+      t.decimal :current_price
+      t.integer :type_product, null: false
       t.integer :total_quantity, default: 0
       t.boolean :status, default: false
       t.text :description 

@@ -14,18 +14,18 @@
 }
 
 .setting__menu {
-    background-color: var(--white);
+    background-color: var(--beige-light);
     color: var(--black);
     padding: 0;
     // padding-left: 10px;
     height: calc(100vh - 60.6px);
     // border-bottom: 1px solid var(--night-light);
-    border-right: 1px solid var(--night-light);
+    border-right: 4px solid var(--light-gray);
     // height: 100vh;
 }
 
 .setting__title {
-    padding: 10px 16px;
+    padding: 20px 16px 10px;
     font-weight: bold;
     font-size: 1.3rem;
 }
@@ -63,7 +63,7 @@
 .setting__content {
     height: calc(100vh - 60.6px);
     padding: 20px 15%;
-    background-color: var(--white);
+    background-color: var(--beige-light);
     color: var(--black)
 }
 

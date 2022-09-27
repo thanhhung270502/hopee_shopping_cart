@@ -100,7 +100,7 @@
                 <%= product.name %>
               <% end %>
               <%= content_tag :div, class: "products__new_price pb-3" do %>
-                <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                <span>$<%= product.price %></span> $<%= product.current_price %>
               <% end %>
             <% end %>
           </div>
@@ -135,11 +135,11 @@
               <% end %>
               <% if product.price == product.current_price %>
                 <%= content_tag :div, class: "products__price" do %>
-                  $<%= product.price %>.00
+                  $<%= product.price %>
                 <% end %>
               <% else %>
                 <%= content_tag :div, class: "products__new_price" do %>
-                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                  <span>$<%= product.price %></span> $<%= product.current_price %>
                 <% end %>
               <% end %>
             <% end %>
@@ -151,7 +151,7 @@
   </div>
 </div>
 
-<div class="outer__container pb-3">
+<div class="outer__container">
   <div class="container">
     <div class="inner__container">
       <div class="container__title">
@@ -175,11 +175,11 @@
               <% end %>
               <% if product.price == product.current_price %>
                 <%= content_tag :div, class: "products__price" do %>
-                  $<%= product.price %>.00
+                  $<%= product.price %>
                 <% end %>
               <% else %>
                 <%= content_tag :div, class: "products__new_price" do %>
-                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                  <span>$<%= product.price %></span> $<%= product.current_price %>
                 <% end %>
               <% end %>
             <% end %>
@@ -215,7 +215,7 @@
                 <%= product.name %>
               <% end %>
               <%= content_tag :div, class: "products__price" do %>
-                $<%= product.price %>.00
+                $<%= product.price %>
               <% end %>
             <% end %>
           </div>

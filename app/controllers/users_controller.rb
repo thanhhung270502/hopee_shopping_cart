@@ -45,6 +45,21 @@ class UsersController < ApplicationController
         end
     end 
 
+    def edit_password
+        @user = current_user
+        # @user.image.attach(params[:user][:image])
+    end
+
+    def update_password
+        @user = current_user
+        if @user.update(user_params)
+            # Handle a successful update.
+            redirect_to @user
+        else
+            render 'edit_password'
+        end
+    end 
+
     def edit
         @user = User.find_by(id: params[:id])
     end        

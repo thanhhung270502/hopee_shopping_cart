@@ -13,7 +13,7 @@
 
   <div class="form__content">
     <div class="row">
-      <div class="col-6">
+      <div class="col-12">
         <label for="inputName" class="form-label">Name</label>
         <%= form.text_field :name, class: "form-control", id: "inputName" %>
       </div>
@@ -46,6 +46,17 @@
             ["Orange", "orange"], ["Red", "red"],
             ["Blue", "blue"], ["Green", "green"], ["Yellow", "yellow"],
             ["Purple", "purple"], ["Pink", "pink"], ["Beige", "beige"]], 
+            class: "form-select", id: "inputGroupSelect01" %>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <label for="inputColor" class="form-label">Type</label>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          <%= form.select :type_product, 
+            [["Áo Thun", 1], ["Áo Polo", 2], ["Hoddie", 3], ["Áo Khoác", 4],
+            ["Áo Sweeter", 5], ["Trouser", 6], ["Jean", 7]], 
             class: "form-select", id: "inputGroupSelect01" %>
         </div>
       </div>
@@ -92,3 +103,11 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  const color = document.getElementById("product_color")
+  color.classList.add('form-select')
+  
+  const type = document.getElementById("product_type_product")
+  type.classList.add('form-select')
+</script>

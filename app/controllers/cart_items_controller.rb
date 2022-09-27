@@ -28,7 +28,7 @@ class CartItemsController < ApplicationController
       first_cart_session.destroy
     end
     total = @cart_item.cart_session.sum_money
-    total += @cart_item.product.price * @cart_item.quantity
+    total += @cart_item.product.current_price * @cart_item.quantity
     @cart_item.cart_session.update_attribute(:sum_money, total)
 
     if @cart_item.save
@@ -63,7 +63,7 @@ class CartItemsController < ApplicationController
   # DELETE /cart_items/1 or /cart_items/1.json
   def destroy
     total = @cart_item.cart_session.sum_money
-    total -= @cart_item.product.price * @cart_item.quantity
+    total -= @cart_item.product.current_price * @cart_item.quantity
     @cart_item.cart_session.update_attribute(:sum_money, total)
     @cart_item.destroy
 
@@ -77,16 +77,14 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:cart_item][:current_id]);
     prevQuantity = @cart_item.quantity.to_i;
     newQuantity = params[:cart_item][:quantity].to_i;
-    puts "Hello";
-    puts newQuantity;
     
     total = @cart_item.cart_session.sum_money;
     if (newQuantity > prevQuantity) 
       npQuantity = newQuantity - prevQuantity;
-      total += @cart_item.product.price * npQuantity;
+      total += @cart_item.product.current_price * npQuantity;
     else 
       npQuantity = prevQuantity - newQuantity;
-      total -= @cart_item.product.price * npQuantity;
+      total -= @cart_item.product.current_price * npQuantity;
     end
     @cart_item.cart_session.update_attribute(:sum_money, total)
     @cart_item.update_attribute(:quantity, newQuantity);

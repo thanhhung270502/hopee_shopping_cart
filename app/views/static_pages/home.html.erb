@@ -15,7 +15,7 @@
             </div>
             <div class="helper__content">
               Free Delivery <br/>
-              <span>from $100.00</span>
+              <span>from $100</span>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="helper__content">
               Free Delivery <br/>
-              <span>from $100.00</span>
+              <span>from $100</span>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="helper__content">
               Free Delivery <br/>
-              <span>from $100.00</span>
+              <span>from $100</span>
             </div>
           </div>
         </div>
@@ -70,6 +70,7 @@
       </div>
       <div class="d-flex">
         <div class="col-4">
+          <%= link_to arrivals_HS_path do %>
           <div class="arrivals">
             <div class="arrivals__image">
               <%= image_tag '2-2-4-3.jpg', class: "img-fluid" %>
@@ -84,8 +85,10 @@
               </a>
             </div>
           </div>
+          <% end %>
         </div>
         <div class="col-4">
+          <%= link_to arrivals_TP_path do %>
           <div class="arrivals">
             <div class="arrivals__image">
               <%= image_tag '1-3-3-1.jpg', class: "img-fluid" %>
@@ -100,8 +103,10 @@
               </a>
             </div>
           </div>
+          <% end %>
         </div>
         <div class="col-4">
+          <%= link_to arrivals_TJ_path do %>
           <div class="arrivals">
             <div class="arrivals__image">
               <%= image_tag '4-2-1-3.jpg', class: "img-fluid" %>
@@ -116,6 +121,7 @@
               </a>
             </div>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -145,7 +151,7 @@
                   <%= product.name %>
                 <% end %>
                 <%= content_tag :div, class: "products__new_price pb-3" do %>
-                  <span>$<%= product.price %>.00</span> $<%= product.current_price %>.00
+                  <span>$<%= product.price %></span> $<%= product.current_price %>
                 <% end %>
               <% end %>
             </div>

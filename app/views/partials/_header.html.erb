@@ -67,9 +67,16 @@
                                 <%= cart_item.quantity %>
                               </div>
                             </div>
-                            <div class="col-2 cart-item__price">
-                              $<%= cart_item.product.price %>.00
-                            </div>
+                            <% if cart_item.product.price == cart_item.product.current_price %>
+                              <div class="col-2 cart-item__price">
+                                $<%= cart_item.product.price %>
+                              </div>
+                            <% else %>
+                              <%= content_tag :div, class: "col-2 cart-item__new_price" do %>
+                                <span>$<%= cart_item.product.price %></span> <br/>
+                                $<%= cart_item.product.current_price %>
+                              <% end %>
+                            <% end %>
                           </div>
                         </a></li>
                       <% end %>
@@ -83,9 +90,9 @@
                     </div>
                     <div>
                       <% if current_cart_session %>
-                        $<%= current_cart_session.sum_money %>.00 
+                        $<%= current_cart_session.sum_money %> 
                       <% else %>
-                        $0.00
+                        $0.0
                       <% end %>
                     </div>
                   </div>
