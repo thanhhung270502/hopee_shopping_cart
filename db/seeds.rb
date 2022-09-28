@@ -2,7 +2,9 @@ User.create!(name: "Thanh Hùng Lý",
             email: "admin@polkadots.com",
             role: 2,
             password:               "polkadots",
-            password_confirmation:  "polkadots"
+            password_confirmation:  "polkadots",
+            activated: true,
+            activated_at: Time.zone.now
 )
 
 

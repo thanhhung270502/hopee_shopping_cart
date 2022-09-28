@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   resources :order_informations
   resources :orders
   resources :transport, only: [:create, :destroy]
+  resources :account_activations, only: [:edit]
+
 
   get '/products/:id/shop_products', to: 'products#showAll'
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
