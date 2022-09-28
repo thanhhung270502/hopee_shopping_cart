@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
     include ProductsHelper
     include CartSessionsHelper
     include CartItemsHelper
+    include OrderInformationsHelper
 
+    
     @cart_items = CartItem.all
 
     def set_query

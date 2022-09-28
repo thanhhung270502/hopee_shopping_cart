@@ -21,6 +21,8 @@ module ProductsHelper
         if (product_size.size.name == size)
           if (product_size.number < quantity.to_i)
             return false;
+          elsif (quantity.to_i <= 0)
+            return false;
           end
         end
       end

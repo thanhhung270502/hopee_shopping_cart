@@ -124,25 +124,6 @@ a {
     text-decoration: none;
 }
 
-#myBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 1.5rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 19px;
-    border-radius: 1000px;
-    background-color: var(--white);
-}
-  
-#myBtn:hover {
-    color: var(--primary);
-}
-
 .closebtn {
     margin-left: 15px;
     color: var(--black);

@@ -113,24 +113,30 @@
             </div>
             <ul class="dropdown-menu dropdown_menu">
               <li>
-                  <%= link_to '<i class="fa-solid fa-address-card dropdown-icon"></i> Profile'.html_safe, user_path(current_user), class: "dropdown-item dropdown-padding" %>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
-                </li>
-                <li>
-                  <div class="dropdown-item dropdown-padding" href="/static_pages/setting">
-                    <i class="fa-solid fa-moon dropdown-icon dark-mode-active"></i>
-                    <i class="fa-solid fa-sun dropdown-icon"></i>
-                    Chế độ
-                  </div>
-                </li>
-                <li>
-                  <%= button_to '<i class="fa-solid fa-right-from-bracket dropdown-icon"></i> Đăng xuất'.html_safe, log_out_path, method: :delete, class: "dropdown-item dropdown-padding" %>
-                </li>
+                <%= link_to '<i class="fa-solid fa-address-card dropdown-icon"></i> Profile'.html_safe, user_path(current_user), class: "dropdown-item dropdown-padding" %>
+              </li>
+              <li>
+                <%= link_to '<i class="fa-solid fa-money-bill dropdown-icon"></i> Orders'.html_safe, order_informations_path , class: "dropdown-item dropdown-padding" %>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
+              </li>
+              <li> 
+                <div class="dropdown-item dropdown-padding dropdown_mode dark_mode_active">
+                  <i class="fa-solid fa-moon dropdown-icon"></i>
+                  Chế độ
+                </div>
+                <div class="dropdown-item dropdown-padding dropdown_mode">
+                  <i class="fa-solid fa-sun dropdown-icon"></i>
+                  Chế độ
+                </div>
+              </li>
+              <li>
+                <%= button_to '<i class="fa-solid fa-right-from-bracket dropdown-icon"></i> Đăng xuất'.html_safe, log_out_path, method: :delete, class: "dropdown-item dropdown-padding" %>
+              </li>
             </ul>
           </div>
         <% else %>

@@ -10,11 +10,12 @@
     cursor: pointer;
     padding: 10px 19px;
     border-radius: 1000px;
-    background-color: var(--white);
+    background-color: var(--black);
+    color: var(--white);
 }
   
 #myBtn:hover {
-    color: var(--primary);
+    color: var(--primary-dark);
 }
 
 .maxHeight {

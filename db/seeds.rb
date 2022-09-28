@@ -19,7 +19,10 @@ Shop.create!( user_id: 1,
   User.create!(name: name,
               email: email,
               password: password,
-              password_confirmation: password)
+              password_confirmation: password,
+              activated: true,
+              activated_at: Time.zone.now
+            )
 end
 
 sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];

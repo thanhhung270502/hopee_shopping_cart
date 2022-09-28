@@ -24,10 +24,11 @@
         <div class="helper__item">
           <div class="d-flex">
             <div class="helper__icon">
-              <i class="fa-solid fa-arrow-rotate-left"></i>
+              <i class="fa-solid fa-truck-fast"></i>
             </div>
             <div class="helper__content">
-              Free Return <br/>
+              Free Delivery <br/>
+              <span>from $100</span>
             </div>
           </div>
         </div>
@@ -139,10 +140,10 @@
         <% @products.each do |product| %>
           <% if product.status and product.price > product.current_price %>
             <div class="col-lg-2 col-md-3 products__column">
-              <div class="products__image">
+              <div class="products__image pt-2">
                 <%= link_to product_path(product) do %>
                   <% if product.product_images %>
-                    <%= image_tag product.product_images.first.image.url, class: "img-fluid" %>
+                    <%= image_tag product.product_images.last.image.url, class: "img-fluid" %>
                   <% end %>
                 <% end %>
               </div>
