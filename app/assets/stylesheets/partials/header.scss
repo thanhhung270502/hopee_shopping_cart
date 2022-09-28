@@ -87,16 +87,6 @@
     }
 }
 
-.button_search {
-    width: 150px;
-    height: 45px;
-    border: none;
-    background-color: var(--primary-dark);
-    color: var(--white);
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
 .cart_modal {
     --bs-modal-width: 400px;
 
@@ -152,6 +142,12 @@
 .dropdown-padding {
     padding: 10px;
     border-radius: 7px;
+    color: var(--black);
+
+    &:hover {
+        background-color: var(--primary-dark);
+        color: var(--white);
+    }
 }
 
 .drop-menu-right {
@@ -326,11 +322,6 @@
     
     li {
         padding: 0 10px;
-    }
-    
-    a:hover {
-        background-color: var(--primary-dark);
-        color: var(--white);
     }
 }
 

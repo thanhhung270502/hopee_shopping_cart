@@ -10,6 +10,8 @@
     --text-white: #e4e6eb;
     --beige-light: #f5f5f5;
 
+    --white-2: #fff;
+
     --text-color: #333;
     --blue-black: #161d27;
     --night-light: #3A3B3C;
@@ -42,6 +44,15 @@
     --default-layout-horizontal-spacer: 24px;
     
     box-sizing: border-box;
+}
+
+[data-theme="dark"] {
+    --white: #23201b ;
+    --black: white;
+    --primary-dark: #FFC174;
+    --beige-light: #3A3B3C;
+    --primary-light: #424140;
+    --white-2: #23201b;
 }
 
 * {

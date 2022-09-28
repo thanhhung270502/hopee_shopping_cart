@@ -3,6 +3,11 @@ module SessionsHelper
     def log_in(user)
         session[:user_id] = user.id
     end
+    
+    # Confirms a admin user
+    def admin_user
+        redirect_to(root_url) unless current_user.role == 2
+    end
 
     # Remembers a user in a persistent session.
     def remember(user)

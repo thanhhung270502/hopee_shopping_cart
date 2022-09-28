@@ -4,7 +4,8 @@ const currentTheme = localStorage.getItem('theme');
 
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'light') {
+
+    if (currentTheme === 'dark') {
         btn_moon.classList.remove('dark-mode-active');
         btn_sun.classList.add('dark-mode-active');
     }
@@ -13,13 +14,17 @@ if (currentTheme) {
 btn_moon.onclick = () => {
     btn_moon.classList.remove('dark-mode-active');
     btn_sun.classList.add('dark-mode-active');
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
+
+    console.log("Hello World!");
+
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
 }
 
-btn_moon.onclick = () => {
-    btn_moon.classList.remove('dark-mode-active');
-    btn_sun.classList.add('dark-mode-active');
+btn_sun.onclick = () => {
+    btn_sun.classList.remove('dark-mode-active');
+    btn_moon.classList.add('dark-mode-active');
+
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem('theme', 'light');
 }

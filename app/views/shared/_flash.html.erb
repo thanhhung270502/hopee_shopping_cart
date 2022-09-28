@@ -12,6 +12,13 @@
     </div>
 <% end %>
 
+<% if flash[:danger] %>
+    <div class="alert alert-danger flash__" role="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <%= flash[:danger] %>
+    </div>
+<% end %>
+
 <% if flash[:info] %>
     <div class="alert alert-info flash__" role="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 

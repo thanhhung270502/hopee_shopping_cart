@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController    
-  before_action :set_shop, only: %i[ show edit update destroy editProfile ]
+  before_action :set_shop, only: %i[ show edit update editProfile ]
+  before_action :admin_user, only: [:index, :destroy]
+
   def index
     @shops = Shop.all
   end

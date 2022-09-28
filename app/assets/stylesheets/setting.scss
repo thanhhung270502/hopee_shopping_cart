@@ -40,8 +40,12 @@
     }
 
     li:hover {
-        background-color: var(--text-white);
+        background-color: var(--primary-dark);
         border-radius: 7px;
+
+        a {
+            color: var(--white);
+        }
     }
 
     li a {
@@ -56,8 +60,12 @@
 }
 
 .setting__active {
-    background-color: var(--text-white);
+    background-color: var(--primary-dark);
     border-radius: 7px;
+
+    a {
+        color: var(--white) !important;
+    }
 }
 
 .setting__content {
@@ -77,6 +85,6 @@
 
 .form-trans {
     background-color: transparent !important;
-    color: var(--dark-gray) !important;
-    border-color: var(--night-gray);
+    color: var(--black) !important;
+    // border-color: var(--night-gray);
 }

@@ -48,7 +48,7 @@
 .product__carousel {
     margin-left: 15px;
     margin-right: 10px;
-    background-color: white;
+    background-color: var(--white-2);
 }
 
 .image__left {
@@ -61,12 +61,13 @@
 
 .product__image-field {
     margin: 0 15px;
-    background-color: var(--white);
+    background-color: var(--white-2);
 }
 
 .product__infor {
     margin: 0 15px;
-    background-color: white;
+    background-color: var(--white-2);
+    color: var(--black);
     padding: 30px;
 }
 
@@ -176,7 +177,8 @@
 }
 
 .product__other {
-    background-color: var(--white);
+    background-color: var(--white-2);
+    color: var(--black);
     margin: 0 15px;
     padding: 30px;
 }
@@ -189,13 +191,13 @@
     cursor: pointer;
 
     &:hover {
-        background-color: var(--primary);
+        background-color: var(--primary-dark);
         color: var(--white);
     }
 }
 
 .product__nav_item-active {
-    background-color: var(--primary);
+    background-color: var(--primary-dark);
     color: var(--white);
 }
 

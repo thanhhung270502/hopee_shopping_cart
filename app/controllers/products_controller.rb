@@ -97,26 +97,29 @@ class ProductsController < ApplicationController
   def getProduct
     getId(@product);
     
-    @cart_item = CartItem.new
-    @cart_item.quantity = params[:quantity]
-    @cart_item.size = Size.find(params[:size_ids]).name
-    @cart_item.cart_session_id = current_cart_session.id
-    @cart_item.product_id = current_product.id
-    if (count_cart_sessions == 2)
-      first_cart_session.destroy
-    end
-    total = @cart_item.cart_session.sum_money
-    total += @cart_item.product.price * @cart_item.quantity
-    @cart_item.cart_session.update_attribute(:sum_money, total)
+    if check(@product, params[:quantity], Size.find(params[:size_ids]).name)
+      @cart_item = CartItem.new
+      @cart_item.quantity = params[:quantity]
+      @cart_item.size = Size.find(params[:size_ids]).name
+      @cart_item.cart_session_id = current_cart_session.id
+      @cart_item.product_id = current_product.id
+      if (count_cart_sessions == 2)
+        first_cart_session.destroy
+      end
+      total = @cart_item.cart_session.sum_money
+      total += @cart_item.product.price * @cart_item.quantity
+      @cart_item.cart_session.update_attribute(:sum_money, total)
 
-    puts "hello"
+      puts "hello"
 
-    if @cart_item.save
-      flash[:success] = "Success roi em oi"
+      if @cart_item.save
+        flash[:success] = "Add to cart successfully!!!"
+      else 
+        flash[:danger] = "Add to cart failed!!!"
+      end
     else 
-      render 'new'
+      flash[:danger] = "Add to cart failed!!!"
     end
-
     redirect_to @product
     # redirect_to new_cart_item_path
   end

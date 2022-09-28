@@ -122,11 +122,11 @@
                   <%= link_to '<i class="fa-solid fa-gear dropdown-icon"></i> Setting'.html_safe, setting_path, class: "dropdown-item dropdown-padding" %>
                 </li>
                 <li>
-                  <a class="dropdown-item dropdown-padding" href="/static_pages/setting">
+                  <div class="dropdown-item dropdown-padding" href="/static_pages/setting">
                     <i class="fa-solid fa-moon dropdown-icon dark-mode-active"></i>
                     <i class="fa-solid fa-sun dropdown-icon"></i>
                     Chế độ
-                  </a>
+                  </div>
                 </li>
                 <li>
                   <%= button_to '<i class="fa-solid fa-right-from-bracket dropdown-icon"></i> Đăng xuất'.html_safe, log_out_path, method: :delete, class: "dropdown-item dropdown-padding" %>
@@ -175,10 +175,10 @@
                     Categories
                   </a>
                   <ul class="dropdown-menu dropdown_menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item dropdown-padding" href="#">Action</a></li>
+                    <li><a class="dropdown-item dropdown-padding" href="#">Another action</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item dropdown-padding" href="#">Something else here</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">

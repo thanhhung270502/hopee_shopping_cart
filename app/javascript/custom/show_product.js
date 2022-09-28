@@ -139,7 +139,6 @@ minus1.onclick = () => {
 add1.onclick = () => {
     if (parseInt(data1.value) < parseInt(product__remain.textContent)) {
         data1.value++;
-        console.log(data1.value);
     }
 }
 
