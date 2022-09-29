@@ -42,7 +42,7 @@
           </div>
           <div class="col-2 cart-items_col">
             <div class="cart-items__price">
-              $<%= cart_item.product.price %>.00
+              $<%= cart_item.product.price %>
             </div>
           </div>
           <div class="col-2 cart-items_col">
@@ -61,7 +61,7 @@
           </div>
           <div class="col-2 cart-items_col">
             <div class="cart-items__price">
-              $<%= cart_item.product.price * cart_item.quantity %>.00
+              $<%= cart_item.product.price * cart_item.quantity %>
             </div>
           </div>
           <div class="col-2 cart-items_col">
@@ -79,19 +79,19 @@
         <div class="border-bottom">
           <div class="d-flex justify-content-between align-item-center mb-3">
             <h6>Subtotal</h6>
-            <h6> $<%= @cart_session.sum_money %>.00 </h6>
+            <h6> $<%= @cart_session.sum_money %> </h6>
           </div>
           <div class="d-flex justify-content-between align-item-center mb-2 ">
             <h6>Ship</h6>
-            <h6> $0.00 </h6>
+            <h6> $0 </h6>
           </div>
         </div>
         <div class="pt-3">
           <div class="d-flex justify-content-between align-item-center mb-3 fw-bold">
             <h5>Total</h5>
-            <h5> $<%= @cart_session.sum_money + 0 %>.00 </h5>
+            <h5> $<%= @cart_session.sum_money + 0 %> </h5>
           </div>
-          <%= button_to "Proceed To Checkout", order_path, method: :post, class: "btn btn-primary w-100" %>
+          <%= button_to "Proceed To Checkout", orderz_path, method: :post, class: "btn btn-primary w-100" %>
         </div>
       </div>
     </div>

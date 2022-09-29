@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
         end
       end
       flash[:success] = 'Create shop successfully!'
-      redirect_to products_path 
+      redirect_to @product 
     else
         flash[:warning] = "Cannot create shop!!"
         render :new

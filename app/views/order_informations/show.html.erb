@@ -1,5 +1,5 @@
 <div style="background-color: var(--beige-light);">
-  <div class="container pt-3">
+  <div class="container pt-3 pb-3">
     <div class="bg-white ori_header d-flex justify-content-between align-item-center mb-3">
       <%= link_to order_informations_path do %>
         <i class="fa-solid fa-arrow-left-long"></i>
@@ -169,7 +169,7 @@
     <div class="bg-white ori_transport__detail">
       <div class="d-flex justify-content-between align-item-center pb-4">
         <h4 class="">Địa Chỉ Nhận Hàng</h4>
-        <% if @order_information.order.user.shop && @order_information.order.user.shop == current_shop %>
+        <% if checkShop(@order_information, current_shop) %>
         <div class="d-flex">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Cập nhật trạng thái giao hàng

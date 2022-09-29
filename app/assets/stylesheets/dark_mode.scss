@@ -1,8 +1,8 @@
-.fa-moon,
-.fa-sun {
+.dropdown_mode {
     display: none;
+    cursor: pointer;
 }
 
-.dark-mode-active {
-    display: inline-block !important;
+.dark_mode_active {
+    display: block !important;
 }

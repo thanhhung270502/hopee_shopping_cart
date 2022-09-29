@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   resources :order_informations
   resources :orders
   resources :transport, only: [:create, :destroy]
+  resources :account_activations, only: [:edit]
+
 
   get '/products/:id/shop_products', to: 'products#showAll'
   post '/products/:id/add_product', to: 'products#getProduct', as: 'add_product'
@@ -59,7 +61,7 @@ Rails.application.routes.draw do
 
   # get 'update_quantity', to: 'cart_items#update_quantity'
   patch '/update_quantity', to: 'cart_items#update_quantity'
-
+  
   post '/cart_sessions/:id/order', to: 'cart_sessions#checkout', as: 'orderz'
 
   post 'order_informations/:id/updateTransport', to: "order_informations#updateTransport", as: 'updateTransport'
