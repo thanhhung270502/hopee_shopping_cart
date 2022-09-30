@@ -1,0 +1,24 @@
+<div class="customer_orders" style="border: 5px solid red; padding: 0.5rem 1rem">
+  <% @user.orders.last.order_items.each do |order_item| %>
+    <div class="customer_orders_item" style="padding: 10px 0;">
+      <div class="customer_orders_shop" style="font-weight: bold; padding-bottom: 0.7rem; font-size: 1.3rem">
+        Shop: <%= order_item.product.shop.name %>
+      </div>
+      <div class="customer_orders_product" style="padding-bottom: 1rem;">
+        <div class="customer_orders_product_name">
+          Name: <%= order_item.product.name %>
+        </div>
+        <div class="customer_orders_product_price">
+          Price: <%= order_item.product.current_price %>
+        </div>
+        <div class="customer_orders_product_size">
+          Size: <%= order_item.size %>
+        </div>
+        <div class="customer_orders_product_quantity">
+          Quantity: <%= order_item.quantity %>
+        </div>
+      </div>
+      <div style="border-bottom: 2px solid black"></div>
+    </div>
+  <% end %>
+</div>

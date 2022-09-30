@@ -1,5 +1,4 @@
 .ori__index {
-    height: 200vh;
 }
 
 .sidebar {
@@ -39,17 +38,22 @@
             color: var(--primary-dark);
         }
     }
+
 }
 
 .sidebar__icon {
     font-size: 1.5rem;
     text-align: center;
     width: 40px;
-    color: var(--red);
+    color: var(--primary-dark);
 }
 
 .sidebar__content {
+    color: var(--black);
+}
 
+.sidebar__content_active {
+    color: var(--primary-dark);
 }
 
 .ori__search {
@@ -115,4 +119,72 @@
         color: var(--light-gray);
         margin: 0 7px;
     }
+}
+
+
+.voucher__container {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 20px 35px 30px;
+}
+.voucher__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 1.5rem;
+}
+
+.voucher__field {
+
+}
+
+.voucher {
+    height: 150px;
+    margin: 10px 0;
+}
+
+.voucher__left_0,
+.voucher__left_1,
+.voucher__right {
+    height: 150px;
+    width: 100%;
+}
+
+.voucher__left_0 {
+    background-color: var(--red);
+    color: #fff;
+}
+
+.voucher__left_1 {
+    background-color: var(--green-dark);
+    color: #fff;
+}
+
+.voucher__right {
+    padding: 10px;
+    background: var(--beige-light);
+}
+
+.voucher__name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 2px 0;
+}
+
+.voucher__content {
+    font-size: 0.9rem;
+}
+
+.voucher__btn {
+    padding: 2px 10px;
+    border: none;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.voucher__btn_danger {
+    background: var(--red);
+}
+
+.voucher__btn_success {
+    background: var(--green-dark);
 }

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     include CartSessionsHelper
     include CartItemsHelper
     include OrderInformationsHelper
-
+    include VouchersHelper
     
     @cart_items = CartItem.all
 

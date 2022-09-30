@@ -1,0 +1,62 @@
+<div class="outer__container pb-3">
+  <div class="container">
+    <div class="row ori__index">
+      <div class="col-3">
+        <div class="sidebar">
+          <div class="pb-3">
+            <div class="d-flex align-items-center">
+              <div class="sidebar__avatar pe-2">
+                <% if current_user.image? %>
+                  <%= image_tag current_user.image.url, class: "img-fluid" %>
+                <% else %>
+                  <%= image_tag 'default_avatar.png', class: "img-fluid" %>
+                <% end %>
+              </div>
+              <div class="sidebar__infor">
+                <div class="sidebar__name">
+                  <%= current_user.name %>
+                </div>
+                <%= link_to "My Profile", current_user, class: "sidebar__profile" %>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar__items">
+            <div class="d-flex align-items-center sidebar__item">
+              <div class="sidebar__icon">
+                <i class="fa-solid fa-file-invoice"></i>
+              </div>
+              <%= link_to "Đơn Mua", order_informations_path, class: "sidebar__content" %>
+            </div>
+            <div class="d-flex align-items-center sidebar__item">
+              <div class="sidebar__icon">
+                <i class="fa-solid fa-pager"></i>
+              </div>
+              <%= link_to "Kho Voucher", vouchers_path, class: "sidebar__content" %>
+            </div>
+            <% if current_user.role == 2 %>
+            <div class="d-flex align-items-center sidebar__item">
+              <div class="sidebar__icon">
+                <i class="fa-solid fa-square-plus"></i>
+              </div>
+              <%= link_to "Thêm Voucher", new_voucher_path, class: "sidebar__content sidebar__content_active" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="voucher__container">
+          <div class="voucher__title">
+            New Voucher
+          </div>
+          <div class="voucher__field">
+            <%= render "form", voucher: @voucher %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

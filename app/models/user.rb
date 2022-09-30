@@ -20,6 +20,11 @@
     has_many :following, through: :active_relationships, source: :followed
     has_many :followers, through: :passive_relationships, source: :follower
 
+    has_many :user_vouchers
+    has_many :vouchers, through: :user_vouchers
+
+    has_many :orders
+
     validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, massage: "must be a valid email address" }
     validates :name, presence: true, length: { maximum: 50 }
 
@@ -84,6 +89,11 @@
     # Returns true if a password reset has expired.
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
+    end
+    
+    # Sends activation email.
+    def send_order_email
+        UserMailer.customer_order(self).deliver_later
     end
     
     # Defines a proto-feed.
