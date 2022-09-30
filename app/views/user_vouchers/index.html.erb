@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>User vouchers</h1>
+
+<div id="user_vouchers">
+  <% @user_vouchers.each do |user_voucher| %>
+    <%= render user_voucher %>
+    <p>
+      <%= link_to "Show this user voucher", user_voucher %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user voucher", new_user_voucher_path %>

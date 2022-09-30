@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user_voucher %>
+
+<div>
+  <%= link_to "Edit this user voucher", edit_user_voucher_path(@user_voucher) %> |
+  <%= link_to "Back to user vouchers", user_vouchers_path %>
+
+  <%= button_to "Destroy this user voucher", @user_voucher, method: :delete %>
+</div>

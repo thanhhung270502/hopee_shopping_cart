@@ -84,6 +84,10 @@ class CartSessionsController < ApplicationController
         cart_item.product.update_attribute(:total_quantity, total)
       end
       @cart_session.destroy
+      @order.user.send_order_email
+      @order.order_items.each do |order_item|
+        order_item.send_shop_order_email
+      end
 
       @order_information = OrderInformation.new
       @order_information.order_id = @order.id 

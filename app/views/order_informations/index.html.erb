@@ -25,18 +25,22 @@
               <div class="sidebar__icon">
                 <i class="fa-solid fa-file-invoice"></i>
               </div>
-              <div class="sidebar__content">
-                Đơn mua
-              </div>
+              <%= link_to "Đơn Mua", order_informations_path, class: "sidebar__content sidebar__content_active" %>
             </div>
             <div class="d-flex align-items-center sidebar__item">
               <div class="sidebar__icon">
                 <i class="fa-solid fa-pager"></i>
               </div>
-              <div class="sidebar__content">
-                Kho Voucher
-              </div>
+              <%= link_to "Kho Voucher", vouchers_path, class: "sidebar__content" %>
             </div>
+            <% if current_user.role == 2 %>
+            <div class="d-flex align-items-center sidebar__item">
+              <div class="sidebar__icon">
+                <i class="fa-solid fa-square-plus"></i>
+              </div>
+              <%= link_to "Thêm Voucher", new_voucher_path, class: "sidebar__content" %>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>

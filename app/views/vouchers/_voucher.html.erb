@@ -1,0 +1,50 @@
+<div class="col-lg-6 col-md-12 voucher">
+  <div class="d-flex" style="box-shadow: 0 2px 4px 0 RGB(0 0 0/12%), 0 -2px 2px 0 RGB(0 0 0/4%);">
+    <div class="col-3">
+      <% if voucher.type_voucher == 0 %>
+        <div class="voucher__left_0 d-inline-flex align-items-center justify-content-center">
+          <div style="text-align: center;">
+            <i class="fa-solid fa-shop"></i> <br/>
+            PolkaDots
+          </div>
+        </div>
+      <% else %>
+        <div class="voucher__left_1 d-flex align-items-center justify-content-center">
+          <div style="text-align: center;">
+            <i class="fa-solid fa-truck-fast"></i> <br/>
+            FreeShip
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-9">
+      <div class="voucher__right d-flex align-items-center">
+        <div>
+          <div class="voucher__name">
+            <%= voucher.name %>
+          </div>
+          <div class="voucher__content">
+            Đơn tối thiểu: $15.0
+          </div>
+          <div class="voucher__content">
+            Giảm tối đa: $<%= voucher.discount_max %>
+          </div>
+          <div class="voucher__content pb-2">
+            Code: <%= voucher.code %>
+          </div>
+          <div class="d-flex">
+            <% if !checkVoucher(voucher) %>
+              <%= form_for voucher, url: get_voucher_path, method: :post do |form| %>
+                <%= form.hidden_field :voucher_id, value: voucher.id %>
+                <%= form.submit "GET", class: "voucher__btn voucher__btn_success" %>
+              <% end %>
+            <% end %>
+            <% if current_user.role == 2 %>
+              <%= button_to "Destroy", voucher, method: :delete, class: "voucher__btn voucher__btn_danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_28_030459) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_29_002012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -210,6 +210,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_030459) do
     t.index ["order_information_id"], name: "index_transports_on_order_information_id"
   end
 
+  create_table "user_vouchers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "voucher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_vouchers_on_user_id"
+    t.index ["voucher_id"], name: "index_user_vouchers_on_voucher_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -224,6 +233,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_030459) do
     t.string "activation_digest"
     t.boolean "activated"
     t.datetime "activated_at"
+  end
+
+  create_table "vouchers", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.integer "quantity"
+    t.integer "type_voucher"
+    t.integer "discount"
+    t.decimal "condition"
+    t.decimal "discount_max"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

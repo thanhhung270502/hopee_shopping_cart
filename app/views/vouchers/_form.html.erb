@@ -1,0 +1,48 @@
+<%= form_with(model: voucher) do |form| %>
+  <% if voucher.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(voucher.errors.count, "error") %> prohibited this voucher from being saved:</h2>
+
+      <ul>
+        <% voucher.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Name</span>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Type</span>
+     <%= form.select :type_voucher, [["Normal", 0], ["Shipping", 1]], class: "form-select", id: "inputGroupSelect01" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Discount</span>
+    <%= form.number_field :discount, class: "form-control" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Discount_Max</span>
+    <%= form.number_field :discount_max, class: "form-control", step: :any %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Quantity</span>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Voucher ", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+  const type_voucher = document.getElementById("voucher_type_voucher");
+
+  type_voucher.classList.add('form-select')
+</script>

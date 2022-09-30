@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :transport, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
+  resources :vouchers
 
 
   get '/products/:id/shop_products', to: 'products#showAll'
@@ -69,7 +70,11 @@ Rails.application.routes.draw do
   patch 'order_informations/:id/prevStatus', to: "order_informations#prevStatus", as: 'prevStatus'
 
   get 'search', to: 'search#index'
-  # get '/add_product', to: 'products#getProduct'
+  
+  get 'all_vouchers', to: 'vouchers#all_vouchers'
+  post 'get_voucher', to: 'vouchers#get_voucher'
+
+  post '/cart_sessions/:id/submit_voucher', to: 'cart_sessions#submit_voucher', as: 'submit_voucher'
 
   # Defines the root path route ("/")
   # root "articles#index"

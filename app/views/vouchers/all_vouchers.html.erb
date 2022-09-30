@@ -1,0 +1,16 @@
+<div class="outer__container pb-3">
+  <div class="container">
+    <div class="voucher__container">
+      <div class="voucher__title">
+        All Vouchers
+      </div>
+      <div class="voucher__field">
+        <div class="row">
+          <% @vouchers.each do |voucher| %>
+            <%= render voucher %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

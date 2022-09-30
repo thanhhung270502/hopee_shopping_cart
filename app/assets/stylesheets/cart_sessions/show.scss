@@ -67,3 +67,17 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.cart_session__voucher {
+    padding: 0 15px 15px;
+}
+.cart_session__voucher_code {
+    padding: 10px;
+    border: none;
+    flex-grow: 1;
+}
+.cart_session__voucher_btn {
+    padding: 10px 20px;
+    background: var(--primary-dark);
+    color: var(--white);
+}

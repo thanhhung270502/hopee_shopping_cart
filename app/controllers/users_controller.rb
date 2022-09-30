@@ -110,7 +110,7 @@ class UsersController < ApplicationController
 
     private
         def user_params
-            params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address, :web_url, :image);
+            params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address, :web_url, :image, user_vouchers_ids:[]);
         end
 
         # Confirms the correct user.
