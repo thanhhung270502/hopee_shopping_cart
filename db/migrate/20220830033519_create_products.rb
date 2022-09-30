@@ -13,6 +13,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.text :description 
       t.text :product_information
       t.boolean :hot_product
+      t.boolean :destroy_product, default: false
       
       t.timestamps
     end

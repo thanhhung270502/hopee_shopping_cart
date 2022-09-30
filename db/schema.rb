@@ -144,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_002012) do
     t.text "description"
     t.text "product_information"
     t.boolean "hot_product"
+    t.boolean "destroy_product", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_products_on_shop_id"
