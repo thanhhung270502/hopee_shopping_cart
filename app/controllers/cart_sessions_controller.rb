@@ -66,37 +66,60 @@ class CartSessionsController < ApplicationController
 
   def checkout
     @order = Order.new(@cart_session.attributes)
-    if  @order.save 
-      @cart_session.cart_items.each do |cart_item|
-        # Copy CartItem to OrderItem
-        OrderItem.create(newAtrs(@order, cart_item))
 
-        # Decrease quantity product
-        total = 0
-        cart_item.product.product_sizes.each do |product_size|
-          if (product_size.size.name == cart_item.size)
-            number = product_size.number 
-            number -= cart_item.quantity
-            product_size.update_attribute(:number, number)
-          end
-          total += product_size.number
+    check = true
+    cart_items = @cart_session.cart_items
+    for i in (0...cart_items.length())
+      total = cart_items[i].quantity
+      for j in (i+1...cart_items.length())
+        if cart_items[i].size == cart_items[j].size
+          total += cart_items[j].quantity
         end
-        cart_item.product.update_attribute(:total_quantity, total)
       end
-      @cart_session.destroy
-      @order.user.send_order_email
-      @order.order_items.each do |order_item|
-        order_item.send_shop_order_email
+      cart_items[i].product.product_sizes.each do |product_size|
+        if cart_items[i].size = product_size.size.name 
+          if total > product_size.number 
+            check = false
+          end
+        end
       end
-
-      @order_information = OrderInformation.new
-      @order_information.order_id = @order.id 
-      @order_information.save
-
-      flash[:success] = "Order successfully"
-      redirect_to @order_information
+    end  
+    if check == false 
+      flash[:danger] = "ABC"
+      redirect_to root_path
     else 
-      flash[:danger] = "Order fail"  
+      if  @order.save 
+        @cart_session.cart_items.each do |cart_item|
+          # Copy CartItem to OrderItem
+          OrderItem.create(newAtrs(@order, cart_item))
+  
+          # Decrease quantity product
+          total = 0
+          cart_item.product.product_sizes.each do |product_size|
+            if (product_size.size.name == cart_item.size)
+              number = product_size.number 
+              number -= cart_item.quantity
+              product_size.update_attribute(:number, number)
+            end
+            total += product_size.number
+          end
+          cart_item.product.update_attribute(:total_quantity, total)
+        end
+        @cart_session.destroy
+        # @order.user.send_order_email
+        # @order.order_items.each do |order_item|
+        #   order_item.send_shop_order_email
+        # end
+  
+        @order_information = OrderInformation.new
+        @order_information.order_id = @order.id 
+        @order_information.save
+  
+        flash[:success] = "Order successfully"
+        redirect_to @order_information
+      else 
+        flash[:danger] = "Order fail"  
+      end
     end
   end
 

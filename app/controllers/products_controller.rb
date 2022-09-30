@@ -12,7 +12,16 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @cart_item = CartItem.new
+    if @product.destroy_product
+      if current_user.role != 2
+        flash[:info] = "Don't find this product..."
+        redirect_to products_path
+      else
+        @cart_item = CartItem.new
+      end
+    else 
+      @cart_item = CartItem.new
+    end
   end
 
   def show_hot
@@ -77,12 +86,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @product.update_attribute(:destroy_product, false)
   end
 
   def toggle_hot
@@ -97,7 +101,9 @@ class ProductsController < ApplicationController
   def getProduct
     getId(@product);
     
-    if check(@product, params[:quantity], Size.find(params[:size_ids]).name)
+    if params[:size_ids].blank? 
+      flash[:warning] = "You don't choose size. Please try again..."
+    elsif check(@product, params[:quantity], Size.find(params[:size_ids]).name)
       @cart_item = CartItem.new
       @cart_item.quantity = params[:quantity]
       @cart_item.size = Size.find(params[:size_ids]).name
@@ -109,8 +115,6 @@ class ProductsController < ApplicationController
       total = @cart_item.cart_session.sum_money
       total += @cart_item.product.price * @cart_item.quantity
       @cart_item.cart_session.update_attribute(:sum_money, total)
-
-      puts "hello"
 
       if @cart_item.save
         flash[:success] = "Add to cart successfully!!!"
@@ -136,9 +140,7 @@ class ProductsController < ApplicationController
   end
 
   def updateQuantity
-    puts params
     numbers = params[:product_size][:number]
-    puts @product
 
     for i in 0...@product.product_sizes.length
       @product.product_sizes[i].update_attribute(:number, numbers[i])
