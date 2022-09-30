@@ -29,16 +29,6 @@ class CartSessionsController < ApplicationController
     else 
       render 'new'
     end
-
-    # respond_to do |format|
-    #   if @cart_session.save
-    #     format.html { redirect_to cart_session_url(@cart_session), notice: "Cart session was successfully created." }
-    #     format.json { render :show, status: :created, location: @cart_session }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @cart_session.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /cart_sessions/1 or /cart_sessions/1.json
@@ -68,6 +58,8 @@ class CartSessionsController < ApplicationController
     @order = Order.new(@cart_session.attributes)
 
     check = true
+    cart_item_fail
+    quantity = 0
     cart_items = @cart_session.cart_items
     for i in (0...cart_items.length())
       total = cart_items[i].quantity
@@ -79,14 +71,17 @@ class CartSessionsController < ApplicationController
       cart_items[i].product.product_sizes.each do |product_size|
         if cart_items[i].size = product_size.size.name 
           if total > product_size.number 
+            cart_item_fail = cart_item[i]
+            quantity = product_size.number
             check = false
+            break
           end
         end
       end
     end  
     if check == false 
-      flash[:danger] = "ABC"
-      redirect_to root_path
+      flash[:danger] = "Product '#{cart_item_fail.product.name}' only has #{quantity}. Please change the quantity."
+      redirect_to @cart_session
     else 
       if  @order.save 
         @cart_session.cart_items.each do |cart_item|

@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController    
   before_action :set_shop, only: %i[ show edit update editProfile ]
+  before_action :correct_shop, only: [:edit, :update]
   before_action :admin_user, only: [:index, :destroy]
 
   def index
@@ -61,5 +62,11 @@ class ShopsController < ApplicationController
 
       def shop_params
           params.require(:shop).permit(:name, :user_id, :description, :image)
+      end
+
+      def correct_shop 
+        @shop = Shop.find_by(id: params[:id])
+        flash[:warning] = "You don't entry this page."
+        redirect_to(root_url) unless current_shop?(@shop)
       end
 end

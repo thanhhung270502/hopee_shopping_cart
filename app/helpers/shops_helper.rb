@@ -12,6 +12,10 @@ module ShopsHelper
         !current_shop.nil?
     end
 
+    def current_shop?(shop)
+        shop && shop == current_shop
+    end
+
     def calcTime(time)
         time_now = Time.now 
         if (time_now.year > time.year)

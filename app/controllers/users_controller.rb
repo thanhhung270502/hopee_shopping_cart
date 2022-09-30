@@ -116,6 +116,7 @@ class UsersController < ApplicationController
         # Confirms the correct user.
         def correct_user
             @user = User.find_by(id: params[:id])
+            flash[:warning] = "You don't entry this page."
             redirect_to(root_url) unless current_user?(@user)
         end
 end

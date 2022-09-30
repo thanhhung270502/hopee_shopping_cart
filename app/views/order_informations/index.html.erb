@@ -52,41 +52,43 @@
           <input class="ori__search_field" placeholder="Search by Shop name, Order ID or product name">
         </div>
         <% @order_informations.each do |order_information| %>
-        <div class="ori__details me-2">
-          <div class="ori__detail">
-            <%= link_to order_information, class: "ori__detail_order" do %>
-              ID Đơn Hàng: <%= order_information.id %>
-            <% end %> <br/>
-            <% order_information.order.order_items.each do |order_item| %>
-                <%= link_to order_item.product.shop, class: "ori__detail_shop" do %>
-                  <%= order_item.product.shop.name %>
-                <% end %>
-                <div class="d-flex ori__detail_item">
-                  <div class="ori__detail_item_image">
-                    <%= image_tag order_item.product.product_images.last.image.url, class: "img-fluid" %>
-                  </div>
-                  <div class="ori__detail_item_infor">
-                    <div class="ori__detail_item_infor_name">
-                      <%= order_item.product.name %>
-                    </div>
-                    <div class="ori__detail_item_infor_size">
-                      Size: <%= order_item.size %>
-                    </div>
-                    <div class="ori__detail_item_infor_quantity">
-                      Quantity: <%= order_item.quantity %>
-                    </div>
-                  </div>
-                  <div class="ori__detail_item_price">
-                    <% if order_item.product.price == order_item.product.current_price %>
-                      <%= order_item.product.price %>
-                    <% else %>
-                      <span> $<%= order_item.product.price %> </span> $<%= order_item.product.current_price %>
+          <% if order_information.order.user == current_user %>
+            <div class="ori__details me-2">
+              <div class="ori__detail">
+                <%= link_to order_information, class: "ori__detail_order" do %>
+                  ID Đơn Hàng: <%= order_information.id %>
+                <% end %> <br/>
+                <% order_information.order.order_items.each do |order_item| %>
+                    <%= link_to order_item.product.shop, class: "ori__detail_shop" do %>
+                      <%= order_item.product.shop.name %>
                     <% end %>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-        </div>
+                    <div class="d-flex ori__detail_item">
+                      <div class="ori__detail_item_image">
+                        <%= image_tag order_item.product.product_images.last.image.url, class: "img-fluid" %>
+                      </div>
+                      <div class="ori__detail_item_infor">
+                        <div class="ori__detail_item_infor_name">
+                          <%= order_item.product.name %>
+                        </div>
+                        <div class="ori__detail_item_infor_size">
+                          Size: <%= order_item.size %>
+                        </div>
+                        <div class="ori__detail_item_infor_quantity">
+                          Quantity: <%= order_item.quantity %>
+                        </div>
+                      </div>
+                      <div class="ori__detail_item_price">
+                        <% if order_item.product.price == order_item.product.current_price %>
+                          <%= order_item.product.price %>
+                        <% else %>
+                          <span> $<%= order_item.product.price %> </span> $<%= order_item.product.current_price %>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

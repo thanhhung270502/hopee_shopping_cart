@@ -9,6 +9,10 @@ module ProductsHelper
       @current_product = Product.find($current_product_id);
     end
 
+    def current_product?(product)
+      product && product.shop = current_shop
+    end
+
     def order_itemm
       order_items = "	SELECT * 
         FROM Order_Items"

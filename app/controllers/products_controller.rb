@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot editQuantity updateQuantity publicProduct discount ]
   before_action :createCartSession, only: %i[ getProduct ]
+  before_action :correct_product, only: %i[ edit update toggle_hot editQuantity updateQuantity publicProduct discount ]
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -206,5 +207,11 @@ class ProductsController < ApplicationController
                                       :discount, :current_price, :type_product,
                                       :description, :product_information, :hot, size_ids:[], category_ids: [],
                                       product_images_attributes: [:id, :product_id, :image], numbers: [])
+    end
+
+    def correct_product 
+      @product = Product.find_by(id: params[:id])
+      flash[:warning] = "You don't entry this page."
+      redirect_to(root_url) unless current_product?(@product)
     end
 end
