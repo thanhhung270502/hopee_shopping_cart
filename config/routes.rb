@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resources :transport, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :vouchers
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 
   get '/products/:id/shop_products', to: 'products#showAll'
