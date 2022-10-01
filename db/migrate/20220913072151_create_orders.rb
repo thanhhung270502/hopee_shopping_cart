@@ -3,6 +3,8 @@ class CreateOrders < ActiveRecord::Migration[7.0]
     create_table :orders do |t|
       t.references :user
       t.decimal :sum_money
+      t.integer :discount
+      t.decimal :total_final
       
       t.timestamps
     end

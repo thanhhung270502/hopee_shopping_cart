@@ -114,8 +114,9 @@ class ProductsController < ApplicationController
         first_cart_session.destroy
       end
       total = @cart_item.cart_session.sum_money
-      total += @cart_item.product.price * @cart_item.quantity
+      total += @cart_item.product.current_price * @cart_item.quantity
       @cart_item.cart_session.update_attribute(:sum_money, total)
+      @cart_item.cart_session.update_attribute(:total_final, total)
 
       if @cart_item.save
         flash[:success] = "Add to cart successfully!!!"
@@ -130,7 +131,7 @@ class ProductsController < ApplicationController
   end
 
   def createCartSession
-    if (!first_cart_session) 
+    if (first_cart_session.nil?) 
       @cart_session = CartSession.new
       @cart_session.user_id = session[:user_id]
       @cart_session.save

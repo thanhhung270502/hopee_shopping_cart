@@ -43,13 +43,13 @@ end
 2.times do |n|
   random_number = rand(1.1..9.9)*1000000
   code = random_number.to_i
-  Vouhcer.create!(name: "Giảm 20%", code: code, quantity: 5,
+  Voucher.create!(name: "Giảm 20%", code: code, quantity: 5,
                   type_voucher: 0, discount: 20, condition: 50, discount_max: 10)
 end
 
 2.times do |n|
   random_number = rand(1.1..9.9)*1000000
   code = random_number.to_i
-  Vouhcer.create!(name: "FreeShip", code: code, quantity: 5,
+  Voucher.create!(name: "FreeShip", code: code, quantity: 5,
                   type_voucher: 1, discount: 0, condition: 15, discount_max: 2)
 end
