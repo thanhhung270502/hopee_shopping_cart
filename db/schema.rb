@@ -56,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_01_071027) do
   create_table "cart_sessions", force: :cascade do |t|
     t.bigint "user_id"
     t.decimal "sum_money", default: "0.0"
+    t.integer "discount", default: 0
+    t.decimal "total_final", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cart_sessions_on_user_id"
@@ -99,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_01_071027) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.decimal "sum_money"
+    t.integer "discount"
+    t.decimal "total_final"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"

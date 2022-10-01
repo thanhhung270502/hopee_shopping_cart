@@ -1,5 +1,5 @@
 class CartSessionsController < ApplicationController
-  before_action :set_cart_session, only: %i[ show edit update destroy checkout ]
+  before_action :set_cart_session, only: %i[ show edit update destroy checkout submit_voucher ]
 
   # GET /cart_sessions or /cart_sessions.json
   def index
@@ -57,32 +57,40 @@ class CartSessionsController < ApplicationController
   def checkout
     @order = Order.new(@cart_session.attributes)
 
-    check = true
-    cart_item_fail
+    @check = true
     quantity = 0
     cart_items = @cart_session.cart_items
+    @cart_item_fail = cart_items[0]
     for i in (0...cart_items.length())
       total = cart_items[i].quantity
       for j in (i+1...cart_items.length())
-        if cart_items[i].size == cart_items[j].size
-          total += cart_items[j].quantity
+        if cart_items[i].product == cart_items[j].product
+          if cart_items[i].size == cart_items[j].size
+            total += cart_items[j].quantity
+          end
         end
       end
       cart_items[i].product.product_sizes.each do |product_size|
-        if cart_items[i].size = product_size.size.name 
+        if cart_items[i].size == product_size.size.name 
           if total > product_size.number 
-            cart_item_fail = cart_item[i]
+            @cart_item_fail = cart_items[i]
             quantity = product_size.number
-            check = false
+            @check = false
             break
           end
         end
       end
     end  
-    if check == false 
-      flash[:danger] = "Product '#{cart_item_fail.product.name}' only has #{quantity}. Please change the quantity."
+    # binding.pry
+    if @check == false 
+      @check = true
+      flash[:danger] = "Product '#{@cart_item_fail.product.name}' only has #{quantity}. Please change the quantity."
       redirect_to @cart_session
     else 
+      if @order.total_final < 50
+        new_price = @order.total_final + 4
+        @order.update_attribute(:total_final, new_price)
+      end
       if  @order.save 
         @cart_session.cart_items.each do |cart_item|
           # Copy CartItem to OrderItem
@@ -117,6 +125,17 @@ class CartSessionsController < ApplicationController
       end
     end
   end
+
+  def submit_voucher
+    @voucher = Voucher.where(code: params[:code].to_i)
+    if !@voucher.blank? &&  @voucher.last.type_voucher == 0
+      new_price = @cart_session.sum_money
+      new_price -= new_price*@voucher.last.discount/100
+      @cart_session.update_attribute(:total_final, new_price)
+      @cart_session.update_attribute(:discount, @voucher.last.discount)
+      redirect_to @cart_session
+    end
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

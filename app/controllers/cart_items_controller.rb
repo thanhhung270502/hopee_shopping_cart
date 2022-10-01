@@ -78,15 +78,19 @@ class CartItemsController < ApplicationController
     prevQuantity = @cart_item.quantity.to_i;
     newQuantity = params[:cart_item][:quantity].to_i;
     
-    total = @cart_item.cart_session.sum_money;
+    new_total = @cart_item.cart_session.total_final;
+    new_sum = @cart_item.cart_session.sum_money;
     if (newQuantity > prevQuantity) 
       npQuantity = newQuantity - prevQuantity;
-      total += @cart_item.product.current_price * npQuantity;
+      new_sum += @cart_item.product.current_price * npQuantity;
+      new_total += @cart_item.product.current_price * npQuantity * (100-@cart_item.cart_session.discount)/100;
     else 
       npQuantity = prevQuantity - newQuantity;
-      total -= @cart_item.product.current_price * npQuantity;
+      new_sum -= @cart_item.product.current_price * npQuantity;
+      new_total -= @cart_item.product.current_price * npQuantity * (100-@cart_item.cart_session.discount)/100;
     end
-    @cart_item.cart_session.update_attribute(:sum_money, total)
+    @cart_item.cart_session.update_attribute(:sum_money, new_sum)
+    @cart_item.cart_session.update_attribute(:total_final, new_total)
     @cart_item.update_attribute(:quantity, newQuantity);
     redirect_to cart_items_path
   end

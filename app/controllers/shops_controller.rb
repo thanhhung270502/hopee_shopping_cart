@@ -26,7 +26,7 @@ class ShopsController < ApplicationController
         @user.update_attribute(:role, 1)
         
         flash[:success] = 'Create shop successfully!'
-        redirect_to root_path 
+        redirect_to @shop 
     else
         flash[:warning] = "Cannot create shop!!"
         render :new

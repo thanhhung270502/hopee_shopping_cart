@@ -42,7 +42,7 @@
           </div>
           <div class="col-2 cart-items_col">
             <div class="cart-items__price">
-              $<%= cart_item.product.price %>
+              $<%= cart_item.product.current_price %>
             </div>
           </div>
           <div class="col-2 cart-items_col">
@@ -61,7 +61,7 @@
           </div>
           <div class="col-2 cart-items_col">
             <div class="cart-items__price">
-              $<%= cart_item.product.price * cart_item.quantity %>
+              $<%= cart_item.product.current_price * cart_item.quantity %>
             </div>
           </div>
           <div class="col-2 cart-items_col">
@@ -72,10 +72,14 @@
     </div>
 
     <div class="col-lg-5 col-md-12">
+      <%= form_with(url: submit_voucher_path, method: :post) do |form| %>
       <div class="d-flex align-items-center cart_session__voucher">
-        <input class="cart_session__voucher_code" placeholder="Voucher Code">
-        <div class="cart_session__voucher_btn">Apply</div>
+        <%= form.number_field :code, class: "cart_session__voucher_code", placeholder: "Voucher Code" %>
+        <%# <input class="cart_session__voucher_code" placeholder="Voucher Code"> %>
+        <%= form.submit "Apply", class: "cart_session__voucher_btn" %>
+        <%#= button_to "Apply", submit_voucher_path, method: :post, class: "cart_session__voucher_btn" %>
       </div>
+      <% end %>
       <div class="cart_session__heading mb-2">
         CART SUMMARY
       </div>
@@ -83,17 +87,25 @@
         <div class="border-bottom">
           <div class="d-flex justify-content-between align-item-center mb-3">
             <h6>Subtotal</h6>
-            <h6> $<%= @cart_session.sum_money %> </h6>
+            <h6> $<%= @cart_session.total_final %> </h6>
           </div>
           <div class="d-flex justify-content-between align-item-center mb-2 ">
             <h6>Ship</h6>
-            <h6> $0 </h6>
+            <% if @cart_session.total_final > 50 %>
+              <h6> $0 </h6>
+            <% else %>
+              <h6> $4.0 </h6>
+            <% end %>
           </div>
         </div>
         <div class="pt-3">
           <div class="d-flex justify-content-between align-item-center mb-3 fw-bold">
             <h5>Total</h5>
-            <h5> $<%= @cart_session.sum_money + 0 %> </h5>
+            <% if @cart_session.total_final > 50 %>
+              <h5> $<%= @cart_session.total_final + 0 %> </h5>
+            <% else %>
+              <h5> $<%= @cart_session.total_final + 4 %> </h5>
+            <% end %>
           </div>
           <%= button_to "Proceed To Checkout", orderz_path, method: :post, class: "btn btn-primary w-100" %>
         </div>
