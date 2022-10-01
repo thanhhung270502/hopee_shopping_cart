@@ -107,4 +107,12 @@ class OrderInformationsController < ApplicationController
     def order_information_params
       params.require(:order_information).permit(:order_id, :status)
     end
+
+    def correct_order_information
+      @order_information = OrderInformation.find(params[:id])
+      if !current_order_information?(@order_information)
+        flash[:warning] = "You don't entry this page."
+        redirect_to root_url
+      end      
+    end
 end

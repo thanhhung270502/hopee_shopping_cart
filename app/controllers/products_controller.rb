@@ -211,7 +211,9 @@ class ProductsController < ApplicationController
 
     def correct_product 
       @product = Product.find_by(id: params[:id])
-      flash[:warning] = "You don't entry this page."
-      redirect_to(root_url) unless current_product?(@product)
+      if !current_product?(@product)
+        flash[:warning] = "You don't entry this page."
+        redirect_to(root_url)
+      end
     end
 end

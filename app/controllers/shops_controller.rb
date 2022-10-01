@@ -66,7 +66,9 @@ class ShopsController < ApplicationController
 
       def correct_shop 
         @shop = Shop.find_by(id: params[:id])
-        flash[:warning] = "You don't entry this page."
-        redirect_to(root_url) unless current_shop?(@shop)
+        if !current_shop?(@shop)
+          flash[:warning] = "You don't entry this page."
+          redirect_to(root_url) 
+        end
       end
 end

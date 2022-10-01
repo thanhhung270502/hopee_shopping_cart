@@ -7,4 +7,8 @@ module OrderInformationsHelper
     end
     return false
   end
+
+  def current_order_information?(order_information)
+    order_information && order_information.order.user == current_user
+  end
 end
