@@ -6,7 +6,6 @@ class MicropostsController < ApplicationController
         @micropost = current_user.microposts.new
         @micropost.content = params[:micropost][:content]
         @micropost.update_attribute(:image, params[:micropost][:image])
-        binding.pry
 
         if @micropost.save
             flash[:success] = "Micropost created!"
