@@ -32,4 +32,15 @@ module ProductsHelper
       end
       return true;
     end
+
+    def count_product(shop)
+      @products = shop.products
+      count = 0
+      @products.each do |product|
+        if !product.destroy_product
+          count += 1
+        end
+      end
+      return count
+    end
 end

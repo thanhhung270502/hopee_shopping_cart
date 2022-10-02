@@ -5,7 +5,7 @@
     </div>
     <div class="row pb-3">
       <% @products.each do |product| %>
-      <% if product.status %>
+      <% if product.status and !product.destroy_product %>
         <div class="col-lg-2 products__column">
           <div class="products__image">
             <%= link_to do %>
@@ -18,8 +18,14 @@
             <%= content_tag :div, class: "products__name" do %>
               <%= product.name %>
             <% end %>
-            <%= content_tag :div, class: "products__price" do %>
-              $<%= product.price %>.00 
+            <% if product.price == product.current_price %>
+              <%= content_tag :div, class: "products__price" do %>
+                $<%= product.price %>
+              <% end %>
+            <% else %>
+              <%= content_tag :div, class: "products__new_price" do %>
+                <span>$<%= product.price %></span> $<%= product.current_price %>
+              <% end %>
             <% end %>
           <% end %>
         </div>

@@ -41,7 +41,7 @@
 				<div class="modal-form modal_form">
 					<%= render 'shared/error_messages', object: f.object %>
 					<div class="modal-field modal_field">
-						<%= f.text_area :content, placeholder: "Nhập nội dung..." %>
+						<%= f.text_area :content, placeholder: "Nhập nội dung...", rows: "6" %>
 					</div>
 					<div class="modal-image modal_image">
 						<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "modal-file-image"%>

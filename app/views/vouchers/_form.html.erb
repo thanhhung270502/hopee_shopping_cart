@@ -27,6 +27,11 @@
   </div>
 
   <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Condition</span>
+    <%= form.number_field :condition, class: "form-control" %>
+  </div>
+
+  <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">Discount_Max</span>
     <%= form.number_field :discount_max, class: "form-control", step: :any %>
   </div>

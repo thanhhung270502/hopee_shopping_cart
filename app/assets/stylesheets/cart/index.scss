@@ -50,7 +50,14 @@
 
 
 .cart-items__avatar {
-    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+
+}
+
+.cart-items__info {
+    padding: 0 10px;
+    text-align: left;
 }
 
 .cart-items__name,
@@ -59,4 +66,15 @@
 .cart-items__price {
     color: var(--black);
     font-size: 1rem;
+}
+
+.cart-items__name {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-items__size {
+    color: var(--black);
 }

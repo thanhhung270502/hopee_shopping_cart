@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy getProduct toggle_hot editQuantity updateQuantity publicProduct discount ]
   before_action :createCartSession, only: %i[ getProduct ]
   before_action :correct_product, only: %i[ edit update toggle_hot editQuantity updateQuantity publicProduct discount ]
+  before_action :soft_destroy, only: %i[ show edit update toggle_hot editQuantity updateQuantity publicProduct discount ]
+
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -58,7 +60,6 @@ class ProductsController < ApplicationController
         flash[:warning] = "Cannot create shop!!"
         render :new
     end
-
   end
 
   # PATCH/PUT /products/1 or /products/1.json
@@ -72,7 +73,7 @@ class ProductsController < ApplicationController
         images.delete_at(i)
       end
     end
-    # binding.pry
+
     if @product.update(product_params)
       for i in 0...images.length
         if !images[i].blank?
@@ -87,7 +88,9 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    @product.update_attribute(:destroy_product, false)
+    @product.update_attribute(:destroy_product, true)
+    flash[:success] = "Remove this product successfully."
+    redirect_to @product.shop
   end
 
   def toggle_hot
@@ -127,7 +130,6 @@ class ProductsController < ApplicationController
       flash[:danger] = "Add to cart failed!!!"
     end
     redirect_to @product
-    # redirect_to new_cart_item_path
   end
 
   def createCartSession
@@ -215,6 +217,16 @@ class ProductsController < ApplicationController
       if !current_product?(@product)
         flash[:warning] = "You don't entry this page."
         redirect_to(root_url)
+      end
+    end
+
+    def soft_destroy
+      @product = Product.find_by(id: params[:id])
+      if @product.destroy_product
+        if current_user.role != 2
+          flash[:warning] = "This product does not exist."
+          redirect_to root_path
+        end
       end
     end
 end

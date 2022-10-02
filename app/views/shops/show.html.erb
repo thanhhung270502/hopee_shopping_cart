@@ -55,7 +55,7 @@
           <div class="row mt-3">
             <div class="col">
               <div class="overview__item">
-                Tổng sản phẩm: <span> <%= @shop.products.count %> </span>
+                Tổng sản phẩm: <span> <%= count_product(@shop) %> </span>
               </div>
               <div class="overview__item">
                 Tham gia: <span> <%= time_ago_in_words(@shop.created_at) %> ago. </span>
@@ -86,7 +86,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id and product.status and product.price != product.current_price %>
+          <% if product.shop_id == @shop.id and product.status and product.price != product.current_price and !product.destroy_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
@@ -99,7 +99,7 @@
               <%= content_tag :div, class: "products__name" do %>
                 <%= product.name %>
               <% end %>
-              <%= content_tag :div, class: "products__new_price pb-3" do %>
+              <%= content_tag :div, class: "products__new_price" do %>
                 <span>$<%= product.price %></span> $<%= product.current_price %>
               <% end %>
             <% end %>
@@ -120,7 +120,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id and product.status and product.hot_product %>
+          <% if product.shop_id == @shop.id and product.status and product.hot_product and !product.destroy_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
@@ -160,7 +160,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id and product.status %>
+          <% if product.shop_id == @shop.id and product.status and !product.destroy_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>
@@ -201,7 +201,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.shop_id == @shop.id and !product.status %>
+          <% if product.shop_id == @shop.id and !product.status and !product.destroy_product %>
           <div class="col-lg-2 products__column">
             <div class="products__image">
               <%= link_to product_path(product) do %>

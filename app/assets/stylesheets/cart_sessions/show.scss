@@ -1,6 +1,6 @@
 // Field
 .cart_session__field {
-    padding: 30px 50px;
+    padding: 30px 50px 15px;
     font-family: 'Rubik', sans-serif;
     background-color: var(--beige-light);
 }
@@ -20,11 +20,12 @@
     }
 
     .cart-items__avatar {
-        width: 50px;
+        min-width: 60px;
+        max-width: 60px;    
     }
 
     .cart-items__name {
-        padding-left: 10px;
+        
     }
 
     .btn_quantity_1, 
