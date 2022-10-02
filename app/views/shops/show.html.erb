@@ -55,19 +55,19 @@
           <div class="row mt-3">
             <div class="col">
               <div class="overview__item">
-                Tổng sản phẩm: <span> <%= count_product(@shop) %> </span>
+                Total Products: <span> <%= count_product(@shop) %> </span>
               </div>
               <div class="overview__item">
-                Tham gia: <span> <%= time_ago_in_words(@shop.created_at) %> ago. </span>
+                Created_at: <span> <%= time_ago_in_words(@shop.created_at) %> ago. </span>
               </div>
             </div>
             <div class="col">
               <% @shop.user ||= current_user %>
               <div class="overview__item">
-                Đang theo dõi: <span><%= @shop.user.following.count %></span>
+                Following: <span><%= @shop.user.following.count %></span>
               </div>
               <div class="overview__item">
-                Người theo dõi: <span><%= @shop.user.followers.count %></span>
+                Followers: <span><%= @shop.user.followers.count %></span>
               </div>
             </div>
           </div>

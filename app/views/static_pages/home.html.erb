@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="home__container pt-5">
+<div class="home__container pt-4">
   <div class="container">
     <div class="row align-items-center home__inner">
       <div class="col-lg-3 col-md-6">
@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<div class="home__container pt-5">
+<div class="home__container pt-4">
   <div class="container">
     <div class="home__inner">
       <div class="home__title2 pb-4">
@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<div class="home__container pt-5 pb-4">
+<div class="home__container pt-4 pb-4">
   <div class="container">
     <div class="home__inner">
       <div class="home__title">
@@ -138,7 +138,7 @@
       </div>
       <div class="field__products d-flex">
         <% @products.each do |product| %>
-          <% if product.status and product.price > product.current_price %>
+          <% if product.status and product.price > product.current_price and !product.destroy_product %>
             <div class="col-lg-2 col-md-3 products__column">
               <div class="products__image pt-2">
                 <%= link_to product_path(product) do %>
@@ -165,17 +165,19 @@
 
 <% if !@feed_items.nil? %>
 <% if @feed_items.any? %>
-<div class="home__container pt-4">
-  <div class="container">
-    <div class="home__inner">
-      <div class="home__title">
-        <i class="fa-solid fa-bolt-lightning"></i>
-        TODAY'S SUGGESTIONS
-      </div>
-      <div class="field__products d-flex">
-        <% if logged_in? %>
-          <%= render 'shared/feed' %>
-        <% end %>
+<div class="pb-3" style="background-color: var(--beige-light);">
+  <div class="home__container">
+    <div class="container">
+      <div class="home__inner">
+        <div class="home__title">
+          <i class="fa-solid fa-bolt-lightning"></i>
+          TODAY'S SUGGESTIONS
+        </div>
+        <div class="field__products d-flex">
+          <% if logged_in? %>
+            <%= render 'shared/feed' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,22 +1,30 @@
 <% if @feed_items.any? %>
   <% @feed_items.each do |product| %>
-    <div class="col-lg-2 col-md-3 products__column">
-      <div class="products__image">
-        <%= link_to product_path(product) do %>
-          <% if product.product_images %>
-            <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+    <% if product.status and !product.destroy_product %>
+      <div class="col-lg-2 col-md-3 products__column">
+        <div class="products__image">
+          <%= link_to product_path(product) do %>
+            <% if product.product_images %>
+              <%= image_tag product.product_images.second.image.url, class: "img-fluid image" %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= link_to product_path(product), class: "products__infor" do %>
+          <%= content_tag :div, class: "products__name pb-3" do %>
+            <%= product.name %>
+          <% end %>
+          <% if product.price == product.current_price %>
+            <%= content_tag :div, class: "products__price" do %>
+              $<%= product.price %>
+            <% end %>
+          <% else %>
+            <%= content_tag :div, class: "products__new_price" do %>
+              <span>$<%= product.price %></span> $<%= product.current_price %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
-      <%= link_to product_path(product), class: "products__infor" do %>
-        <%= content_tag :div, class: "products__name pb-3" do %>
-          <%= product.name %>
-        <% end %>
-        <%= content_tag :div, class: "products__price pb-2" do %>
-          $<%= product.price %>.00
-        <% end %>
-      <% end %>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
 
