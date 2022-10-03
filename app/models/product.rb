@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     
     # has_many_attached :images
 
-    validates :name, presence: true, length: { maximum: 50 }
+    validates :name, presence: true, length: { maximum: 100 }
     validates :color, presence: true
     validates :price, presence: true
     # validates :images, presence: true
