@@ -84,11 +84,11 @@
 
                 <% if @product.status %>
                   <li>
-                    <%= button_to "Hide Product", publicProduct_path, class: "dropdown-item", method: :patch %>
+                    <%= button_to "Hided Product", publicProduct_path, class: "dropdown-item", method: :patch %>
                   </li>
                 <% else %>
                   <li>
-                    <%= button_to "Show Product", publicProduct_path, class: "dropdown-item", method: :patch %>
+                    <%= button_to "Showed Product", publicProduct_path, class: "dropdown-item", method: :patch %>
                   </li>
                 <% end %>
 
