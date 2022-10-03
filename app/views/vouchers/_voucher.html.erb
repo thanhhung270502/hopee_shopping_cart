@@ -24,10 +24,10 @@
             <%= voucher.name %>
           </div>
           <div class="voucher__content">
-            Đơn tối thiểu: $15.0
+            Condition: $<%= voucher.condition %>
           </div>
           <div class="voucher__content">
-            Giảm tối đa: $<%= voucher.discount_max %>
+            Minimize: $<%= voucher.discount_max %>
           </div>
           <div class="voucher__content pb-2">
             Code: <%= voucher.code %>

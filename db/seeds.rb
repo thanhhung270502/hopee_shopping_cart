@@ -19,9 +19,9 @@ Shop.create!( user_id:      1,
   email = "user#{n+1}@gmail.com"
   password = "password"
   random_phone = rand(1.1..9.9)*100000000
-  phone = "0#{random_phone}"
+  phone = "0#{random_phone.to_i}"
   random_address = rand(1.1..9.9)*100
-  address = "#{random_address} Nguyễn Huệ, Quận 15, Thành phố Hồ Chí Minh"
+  address = "#{random_address.to_i} Nguyễn Huệ, Quận 15, Thành phố Hồ Chí Minh"
   User.create!(name:                  name,
               email:                  email,
               password:               password,

@@ -10,8 +10,11 @@ module VouchersHelper
   end
 
   def checkVoucher(voucher)
+    if voucher.quantity <= 0
+      return true
+    end
     current_user.user_vouchers.each do |v|
-      if v.voucher_id == voucher.id 
+      if v.voucher_id == voucher.id
         return true 
       end
     end
