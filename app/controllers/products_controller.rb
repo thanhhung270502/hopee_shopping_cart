@@ -80,6 +80,9 @@ class ProductsController < ApplicationController
           @product.product_images[i].update_attribute(:image, images[i])
         end
       end
+
+      updatePrice()
+      
       redirect_to @product
     else
       render 'edit'
@@ -108,23 +111,45 @@ class ProductsController < ApplicationController
     if params[:size_ids].blank? 
       flash[:warning] = "You don't choose size. Please try again..."
     elsif check(@product, params[:quantity], Size.find(params[:size_ids]).name)
-      @cart_item = CartItem.new
-      @cart_item.quantity = params[:quantity]
-      @cart_item.size = Size.find(params[:size_ids]).name
-      @cart_item.cart_session_id = current_cart_session.id
-      @cart_item.product_id = current_product.id
-      if (count_cart_sessions == 2)
-        first_cart_session.destroy
-      end
-      total = @cart_item.cart_session.sum_money
-      total += @cart_item.product.current_price * @cart_item.quantity
-      @cart_item.cart_session.update_attribute(:sum_money, total)
-      @cart_item.cart_session.update_attribute(:total_final, total)
+      @cart_item = checkProductExist(current_cart_session, @product)
+      if (@cart_item)
+        new_quantity = params[:quantity].to_i
+        current_quantity = @cart_item.quantity
+        current_quantity += new_quantity
+        @cart_item.update_attribute(:quantity, current_quantity)
+        if current_cart_session.discount > 0
+          sum = current_cart_session.sum_money
+          sum += @cart_item.product.current_price * new_quantity
+          current_cart_session.update_attribute(:sum_money, sum)
 
-      if @cart_item.save
-        flash[:success] = "Add to cart successfully!!!"
+          total = current_cart_session.total_final
+          total += @cart_item.product.current_price * new_quantity * (100 - current_cart_session.discount) / 100
+          current_cart_session.update_attribute(:total_final, total)
+        else
+          sum = current_cart_session.sum_money
+          sum += @cart_item.product.current_price * new_quantity
+          current_cart_session.update_attribute(:sum_money, sum)
+          current_cart_session.update_attribute(:total_final, sum)
+        end
       else 
-        flash[:danger] = "Add to cart failed!!!"
+        @cart_item = CartItem.new
+        @cart_item.quantity = params[:quantity]
+        @cart_item.size = Size.find(params[:size_ids]).name
+        @cart_item.cart_session_id = current_cart_session.id
+        @cart_item.product_id = current_product.id
+        if (count_cart_sessions == 2)
+          first_cart_session.destroy
+        end
+        total = @cart_item.cart_session.sum_money
+        total += @cart_item.product.current_price * @cart_item.quantity
+        @cart_item.cart_session.update_attribute(:sum_money, total)
+        @cart_item.cart_session.update_attribute(:total_final, total)
+
+        if @cart_item.save
+          flash[:success] = "Add to cart successfully!!!"
+        else 
+          flash[:danger] = "Add to cart failed!!!"
+        end
       end
     else 
       flash[:danger] = "Add to cart failed!!!"
@@ -173,6 +198,9 @@ class ProductsController < ApplicationController
     @product.update_attribute(:discount, discount_)
     newPrice = @product.price * (100 - discount_) / 100
     @product.update_attribute(:current_price, newPrice)
+
+    updatePrice()
+
     redirect_to @product
   end
 

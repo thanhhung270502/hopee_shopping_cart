@@ -25,8 +25,9 @@ class User < ApplicationRecord
 
     has_many :orders
 
-    validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, massage: "must be a valid email address" }
+    validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, massage: "must be a valid email address" }, absence: true
     validates :name, presence: true, length: { maximum: 50 }
+    validates :password, presence: true, length: { minimum: 6 }, confirmation: true
 
     # validates :image, content_type: { in: %w[image/jpeg image/gif image/png], message: "must be a valid image format" },
     #                 size: { less_than: 5.megabytes, message: "should be less than 5MB" }

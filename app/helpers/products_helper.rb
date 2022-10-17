@@ -43,4 +43,31 @@ module ProductsHelper
       end
       return count
     end
+
+    def updatePrice()
+      @cart_sessions = CartSession.all
+      @cart_sessions.each do |cart_session|
+        total = 0
+        @cart_items = CartItem.all 
+        @cart_items.each do |cart_item|
+          if cart_item.cart_session_id == cart_session.id 
+            total += cart_item.product.current_price * cart_item.quantity
+          end 
+        end
+        cart_session.update_attribute(:sum_money, total)
+        if cart_session.discount > 0
+          total -= total * cart_session.discount / 100
+        end
+        cart_session.update_attribute(:total_final, total)
+      end
+    end
+
+    def checkProductExist(cart_session, product)
+      cart_session.cart_items.each do |cart_item|
+        if cart_item.product == product 
+          return cart_item 
+        end
+      end
+      return nil
+    end
 end

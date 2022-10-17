@@ -12,6 +12,17 @@
         <div class="sign__form">
           <h2 class="pb-4">Create Account</h2>
           <%= form_with(model: @user, local: true) do |form|  %>
+            <% if @user.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+
+                <ul>
+                  <% @user.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
           <div class="form-floating mb-3">
             <%= form.text_field :name, class: "form-control", id: "floatingInput" %>
             <label for="floatingInput">Name</label>
